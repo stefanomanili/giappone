@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alternative Hotel & Ristoranti — Giappone 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #f5f0e8;
+    --gold: #c8923a;
+    --red: #b8321a;
+    --muted: #7a6e5f;
+    --light: #e8e0d0;
+    --green: #2d7a4a;
+    --blue: #1a4a8a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.6; }
+
+  .hero {
+    background: var(--ink); color: var(--paper); padding: 48px 40px 44px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '代替案'; position: absolute; right: -10px; top: -20px;
+    font-family: 'Shippori Mincho', serif; font-size: 180px;
+    color: rgba(255,255,255,0.04); pointer-events: none; line-height: 1;
+  }
+  .hero-back { font-size: 12px; color: var(--gold); text-decoration: none; letter-spacing: 0.1em; display: inline-block; margin-bottom: 16px; }
+  .hero-back:hover { text-decoration: underline; }
+  .hero-label { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .hero h1 { font-family: 'Shippori Mincho', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; margin-bottom: 10px; }
+  .hero p { font-size: 14px; color: rgba(245,240,232,0.6); max-width: 560px; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 0 40px 80px; }
+
+  /* NAV TABS */
+  .tab-strip {
+    display: flex; gap: 0; border-bottom: 2px solid var(--light);
+    margin: 0 0 0; background: white; position: sticky; top: 0; z-index: 100;
+    padding: 0 40px;
+  }
+  .tab { padding: 14px 20px; font-size: 13px; font-weight: 500; cursor: pointer;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+    color: var(--muted); transition: all 0.2s; white-space: nowrap; }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* SECTION HEADERS */
+  .section-intro {
+    padding: 40px 0 24px;
+    border-top: 1px solid var(--light);
+  }
+  .section-intro:first-of-type { border-top: none; padding-top: 48px; }
+  .section-tag { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .section-title { font-family: 'Shippori Mincho', serif; font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .section-sub { font-size: 13.5px; color: var(--muted); }
+
+  /* COMPARISON CARD */
+  .comparison {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;
+  }
+  @media (max-width: 680px) { .comparison { grid-template-columns: 1fr; } }
+
+  .opt-card {
+    background: white; border: 1px solid var(--light); border-radius: 10px;
+    padding: 20px 22px; position: relative;
+  }
+  .opt-card.current { border-color: #c8923a44; background: #fdf8f0; }
+  .opt-card.alt-1 { border-color: #2d7a4a44; background: #f0faf4; }
+  .opt-card.alt-2 { border-color: #1a4a8a33; background: #f0f4fa; }
+
+  .opt-badge {
+    display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 600; padding: 3px 9px; border-radius: 20px; margin-bottom: 10px;
+  }
+  .badge-current { background: #f5e8c8; color: #8a5a10; }
+  .badge-alt { background: #c8f0d8; color: #1a6030; }
+  .badge-alt2 { background: #c8d8f0; color: #0a2860; }
+
+  .opt-name { font-family: 'Shippori Mincho', serif; font-size: 17px; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+  .opt-price {
+    font-size: 20px; font-weight: 700; color: var(--ink); margin: 8px 0 4px;
+    font-family: 'Shippori Mincho', serif;
+  }
+  .opt-price-label { font-size: 11px; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+  .opt-price .saving { font-size: 13px; color: var(--green); font-family: 'DM Sans', sans-serif; font-weight: 500; }
+  .opt-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin: 10px 0; }
+  .opt-pros { list-style: none; margin: 10px 0; }
+  .opt-pros li { font-size: 12.5px; padding: 3px 0; color: var(--ink); }
+  .opt-pros li::before { content: '✓ '; color: var(--green); font-weight: 600; }
+  .opt-cons li { font-size: 12.5px; padding: 3px 0; color: var(--muted); }
+  .opt-cons li::before { content: '— '; color: var(--muted); }
+  .opt-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 6px 12px; border-radius: 6px; font-size: 11.5px; font-weight: 500;
+    text-decoration: none; transition: all 0.15s; flex-shrink: 0;
+  }
+  .btn-dark { background: var(--ink); color: var(--paper); }
+  .btn-dark:hover { background: #333; }
+  .btn-outline { background: var(--light); color: var(--ink); }
+  .btn-outline:hover { background: #d5ccbc; }
+  .btn-green { background: #2d7a4a; color: white; }
+  .btn-green:hover { background: #1f5c38; }
+
+  /* VERDICT BAR */
+  .verdict {
+    background: var(--ink); color: var(--paper); border-radius: 10px;
+    padding: 16px 20px; margin-top: 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .verdict-icon { font-size: 22px; flex-shrink: 0; }
+  .verdict-text { font-size: 13px; line-height: 1.55; }
+  .verdict-text strong { color: var(--gold); }
+
+  /* MITSUI UPDATE */
+  .update-box {
+    background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px;
+    padding: 14px 18px; margin-top: 20px; font-size: 13px; color: #7a5c00;
+  }
+  .update-box strong { color: #5a3c00; }
+
+  /* SEPARATOR */
+  .section-sep { height: 1px; background: var(--light); margin: 48px 0 0; }
+
+  @media (max-width: 600px) {
+    .hero, main { padding-left: 20px; padding-right: 20px; }
+    .tab-strip { padding: 0 20px; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <a href="index.html" class="hero-back">← Torna all'itinerario</a>
+  <div class="hero-label">Analisi comparativa</div>
+  <h1>Alternative Hotel & Ristoranti</h1>
+  <p>Per ogni struttura o ristorante costoso, proponiamo 1–2 alternative più economiche ma di qualità comparabile, con motivazioni e risparmio indicativo.</p>
+</div>
+
+<nav class="tab-strip" style="margin: 0 -40px; padding: 0 40px; width: calc(100% + 80px); max-width: none;">
+  <span class="tab active">🏨 Hotel</span>
+  <span class="tab">🍽️ Ristoranti</span>
+  <span class="tab">💰 Riepilogo risparmio</span>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!--  AGGIORNAMENTO MITSUI                                        -->
+<!-- ============================================================ -->
+<div class="update-box" style="margin-top:40px">
+  <strong>📝 Aggiornamento Mitsui Garden Hotel Ginza Premier:</strong> il budget per le 4 notti è confermato a <strong>€1.500</strong> (già prenotato). Nessuna modifica necessaria — ottimo valore per la posizione in Ginza.
+</div>
+
+<!-- ============================================================ -->
+<!--  HOTEL 1: AMANOHASHIDATE                                     -->
+<!-- ============================================================ -->
+<div class="section-intro">
+  <div class="section-tag">Hotel · Amanohashidate · 14 Agosto</div>
+  <div class="section-title">Ryokan Monjusou → alternative</div>
+  <div class="section-sub">Ryokan storico con ottima posizione sulla sandbar. Costo attuale: ~€650/notte per 2 camere (kaiseki inclusa).</div>
+</div>
+
+<div class="comparison">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale</span>
+    <div class="opt-name">Ryokan Monjusou</div>
+    <div class="opt-price">~€650 <span class="opt-price-label">/ notte · 2 camere · kaiseki inclusa</span></div>
+    <div class="opt-desc">400 anni di storia, direttamente sul lungomare, onsen, kaiseki con frutti di mare del Mar del Giappone.</div>
+    <ul class="opt-pros">
+      <li>Posizione imbattibile sulla sandbar</li>
+      <li>Kaiseki multi-portata inclusa</li>
+      <li>Onsen con vista sull'acqua</li>
+      <li>Atmosfera storica autentica</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.monjusou.com/eng/" class="btn btn-dark" target="_blank">🌐 Sito</a>
+      <a href="https://maps.google.com/?q=Monjusou+ryokan+Amanohashidate" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa consigliata ⭐</span>
+    <div class="opt-name">Monjusou Shourotei</div>
+    <div class="opt-price">~€380–420 <span class="opt-price-label">/ notte · 2 camere · kaiseki inclusa</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€230–270/notte</span></div>
+    <div class="opt-desc">Il ryokan gemello del Monjusou (stessa proprietà, stessa zona), costruzione in stile sukiya tradizionale di un piano. Giardino giapponese con vista sul Mar del Giappone. Onsen privati in camera disponibili. Rinnovato recentemente.</div>
+    <ul class="opt-pros">
+      <li>Stesso gruppo del Monjusou, stessa qualità cucina</li>
+      <li>Architettura sukiya (rarissima oggi) — più autentica</li>
+      <li>Onsen privati in alcune camere</li>
+      <li>A 6 min a piedi dalla stazione</li>
+      <li>Kaiseki con frutti di mare locali inclusa</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Solo 11 camere — prenotare con anticipo</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://shourotei.com/en/" class="btn btn-green" target="_blank">🌐 Prenota</a>
+      <a href="https://maps.google.com/?q=Monjusou+Shourotei+Amanohashidate" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa budget</span>
+    <div class="opt-name">Ryokan Taikyourou</div>
+    <div class="opt-price">~€200–280 <span class="opt-price-label">/ notte · 2 camere · kaiseki inclusa</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€370–450/notte</span></div>
+    <div class="opt-desc">Ryokan tradizionale con solo 7 camere, vista su Amanohashidate e sul ponte rotante. Onsen naturali con acque minerali da 1.500m di profondità. 5 min a piedi dalla stazione, navetta gratuita.</div>
+    <ul class="opt-pros">
+      <li>Solo 7 camere — personale e intimo</li>
+      <li>Vista diretta su Amanohashidate</li>
+      <li>Onsen tradizionali (vasca, barile, cipresso)</li>
+      <li>Kaiseki con sake locale inclusa</li>
+      <li>Navetta gratuita dalla stazione</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Struttura più semplice del Monjusou</li>
+      <li>Pochi posti — prenotare subito</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.klook.com/hotels/detail/36547-taikyourou/" class="btn btn-green" target="_blank">📅 Prenota</a>
+      <a href="https://maps.google.com/?q=Taikyourou+ryokan+Miyazu+Amanohashidate" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-icon">💡</div>
+  <div class="verdict-text"><strong>Verdetto:</strong> il Monjusou Shourotei è la scelta migliore — stessa qualità e stessa zona del Monjusou, a circa la metà del prezzo. L'architettura in stile sukiya (casa da tè tradizionale) è persino più autentica. Consigliamo questa alternativa senza esitazione.</div>
+</div>
+
+<!-- ============================================================ -->
+<!--  HOTEL 2: ST. REGIS OSAKA                                    -->
+<!-- ============================================================ -->
+<div class="section-sep"></div>
+<div class="section-intro">
+  <div class="section-tag">Hotel · Osaka · 15 Agosto</div>
+  <div class="section-title">The St. Regis Osaka → alternative</div>
+  <div class="section-sub">Hotel di lusso estremo. Costo attuale: ~€1.100/notte per 2 camere. Una sola notte a Osaka non giustifica sempre questo investimento.</div>
+</div>
+
+<div class="comparison">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale</span>
+    <div class="opt-name">The St. Regis Osaka</div>
+    <div class="opt-price">~€1.100 <span class="opt-price-label">/ notte · 2 camere</span></div>
+    <div class="opt-desc">L'unico St. Regis del Giappone. Butler service 24h, ristorante stellato, posizione Honmachi.</div>
+    <ul class="opt-pros">
+      <li>Butler service personalizzato</li>
+      <li>Ristorante L'Osier (cucina francese)</li>
+      <li>Il brand più prestigioso a Osaka</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.marriott.com/en-us/hotels/osaxr-the-st-regis-osaka/overview/" class="btn btn-dark" target="_blank">🌐 Sito</a>
+      <a href="https://maps.google.com/?q=The+St+Regis+Osaka" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa consigliata ⭐</span>
+    <div class="opt-name">Conrad Osaka</div>
+    <div class="opt-price">~€600–700 <span class="opt-price-label">/ notte · 2 camere</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€400–500/notte</span></div>
+    <div class="opt-desc">Ai piani 33–40 del Nakanoshima Festival Tower — le viste più belle di Osaka. 5 stelle Hilton, piscina coperta riscaldata, Sky Bar al 40° piano, 4 ristoranti. Valutazione Trip.com 9.5/10, #1 hotel di lusso a Osaka nel 2025.</div>
+    <ul class="opt-pros">
+      <li>Viste panoramiche spettacolari dal 33° al 40° piano</li>
+      <li>Piscina coperta + spa</li>
+      <li>40 Sky Bar con cocktail e viste notturne</li>
+      <li>4 ristoranti incluso teppanyaki</li>
+      <li>Valutazione media 9.4/10 su tutte le piattaforme</li>
+      <li>A pochi passi da Higobashi Station</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Zona Nakanoshima (5 min di metro da Dotonbori)</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://conradhotels.hilton.com/en/hotels/japan/conrad-osaka-OSACCFI/index.html" class="btn btn-green" target="_blank">🌐 Prenota</a>
+      <a href="https://maps.google.com/?q=Conrad+Osaka+Nakanoshima" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa mid-range</span>
+    <div class="opt-name">W Osaka</div>
+    <div class="opt-price">~€400–500 <span class="opt-price-label">/ notte · 2 camere</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€600–700/notte</span></div>
+    <div class="opt-desc">Hotel design Marriott nel quartiere Shinsaibashi, a 5 min a piedi da Dotonbori. Rooftop bar con vista, design contemporaneo audace, atmosfera più giovane e vibrante. Valutazione 9.3/10.</div>
+    <ul class="opt-pros">
+      <li>Posizione ideale: 5 min da Dotonbori e Glico sign</li>
+      <li>Rooftop bar con vista sulla città</li>
+      <li>Design contemporaneo iconico</li>
+      <li>Zona Shinsaibashi — negozi e vita notturna a piedi</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Meno viste panoramiche del Conrad</li>
+      <li>Atmosfera più vivace, meno "quieta"</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.marriott.com/en-us/hotels/osawh-w-osaka/overview/" class="btn btn-green" target="_blank">🌐 Prenota</a>
+      <a href="https://maps.google.com/?q=W+Osaka+Shinsaibashi" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-icon">💡</div>
+  <div class="verdict-text"><strong>Verdetto:</strong> il <strong>Conrad Osaka</strong> è la scelta più intelligente — viste superiori a quelle del St. Regis, piscina e Sky Bar inclusi, e risparmi oltre €400 a notte. È classificato #1 hotel di lusso a Osaka nel 2025 su Trip.com. Il W Osaka è perfetto se si vuole essere a piedi da Dotonbori con un'atmosfera più dinamica.</div>
+</div>
+
+<!-- ============================================================ -->
+<!--  HOTEL 3: GATE HOTEL KYOTO                                   -->
+<!-- ============================================================ -->
+<div class="section-sep"></div>
+<div class="section-intro">
+  <div class="section-tag">Hotel · Kyoto · 10–13 Agosto (4 notti)</div>
+  <div class="section-title">The Gate Hotel Kyoto Takasegawa → alternative</div>
+  <div class="section-sub">Hotel di design boutique in posizione eccellente vicino a Pontocho. Costo attuale: ~€1.800 per 4 notti (2 camere, ~€450/notte). La posizione è uno dei suoi punti forti.</div>
+</div>
+
+<div class="comparison">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale</span>
+    <div class="opt-name">The Gate Hotel Kyoto Takasegawa</div>
+    <div class="opt-price">~€450 <span class="opt-price-label">/ notte · 2 camere · (tot. ~€1.800)</span></div>
+    <div class="opt-desc">Ex scuola elementare Rissei del 1920. Posizione a 1 min da Pontocho, 6 min da Nishiki Market. Roof terrace. Valutazione 9.6/10.</div>
+    <ul class="opt-pros">
+      <li>1 min a piedi da Pontocho</li>
+      <li>Architettura storica unica (ex scuola)</li>
+      <li>Roof terrace con vista</li>
+      <li>Punteggio eccezionale (9.6)</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.gate-hotel.jp/en/kyoto/" class="btn btn-dark" target="_blank">🌐 Sito</a>
+      <a href="https://maps.google.com/?q=The+Gate+Hotel+Kyoto+Takasegawa" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa consigliata ⭐</span>
+    <div class="opt-name">Nohga Hotel Kiyomizu Kyoto</div>
+    <div class="opt-price">~€280–340 <span class="opt-price-label">/ notte · 2 camere · (tot. ~€1.120–1.360)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€440–680 sulle 4 notti</span></div>
+    <div class="opt-desc">Hotel boutique nel quartiere di Gion/Higashiyama, a pochi minuti a piedi da Kiyomizu-dera e Fushimi Inari. Valutazione eccezionale 9.8/10 su Hotels.com — il più votato di Kyoto. Design moderno con elementi tradizionali, ristorante con cucina fusion.</div>
+    <ul class="opt-pros">
+      <li>Valutazione 9.8/10 — il più alto di Kyoto</li>
+      <li>Quartiere Gion: a piedi da Kiyomizu, Fushimi Inari, Hanamikoji</li>
+      <li>Design boutique contemporaneo di qualità</li>
+      <li>Ristorante con cucina creativa</li>
+      <li>Più vicino alle attrazioni orientali di Kyoto</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Più lontano da Pontocho (15 min a piedi o taxi)</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://nohgahotel.com/kiyomizu/" class="btn btn-green" target="_blank">🌐 Prenota</a>
+      <a href="https://maps.google.com/?q=Nohga+Hotel+Kiyomizu+Kyoto" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa buon rapporto Q/P</span>
+    <div class="opt-name">Good Nature Hotel Kyoto</div>
+    <div class="opt-price">~€200–260 <span class="opt-price-label">/ notte · 2 camere · (tot. ~€800–1.040)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€760–1.000 sulle 4 notti</span></div>
+    <div class="opt-desc">Hotel "wellness" nel cuore di Kawaramachi Shijo, praticamente la stessa posizione del Gate Hotel (2 min a piedi da Pontocho). Focus su sostenibilità e benessere, bar con naturali cocktail botanici, ristorante farm-to-table.</div>
+    <ul class="opt-pros">
+      <li>Stessa zona del Gate Hotel (Kawaramachi/Pontocho)</li>
+      <li>Prezzo molto più contenuto</li>
+      <li>Bar e ristorante eccellenti per qualità/prezzo</li>
+      <li>Design caldo e curato</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Meno "boutique" e carattere del Gate Hotel</li>
+      <li>Camere tendenzialmente più piccole</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.goodnaturehotel.jp/en/" class="btn btn-green" target="_blank">🌐 Prenota</a>
+      <a href="https://maps.google.com/?q=Good+Nature+Hotel+Kyoto+Kawaramachi" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-icon">💡</div>
+  <div class="verdict-text"><strong>Verdetto:</strong> il <strong>Nohga Hotel Kiyomizu</strong> è la scelta migliore se si vuole qualità elevata in una zona ancora più affascinante (Gion/Higashiyama). Il <strong>Good Nature Hotel</strong> è perfetto se si vuole mantenere la stessa posizione vicino a Pontocho risparmiando fino a €1.000 sulle 4 notti.</div>
+</div>
+
+<!-- ============================================================ -->
+<!--  HOTEL 4: BENESSE HOUSE NAOSHIMA                             -->
+<!-- ============================================================ -->
+<div class="section-sep"></div>
+<div class="section-intro">
+  <div class="section-tag">Hotel · Naoshima · 17 Agosto</div>
+  <div class="section-title">Benesse House → alternative</div>
+  <div class="section-sub">Il museum-hotel iconico di Naoshima. Costo attuale: ~€900/notte per 2 camere. Spesso sold out mesi prima. Se non si riesce a prenotare, ecco le migliori alternative.</div>
+</div>
+
+<div class="comparison">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale</span>
+    <div class="opt-name">Benesse House</div>
+    <div class="opt-price">~€900 <span class="opt-price-label">/ notte · 2 camere</span></div>
+    <div class="opt-desc">Museum + hotel di Tadao Ando. Accesso esclusivo alle opere d'arte 24h. L'esperienza più immersiva di Naoshima.</div>
+    <ul class="opt-pros">
+      <li>Vivere dentro un museo Tadao Ando</li>
+      <li>Accesso notturno esclusivo alle opere</li>
+      <li>Navetta per tutta l'isola inclusa</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://benesse-artsite.jp/en/stay/" class="btn btn-dark" target="_blank">🌐 Sito</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa consigliata ⭐</span>
+    <div class="opt-name">Naoshima Ryokan Roka</div>
+    <div class="opt-price">~€600–700 <span class="opt-price-label">/ notte · 2 camere · kaiseki inclusa</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€200–300/notte</span></div>
+    <div class="opt-desc">Ryokan di lusso aperto nel 2022, 11 camere con onsen privato en-suite e vista sul giardino giapponese. Navetta gratuita da/per il porto. Cucina kaiseki citata dalla Guida Michelin 2024. Biciclette elettriche incluse. A 5 min dall'Art House Project.</div>
+    <ul class="opt-pros">
+      <li>Onsen privato in ogni camera</li>
+      <li>Cucina Michelin-level inclusa</li>
+      <li>Navetta gratuita porto–ryokan</li>
+      <li>Biciclette elettriche per l'isola</li>
+      <li>Posizione centrale vicino all'Art House Project</li>
+      <li>Valutazione 9.4/10</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Non si vive dentro il museo Benesse/Ando</li>
+      <li>Solo 11 camere — prenotare presto</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://roka.voyage/en/" class="btn btn-green" target="_blank">🌐 Prenota</a>
+      <a href="https://maps.google.com/?q=Naoshima+Ryokan+Roka" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa economy</span>
+    <div class="opt-name">Naoshima Juju Art House</div>
+    <div class="opt-price">~€250–360 <span class="opt-price-label">/ notte · 2 camere</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€540–650/notte</span></div>
+    <div class="opt-desc">Casa sull'isola in stile artistico, nella zona dell'Art House Project. Valutazione 9.5/10. Atmosfera intima, ideale per chi vuole vivere l'isola come un locale. Colazione inclusa. A 10 min dal porto di Miyanoura.</div>
+    <ul class="opt-pros">
+      <li>Valutazione altissima 9.5/10</li>
+      <li>Immerso nel quartiere dell'Art House Project</li>
+      <li>Esperienza più autentica e locale</li>
+      <li>Risparmio significativo</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Struttura più semplice, meno servizi</li>
+      <li>Niente ristorante in loco</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://maps.google.com/?q=Naoshima+Juju+Art+House" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-icon">💡</div>
+  <div class="verdict-text"><strong>Verdetto:</strong> se Benesse House è sold out o troppo caro, <strong>Naoshima Ryokan Roka</strong> è la seconda miglior opzione sull'isola — onsen privato, cucina Michelin-level e atmosfera curata. Notevolmente più conveniente ma comunque di alto livello. Prenotare subito: anche Roka esaurisce rapidamente.</div>
+</div>
+
+<!-- ============================================================ -->
+<!--  RISTORANTI                                                  -->
+<!-- ============================================================ -->
+<div class="section-sep" style="margin-top: 56px;"></div>
+<div class="section-intro" style="padding-top: 48px;">
+  <div class="section-tag">Ristoranti · Analisi comparative</div>
+  <div class="section-title">Alternative ristoranti</div>
+  <div class="section-sub">Per ogni ristorante difficile o costoso, proponiamo alternative prenotabili più facilmente, a prezzi inferiori ma comunque di eccellente qualità.</div>
+</div>
+
+<!-- TEMPURA KONDO -->
+<div style="margin-top: 32px; margin-bottom: 8px;">
+  <div class="section-tag">Tempura · Tokyo · 4 Agosto</div>
+  <div class="section-title" style="font-size: 20px;">Tempura Kondo (2⭐ Michelin, ~€180/persona) → alternative</div>
+</div>
+
+<div class="comparison" style="grid-template-columns: 1fr 1fr 1fr;">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale · Molto difficile</span>
+    <div class="opt-name">Tempura Kondo</div>
+    <div class="opt-price">~€180 <span class="opt-price-label">/ persona</span></div>
+    <div class="opt-desc">2 stelle Michelin, Chef Fumio Kondo. Il tempio del tempura con verdure in Giappone. Prenotazione quasi impossibile senza concierge locale.</div>
+  </div>
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa ⭐⭐</span>
+    <div class="opt-name">Tempura Fukamachi</div>
+    <div class="opt-price">~€100–140 <span class="opt-price-label">/ persona (cena)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€40–80/persona</span></div>
+    <div class="opt-desc">1 stella Michelin in Kyobashi (vicino a Ginza). Famiglia che porta avanti 50 anni di tradizione, stesso approccio artigianale di Kondo. Ingredienti freschi dal mercato Toyosu, olio di sesamo a bassa temperatura. Molto più facile da prenotare.</div>
+    <ul class="opt-pros">
+      <li>1 stella Michelin confermata 2025/2026</li>
+      <li>Prenotabile via Omakase.in o Tabelog</li>
+      <li>A 5 min da Ginza (Metro Ginza Line)</li>
+      <li>Atmosfera familiare autentica</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://omakaseje.com/restaurants/si733726" class="btn btn-green" target="_blank">📅 Prenota</a>
+      <a href="https://maps.google.com/?q=Tempura+Fukamachi+Kyobashi+Tokyo" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">A pranzo (risparmio 50%)</span>
+    <div class="opt-name">Tempura Kondo — Pranzo</div>
+    <div class="opt-price">~€80–100 <span class="opt-price-label">/ persona (lunch)</span></div>
+    <div class="opt-price"><span class="saving">💚 Stesso chef, metà prezzo</span></div>
+    <div class="opt-desc">Se si riesce a prenotare Kondo, il pranzo costa la metà della cena (¥10.000–14.999 vs ¥20.000–29.999) con la stessa qualità. Vale la pena tentare per il pranzo del 4 agosto.</div>
+    <ul class="opt-pros">
+      <li>Stesso chef e stessa qualità</li>
+      <li>Prezzo dimezzato rispetto alla cena</li>
+      <li>Prenotabilità leggermente superiore</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://myconciergejapan.com/restaurants/tempura-kondo/" class="btn btn-green" target="_blank">📅 Prenota (EN)</a>
+    </div>
+  </div>
+</div>
+
+<!-- SUSHI HASHIMOTO -->
+<div style="margin-top: 40px; margin-bottom: 8px;">
+  <div class="section-tag">Sushi · Tokyo · 5 Agosto</div>
+  <div class="section-title" style="font-size: 20px;">Sushi Hashimoto (1⭐ Michelin, ~€330/persona) → alternative</div>
+</div>
+
+<div class="comparison" style="grid-template-columns: 1fr 1fr 1fr;">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale · Estrema difficoltà</span>
+    <div class="opt-name">Sushi Hashimoto</div>
+    <div class="opt-price">~€330 <span class="opt-price-label">/ persona</span></div>
+    <div class="opt-desc">1 stella Michelin, 8 posti al bancone. Tra i sushi più ricercati di Tokyo. Prenotazione apre il 5 luglio — sold out in secondi.</div>
+  </div>
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa art+sushi ⭐</span>
+    <div class="opt-name">Udatsu Sushi</div>
+    <div class="opt-price">~€70–130 <span class="opt-price-label">/ persona</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€200–260/persona</span></div>
+    <div class="opt-desc">1 stella Michelin a Nakameguro. Concept "Art × Sushi" — counter in cipresso di 150 anni, pareti in cemento con opere d'arte. Edomae tradizionale con ingredienti di prima scelta (abalone, uni, akami). Prenotabile online su Omakase.in. Pranzo da ¥8.800.</div>
+    <ul class="opt-pros">
+      <li>1 stella Michelin</li>
+      <li>Prenotabile facilmente online</li>
+      <li>Pranzo da ~€70 (vs €330 Hashimoto)</li>
+      <li>Atmosfera artistica unica</li>
+      <li>Nakameguro: zona bellissima per una serata</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://omakase.in/en/r/udatsu" class="btn btn-green" target="_blank">📅 Prenota</a>
+      <a href="https://maps.google.com/?q=Udatsu+Sushi+Nakameguro+Tokyo" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa Michelin Bib</span>
+    <div class="opt-name">Sushi Sasamaru</div>
+    <div class="opt-price">~€60–80 <span class="opt-price-label">/ persona (omakase ¥9.000)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€250–270/persona</span></div>
+    <div class="opt-desc">Sushi nascosto di Tokyo, quasi Michelin-quality a prezzi molto più accessibili. Gestito da una coppia, omakase da ¥9.000. Ogni notte esaurito — prenotare settimane prima. Clientela prevalentemente locale.</div>
+    <ul class="opt-pros">
+      <li>Qualità quasi Michelin a metà prezzo</li>
+      <li>Esperienza autentica e locale</li>
+      <li>Coppia gestisce — attenzione personale</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Nessun sito web — prenotare via email/telefono</li>
+      <li>Solo in giapponese</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://maps.google.com/?q=Sushi+Sasamaru+Tokyo" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- TEMPURA ENDO YASAKA -->
+<div style="margin-top: 40px; margin-bottom: 8px;">
+  <div class="section-tag">Tempura · Kyoto · 11 Agosto</div>
+  <div class="section-title" style="font-size: 20px;">Tempura Endo Yasaka (~€80/persona) → alternative</div>
+</div>
+
+<div class="comparison">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale</span>
+    <div class="opt-name">Tempura Endo Yasaka</div>
+    <div class="opt-price">~€80 <span class="opt-price-label">/ persona</span></div>
+    <div class="opt-desc">Tempura di qualità vicino a Yasaka Shrine. Buona scelta ma il prezzo è alto per Kyoto.</div>
+  </div>
+
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa consigliata ⭐</span>
+    <div class="opt-name">Tempura Yoshikawa</div>
+    <div class="opt-price">~€50–70 <span class="opt-price-label">/ persona (pranzo)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€10–30/persona</span></div>
+    <div class="opt-desc">Ristorante di tempura classica a Kyoto, in una tranquilla zona residenziale vicino a Oike. Ambiente tradizionale giapponese con giardino, tavoli privati, reputazione eccellente tra i locali. Il pranzo è significativamente più economico della cena.</div>
+    <ul class="opt-pros">
+      <li>Istituzione classica di Kyoto</li>
+      <li>Giardino giapponese visibile durante il pasto</li>
+      <li>Pranzo molto accessibile (~¥4.000–6.000)</li>
+      <li>Prenotazione più semplice</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://maps.google.com/?q=Tempura+Yoshikawa+Kyoto" class="btn btn-green" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa economica</span>
+    <div class="opt-name">Tenmatsu Kyoto</div>
+    <div class="opt-price">~€25–40 <span class="opt-price-label">/ persona</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€40–55/persona</span></div>
+    <div class="opt-desc">Catena di tempura di alta qualità diffusa in Giappone, apprezzata dai locali per il rapporto qualità/prezzo. Ambiente informale, menu vario, nessuna prenotazione necessaria. Perfetto se l'11 agosto si vuole tenere il budget sotto controllo dopo Fushimi Inari.</div>
+    <ul class="opt-pros">
+      <li>Ottimo rapporto qualità/prezzo</li>
+      <li>Nessuna prenotazione necessaria</li>
+      <li>Menu in inglese disponibile</li>
+    </ul>
+    <ul class="opt-cons">
+      <li>Meno esclusiva — esperienza più casual</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://maps.google.com/?q=Tenmatsu+Kyoto" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- NARISAWA -->
+<div style="margin-top: 40px; margin-bottom: 8px;">
+  <div class="section-tag">Cucina innovativa · Tokyo · 18 Agosto</div>
+  <div class="section-title" style="font-size: 20px;">Narisawa (2⭐ + Green Star, ~€320-450/persona) → alternative</div>
+</div>
+
+<div class="comparison" style="grid-template-columns: 1fr 1fr 1fr;">
+  <div class="opt-card current">
+    <span class="opt-badge badge-current">Attuale · Prenotazione difficile</span>
+    <div class="opt-name">Narisawa</div>
+    <div class="opt-price">~€320–450 <span class="opt-price-label">/ persona</span></div>
+    <div class="opt-desc">2 stelle Michelin + Green Star, #21 World's 50 Best 2025. "Innovative Satoyama Cuisine". Il ristorante fine-dining più iconico di Tokyo.</div>
+  </div>
+
+  <div class="opt-card alt-1">
+    <span class="opt-badge badge-alt">Alternativa top ⭐⭐</span>
+    <div class="opt-name">Florilège</div>
+    <div class="opt-price">~€80–120 <span class="opt-price-label">/ persona (cena)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€240–330/persona</span></div>
+    <div class="opt-desc">2 stelle Michelin + Green Star. Chef Hiroyasu Kawate. Cucina francese-giapponese di altissimo livello, con counter aperto attorno alla cucina a vista. Harajuku/Jingumae. Già nella lista World's 50 Best. Prenotabile online molto più facilmente di Narisawa. Cena ~¥13.000.</div>
+    <ul class="opt-pros">
+      <li>2 stelle Michelin + Green Star — stesso livello di Narisawa</li>
+      <li>Prenotazione online molto più accessibile</li>
+      <li>Counter dinamico con cucina a vista</li>
+      <li>Cena a un terzo del prezzo di Narisawa</li>
+      <li>World's 50 Best Restaurants</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.tableall.com/restaurant/florilege" class="btn btn-green" target="_blank">📅 Prenota</a>
+      <a href="https://maps.google.com/?q=Florilege+restaurant+Harajuku+Tokyo" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+
+  <div class="opt-card alt-2">
+    <span class="opt-badge badge-alt2">Alternativa giocosa ⭐⭐</span>
+    <div class="opt-name">Jimbocho Den</div>
+    <div class="opt-price">~€120–160 <span class="opt-price-label">/ persona (cena)</span></div>
+    <div class="opt-price"><span class="saving">💚 Risparmio ~€200–290/persona</span></div>
+    <div class="opt-desc">2 stelle Michelin, Chef Zaiyu Hasegawa. Kaiseki moderna con umorismo e gioia — ogni piatto racconta una storia. "Den Chikin" (pollo fritto stile KFC giapponese con carta di visita) è leggendario. World's 50 Best. Atmosfera meno formale, adatta a un gruppo di 8.</div>
+    <ul class="opt-pros">
+      <li>2 stelle Michelin — stesso livello Narisawa</li>
+      <li>Atmosfera più rilassata e divertente</li>
+      <li>Piatti iconici e memorabili</li>
+      <li>Perfetto per un gruppo</li>
+      <li>Prenotabile su TableAll</li>
+    </ul>
+    <div class="opt-links">
+      <a href="https://www.tableall.com/restaurant/den" class="btn btn-green" target="_blank">📅 Prenota</a>
+      <a href="https://maps.google.com/?q=Jimbocho+Den+restaurant+Tokyo" class="btn btn-outline" target="_blank">📍 Maps</a>
+    </div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="verdict-icon">💡</div>
+  <div class="verdict-text"><strong>Verdetto ristoranti:</strong> se Narisawa non si riesce a prenotare, <strong>Florilège</strong> è la scelta più ovvia — stesso livello internazionale (2 stelle + Green Star), prenotabile facilmente, e la cena costa un terzo. <strong>Jimbocho Den</strong> è perfetta se si vuole un'esperienza memorabile e divertente più adatta a un gruppo di 8 persone.</div>
+</div>
+
+<!-- ============================================================ -->
+<!--  RIEPILOGO RISPARMIO                                         -->
+<!-- ============================================================ -->
+<div class="section-sep" style="margin-top: 56px;"></div>
+<div class="section-intro" style="padding-top: 48px; padding-bottom: 0;">
+  <div class="section-tag">Riepilogo economico</div>
+  <div class="section-title">Risparmio totale se si scelgono tutte le alternative</div>
+</div>
+
+<div style="margin-top: 24px; background: var(--ink); color: var(--paper); border-radius: 12px; padding: 28px 32px;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 13.5px;">
+    <thead>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.15);">
+        <th style="text-align:left; padding: 8px 0; color: var(--gold); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;">Struttura</th>
+        <th style="text-align:right; padding: 8px 0; color: var(--gold); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;">Attuale</th>
+        <th style="text-align:right; padding: 8px 0; color: var(--gold); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;">Alternativa</th>
+        <th style="text-align:right; padding: 8px 0; color: var(--gold); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;">Risparmio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <td style="padding: 10px 0; opacity:0.8">Mitsui Garden Ginza (4 notti)</td>
+        <td style="text-align:right; padding: 10px 0;">~€2.080</td>
+        <td style="text-align:right; padding: 10px 0; color: #a0f0c0;">€1.500 (tuo prezzo)</td>
+        <td style="text-align:right; padding: 10px 0; color: #6adf8a; font-weight: 600;">€580</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <td style="padding: 10px 0; opacity:0.8">Amanohashidate (Monjusou → Shourotei)</td>
+        <td style="text-align:right; padding: 10px 0;">~€650</td>
+        <td style="text-align:right; padding: 10px 0; color: #a0f0c0;">~€400</td>
+        <td style="text-align:right; padding: 10px 0; color: #6adf8a; font-weight: 600;">~€250</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <td style="padding: 10px 0; opacity:0.8">Osaka (St. Regis → Conrad)</td>
+        <td style="text-align:right; padding: 10px 0;">~€1.100</td>
+        <td style="text-align:right; padding: 10px 0; color: #a0f0c0;">~€650</td>
+        <td style="text-align:right; padding: 10px 0; color: #6adf8a; font-weight: 600;">~€450</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <td style="padding: 10px 0; opacity:0.8">Kyoto 4 notti (Gate → Nohga Kiyomizu)</td>
+        <td style="text-align:right; padding: 10px 0;">~€1.800</td>
+        <td style="text-align:right; padding: 10px 0; color: #a0f0c0;">~€1.200</td>
+        <td style="text-align:right; padding: 10px 0; color: #6adf8a; font-weight: 600;">~€600</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <td style="padding: 10px 0; opacity:0.8">Naoshima (Benesse → Ryokan Roka)</td>
+        <td style="text-align:right; padding: 10px 0;">~€900</td>
+        <td style="text-align:right; padding: 10px 0; color: #a0f0c0;">~€650</td>
+        <td style="text-align:right; padding: 10px 0; color: #6adf8a; font-weight: 600;">~€250</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 10px;">
+        <td style="padding: 10px 0; opacity:0.8">Ristoranti (Kondo+Hashimoto+Narisawa → alt.)</td>
+        <td style="text-align:right; padding: 10px 0;">~€14.000</td>
+        <td style="text-align:right; padding: 10px 0; color: #a0f0c0;">~€6.000</td>
+        <td style="text-align:right; padding: 10px 0; color: #6adf8a; font-weight: 600;">~€8.000</td>
+      </tr>
+      <tr>
+        <td style="padding: 14px 0; font-weight: 700; font-size: 15px; color: var(--gold);">TOTALE RISPARMIO</td>
+        <td style="text-align:right; padding: 14px 0;"></td>
+        <td style="text-align:right; padding: 14px 0;"></td>
+        <td style="text-align:right; padding: 14px 0; color: #6adf8a; font-weight: 700; font-size: 22px; font-family: 'Shippori Mincho', serif;">~€10.000+</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size: 12px; opacity: 0.5; margin-top: 14px;">Tutti i prezzi sono indicativi per agosto 2025. I ristoranti sono stimati per 8 persone. Le alternative hotel sono calcolate per 2 camere doppie.</p>
+</div>
+
+<div class="verdict" style="margin-top: 20px;">
+  <div class="verdict-icon">🎯</div>
+  <div class="verdict-text">
+    <strong>Strategia consigliata:</strong> mantieni <strong>Kikunoi</strong> (la vera esperienza kaiseki di Kyoto) e <strong>Narisawa o Florilège</strong> (la cena finale), che valgono davvero ogni euro. Sostituisci invece Tempura Kondo con <strong>Fukamachi</strong>, Sushi Hashimoto con <strong>Udatsu Sushi</strong>, St. Regis con <strong>Conrad Osaka</strong>, e Benesse House con <strong>Ryokan Roka</strong> se sold out. Il viaggio rimane di altissimo livello risparmiando <strong>~€8-12k sul totale per 8 persone</strong>.
+  </div>
+</div>
+
+</main>
+
+<footer style="text-align:center; padding:40px; font-size:12px; color:var(--muted); border-top: 1px solid var(--light);">
+  <p>Alternative Hotel & Ristoranti · Giappone 3–19 Agosto 2025 · 8 persone</p>
+  <p style="margin-top:8px"><a href="index.html" style="color:var(--gold); text-decoration:none;">← Torna all'itinerario principale</a></p>
+</footer>
+
+</body>
+</html>

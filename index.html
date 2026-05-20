@@ -1,0 +1,2437 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giappone 2025 — 3→19 Agosto</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #f5f0e8;
+    --gold: #c8923a;
+    --red: #b8321a;
+    --muted: #7a6e5f;
+    --light: #e8e0d0;
+    --green: #2d5a3d;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '日本';
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 220px;
+    color: rgba(255,255,255,0.04);
+    pointer-events: none;
+    line-height: 1;
+  }
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    font-size: 13px;
+    color: rgba(245,240,232,0.6);
+    letter-spacing: 0.05em;
+  }
+  .hero-meta strong {
+    color: var(--paper);
+    font-weight: 500;
+  }
+
+  /* ALERT BOX */
+  .alert {
+    background: #fff8f0;
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    margin: 24px 40px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13.5px;
+    color: var(--muted);
+  }
+  .alert strong { color: var(--ink); }
+
+  /* NAV STRIP */
+  .nav-strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    border-bottom: 1px solid var(--light);
+    padding: 0 40px;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    scrollbar-width: none;
+  }
+  .nav-strip::-webkit-scrollbar { display: none; }
+  .nav-item {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .nav-item:hover { color: var(--ink); border-bottom-color: var(--gold); }
+
+  /* MAIN */
+  main { max-width: 900px; margin: 0 auto; padding: 0 40px 80px; }
+
+  /* DAY CARD */
+  .day-card {
+    margin-top: 48px;
+    border-top: 1px solid var(--light);
+    padding-top: 36px;
+    animation: fadeIn 0.4s ease both;
+  }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:none } }
+
+  .day-header {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    margin-bottom: 28px;
+    align-items: start;
+  }
+  .day-num {
+    width: 56px;
+    height: 56px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Shippori Mincho', serif;
+    flex-shrink: 0;
+    border-radius: 2px;
+  }
+  .day-num .n { font-size: 22px; font-weight: 700; line-height: 1; }
+  .day-num .m { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.6; margin-top: 2px; }
+
+  .day-title-block h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .day-title-block .location {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 24px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--light);
+  }
+
+  /* HOTEL CARD */
+  .hotel-card {
+    background: white;
+    border: 1px solid var(--light);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .hotel-name {
+    font-weight: 500;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+  .hotel-note {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover { background: #333; }
+  .btn-map {
+    background: var(--light);
+    color: var(--ink);
+  }
+  .btn-map:hover { background: #d5ccbc; }
+
+  /* TRANSPORT */
+  .transport-box {
+    background: #f0ece4;
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+  }
+  .transport-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .transport-row:last-child { border-bottom: none; }
+  .transport-time {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 52px;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .transport-desc { color: var(--muted); }
+  .transport-desc strong { color: var(--ink); }
+  .transport-tip {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+
+  /* ACTIVITIES */
+  .activities-grid {
+    display: grid;
+    gap: 8px;
+  }
+  .activity-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--light);
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .activity-icon { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+  .activity-body { flex: 1; }
+  .activity-name {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .activity-desc {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .activity-links {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .activity-links .btn { padding: 4px 10px; font-size: 11px; }
+
+  /* DINNER */
+  .dinner-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .dinner-body {}
+  .dinner-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .dinner-type {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .dinner-note {
+    font-size: 12.5px;
+    opacity: 0.65;
+    line-height: 1.5;
+  }
+  .dinner-actions { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+  .btn-gold {
+    background: var(--gold);
+    color: white;
+  }
+  .btn-gold:hover { background: #b07830; }
+  .btn-ghost {
+    background: rgba(255,255,255,0.12);
+    color: var(--paper);
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+  /* WARNINGS */
+  .warning {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: #856404;
+    margin-top: 8px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--light);
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .hero, .alert, main { padding-left: 20px; padding-right: 20px; }
+    .nav-strip { padding: 0 20px; }
+    .day-header { grid-template-columns: 44px 1fr; gap: 14px; }
+    .day-num { width: 44px; height: 44px; }
+    .hotel-card { flex-direction: column; align-items: flex-start; }
+    .dinner-card { flex-direction: column; }
+    .dinner-actions { flex-direction: row; }
+  }
+
+  /* BOOKING TOGGLE */
+  .book-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: inherit;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .book-toggle .check-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #c8c0b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    background: white;
+    flex-shrink: 0;
+  }
+  .book-toggle .check-circle svg {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
+  }
+  .book-toggle.booked .check-circle {
+    background: #2d7a4a;
+    border-color: #2d7a4a;
+  }
+  .book-toggle.booked .check-circle svg {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .book-toggle .book-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #a09080;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .book-toggle.booked .book-label {
+    color: #2d7a4a;
+    font-weight: 600;
+  }
+  /* Dark version for dinner cards */
+  .dinner-actions .book-toggle .check-circle {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.3);
+  }
+  .dinner-actions .book-toggle.booked .check-circle {
+    background: #2d7a4a;
+    border-color: #4aaa6a;
+  }
+  .dinner-actions .book-toggle .book-label {
+    color: rgba(255,255,255,0.45);
+  }
+  .dinner-actions .book-toggle.booked .book-label {
+    color: #6adf8a;
+  }
+
+  /* ===== RESOURCES SECTION ===== */
+  .resources-section {
+    background: var(--ink);
+    color: var(--paper);
+    margin-top: 80px;
+    padding: 70px 40px 80px;
+  }
+  .resources-inner { max-width: 900px; margin: 0 auto; }
+  .resources-header { margin-bottom: 56px; }
+  .resources-header-label {
+    font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
+  }
+  .resources-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 12px;
+  }
+  .resources-subtitle { font-size: 14px; color: rgba(245,240,232,0.55); max-width: 520px; line-height: 1.6; }
+  .res-block { margin-bottom: 52px; }
+  .res-block-title {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .res-grid-apps { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .res-grid-tips { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+  .res-card {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 18px; display: flex; gap: 14px;
+    align-items: flex-start; text-decoration: none; color: var(--paper);
+    transition: all 0.18s ease; cursor: pointer;
+  }
+  a.res-card:hover { background: rgba(255,255,255,0.10); border-color: rgba(200,146,58,0.4); transform: translateY(-2px); }
+  .res-card-urgent { border-color: rgba(200,80,50,0.35); background: rgba(200,80,50,0.08); }
+  a.res-card-urgent:hover { border-color: rgba(200,80,50,0.6); background: rgba(200,80,50,0.14); }
+  .res-card-app { cursor: default; }
+  .res-card-icon { font-size: 24px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
+  .res-card-body { flex: 1; min-width: 0; }
+  .res-card-name { font-weight: 600; font-size: 14px; margin-bottom: 5px; line-height: 1.3; }
+  .res-card-desc { font-size: 12.5px; color: rgba(245,240,232,0.6); line-height: 1.55; margin-bottom: 8px; }
+  .res-card-url { font-size: 11px; color: var(--gold); letter-spacing: 0.04em; }
+  .app-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+  .app-badge {
+    display: inline-block; background: rgba(255,255,255,0.10); color: var(--paper);
+    font-size: 11px; padding: 4px 10px; border-radius: 20px; text-decoration: none;
+    transition: background 0.15s; white-space: nowrap;
+  }
+  .app-badge:hover { background: rgba(255,255,255,0.18); }
+  .res-tip-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px; padding: 20px;
+  }
+  .res-tip-icon { font-size: 22px; margin-bottom: 10px; }
+  .res-tip-title { font-weight: 600; font-size: 14px; margin-bottom: 14px; color: var(--paper); }
+  .res-tip-row {
+    display: flex; justify-content: space-between; gap: 12px;
+    padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 12.5px; align-items: flex-start;
+  }
+  .res-tip-row:last-child { border-bottom: none; }
+  .res-tip-row span:first-child { color: rgba(245,240,232,0.55); flex-shrink: 0; max-width: 50%; }
+  .res-tip-row span:last-child { color: var(--paper); text-align: right; }
+  .res-tip-urgent span:first-child { color: #ff9a7a !important; font-weight: 600; }
+  .res-tip-total { margin-top: 4px; padding-top: 10px; border-top: 1px solid rgba(200,146,58,0.3) !important; border-bottom: none !important; }
+  .res-tip-total span { color: var(--gold) !important; font-weight: 700; font-size: 13px; }
+  @media (max-width: 600px) {
+    .resources-section { padding: 50px 20px 60px; }
+    .res-grid, .res-grid-apps, .res-grid-tips { grid-template-columns: 1fr; }
+  }
+
+
+  /* PRICE PILL */
+  .price-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f5f0e8;
+    border: 1px solid #d5ccbc;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1a1208;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .price-pill .price-label {
+    font-weight: 400;
+    color: #7a6e5f;
+    font-size: 10px;
+  }
+  /* Dark version for dinner cards */
+  .dinner-actions .price-pill {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.15);
+    color: var(--paper);
+  }
+  .dinner-actions .price-pill .price-label {
+    color: rgba(245,240,232,0.5);
+  }
+
+  /* BUDGET TOTALS SECTION */
+  .totals-section {
+    background: white;
+    border-top: 3px solid var(--gold);
+    padding: 48px 40px 56px;
+  }
+  .totals-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .totals-header-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .totals-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: var(--ink);
+  }
+  .totals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  @media (max-width: 620px) {
+    .totals-grid { grid-template-columns: 1fr; }
+    .totals-section { padding: 36px 20px 48px; }
+  }
+  .totals-block {
+    background: var(--paper);
+    border-radius: 10px;
+    padding: 20px 24px;
+    border: 1px solid var(--light);
+  }
+  .totals-block-title {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--light);
+  }
+  .totals-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .totals-row:last-child { border-bottom: none; }
+  .totals-row .t-name { color: var(--muted); flex: 1; min-width: 0; font-size: 12.5px; }
+  .totals-row .t-nights { color: #a09080; font-size: 11px; flex-shrink: 0; }
+  .totals-row .t-price { font-weight: 600; color: var(--ink); flex-shrink: 0; font-size: 13px; }
+  .totals-row .t-price.approx { color: var(--muted); font-weight: 400; }
+  .totals-sum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 2px solid var(--ink);
+  }
+  .totals-sum .sum-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .totals-sum .sum-amount { font-family: 'Shippori Mincho', serif; font-size: 24px; font-weight: 700; color: var(--ink); }
+  .totals-grand {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 10px;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .totals-grand-label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; }
+  .totals-grand-title { font-size: 15px; font-weight: 600; margin-top: 2px; }
+  .totals-grand-amount { font-family: 'Shippori Mincho', serif; font-size: 36px; font-weight: 700; color: var(--gold); }
+  .totals-note { font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.6; }
+
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Itinerario Definitivo</div>
+  <h1>Giappone<br>3 → 19 Agosto 2025</h1>
+  <div class="hero-meta">
+    <span><strong>8 persone</strong> · 4 camere doppie</span>
+    <span><strong>17 giorni</strong> · 10 città</span>
+    <span><strong>Tokyo · Nikko · Takayama · Kanazawa · Kyoto · Osaka · Naoshima · Miyajima</strong></span>
+  </div>
+</div>
+
+<div class="alert">
+  <strong>⚠️ Prenotazioni urgenti:</strong> <strong>Udatsu Sushi</strong> (alternativa a Hashimoto) prenota via omakase.in — prima possibile. <strong>Florilège</strong> (alternativa a Narisawa) prenota via TableAll — molto più accessibile. <strong>Tempura Fukamachi</strong> prenota via omakase.in. <strong>Ryokan Roka</strong> (alternativa a Benesse House) prenota su roka.voyage — solo 11 camere, sold out rapidamente.
+</div>
+
+<nav class="nav-strip">
+  <a href="#g3" class="nav-item">3 Ago</a>
+  <a href="#g4" class="nav-item">4 Ago</a>
+  <a href="#g5" class="nav-item">5 Ago</a>
+  <a href="#g6" class="nav-item">6 Ago</a>
+  <a href="#g7" class="nav-item">7 Ago</a>
+  <a href="#g8" class="nav-item">8 Ago</a>
+  <a href="#g9" class="nav-item">9 Ago</a>
+  <a href="#g10" class="nav-item">10 Ago</a>
+  <a href="#g11" class="nav-item">11 Ago</a>
+  <a href="#g12" class="nav-item">12 Ago</a>
+  <a href="#g13" class="nav-item">13 Ago</a>
+  <a href="#g14" class="nav-item">14 Ago</a>
+  <a href="#g15" class="nav-item">15 Ago</a>
+  <a href="#g16" class="nav-item">16 Ago</a>
+  <a href="#g17" class="nav-item">17 Ago</a>
+  <a href="#g18" class="nav-item">18 Ago</a>
+  <a href="#g19" class="nav-item">19 Ago</a>
+</nav>
+
+<main>
+
+<!-- ===== 3 AGOSTO ===== -->
+<div class="day-card" id="g3">
+  <div class="day-header">
+    <div class="day-num"><span class="n">3</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Arrivo a Tokyo</h2>
+      <div class="location">Tokyo · Ginza</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Mitsui Garden Hotel Ginza Premier</div>
+        <span class="price-pill">€375 <span class="price-label">2 camere · per notte (€1.500 tot. 4 notti)</span></span>
+        <div class="hotel-note">8-13-1 Ginza, Chuo-ku · Check-in 15:00 · Check-out 12:00 · Lobby al 16° piano con vista panoramica</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://www.gardenhotels.co.jp/ginza-premier/eng/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Mitsui+Garden+Hotel+Ginza+Premier+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">✈️ Trasporto dall'aeroporto</div>
+    <div class="transport-box">
+      <div class="transport-row">
+        <span class="transport-time">All'arr.</span>
+        <span class="transport-desc"><strong>N'EX (Narita Express)</strong> → Tokyo Station (~53 min, ¥3.070/persona). Partenze ogni 30 min. Con JR Pass incluso. Poi Metro Ginza a Shimbashi.</span>
+      </div>
+      <div class="transport-row">
+        <span class="transport-time">Alt.</span>
+        <span class="transport-desc"><strong>Airport Limousine Bus</strong> diretto a Ginza (~75 min, ¥1.500). Comodissimo con bagagli. Fermata davanti all'hotel.</span>
+      </div>
+      <div class="transport-row">
+        <span class="transport-time">Lux.</span>
+        <span class="transport-desc"><strong>Taxi privato</strong> (~¥30.000 = ~€200). Ottimale per 8 persone se si dividono 2 taxi.</span>
+      </div>
+      <div class="transport-tip">💡 Consiglio: acquistare il JR Pass prima di partire — copre tutti gli Shinkansen e la N'EX. Comprare anche IC Card (Suica/Pasmo) in aeroporto per metro e bus.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌆 Attività serali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🛍️</span>
+        <div class="activity-body">
+          <div class="activity-name">Ginza — shopping e passeggiata</div>
+          <div class="activity-desc">Il viale Chuo-dori diventa pedonale il sabato/domenica pomeriggio. Apple Store, Uniqlo flagship, Ginza Six, Dover Street Market.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Ginza+Chuo-dori+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🍸</span>
+        <div class="activity-body">
+          <div class="activity-name">Yurakucho — izakaya e atmosfera</div>
+          <div class="activity-desc">Sotto i binari ferroviari, decine di piccoli bar e izakaya autentici. Ottimo per un primo assaggio del Giappone reale. 10 min a piedi dall'hotel.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Yurakucho+izakaya+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🌙</span>
+        <div class="activity-body">
+          <div class="activity-name">Cocktail Karin — bar hotel</div>
+          <div class="activity-desc">Il lounge bar del Mitsui al 16° piano, con piano in legno di karin da 600 anni e vista su Ginza. Perfetto dopo il lungo volo. Aperto fino alle 2:00.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍜 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Ramen · Michelin Guide</div>
+        <div class="dinner-name">Ginza Kagari</div>
+        <span class="price-pill">~€15 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Tori Paitan (ramen crema di pollo) in un vicolo nascosto di Ginza. Solo 8 posti al bancone. Niente prenotazioni — arrivare alle 17:30 per la coda serale. Orari: 11:00–15:00 e 17:30–22:00. Solo contanti. ~¥1.900/persona.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Ginza+Kagari+6-4-12+Ginza+Tokyo" class="btn btn-gold" target="_blank">📍 Maps</a>
+        <span style="font-size:11px;opacity:0.5;text-align:right">No prenotazione<br>Solo contanti</span>
+      </div>
+    </div>
+    <div class="warning">⏱️ Coda prevista 30–60 min. Considerare alternativa: <strong>Ginza Kazami</strong> (ramen adiacente, ugualmente ottimo, meno fila).</div>
+  </div>
+</div>
+
+<!-- ===== 4 AGOSTO ===== -->
+<div class="day-card" id="g4">
+  <div class="day-header">
+    <div class="day-num"><span class="n">4</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Tokyo Classica</h2>
+      <div class="location">Tokyo · Asakusa · Skytree</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗓️ Programma consigliato</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">07:00</span><span class="transport-desc">Colazione in hotel (SKY Restaurant al 16° piano)</span></div>
+      <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Senso-ji: arrivare presto per evitare le folle. Metro Ginza Line → Asakusa (26 min, ¥180)</span></div>
+      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc">Nakamise Street: shopping di souvenir tradizionali</span></div>
+      <div class="transport-row"><span class="transport-time">11:00</span><span class="transport-desc">Tokyo Skytree: salire al 350° (¥2.100) o 450° (¥1.000 extra). Prenotare online in anticipo in agosto!</span></div>
+      <div class="transport-row"><span class="transport-time">13:00</span><span class="transport-desc">Pranzo: Kappabashi Shokudo (stoviglie e modelli di cibo in plastica) o ramen Fuunji a Shinjuku</span></div>
+      <div class="transport-row"><span class="transport-time">15:00</span><span class="transport-desc">Quartiere di Yanaka: vecchia Tokyo autentica, cimitero-giardino, gattini</span></div>
+      <div class="transport-row"><span class="transport-time">18:00</span><span class="transport-desc">Rientro in hotel e cambio abiti per cena Michelin</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏯 Visite principali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">⛩️</span>
+        <div class="activity-body">
+          <div class="activity-name">Senso-ji Temple</div>
+          <div class="activity-desc">Il tempio buddista più antico di Tokyo (628 d.C.). Il cancello Kaminarimon con la grande lanterna rossa è iconico. Gratis. Aperto 24h, ma cerimonie mattutine dalle 6.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Sensoji+Temple+Asakusa+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.senso-ji.jp/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🗼</span>
+        <div class="activity-body">
+          <div class="activity-name">Tokyo Skytree — 634m</div>
+          <div class="activity-desc">La torre più alta del Giappone. Vista fino al Fuji in giornate limpide. In agosto prenotare online con anticipo — code enormi. Tembo Deck a 350m: ¥2.100. Tembo Galleria a 450m: +¥1.000.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Tokyo+Skytree" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.tokyo-skytree.jp/en/" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍤 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Tempura · 1 Stella Michelin · Prenotazione consigliata</div>
+        <div class="dinner-name">Tempura Fukamachi</div>
+        <span class="price-pill">~€100–140 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Ristorante di famiglia — padre e due figli — in Kyobashi (vicino a Ginza). 1 stella Michelin confermata 2026. Ingredienti freschi dal mercato Toyosu, fritti in olio di sesamo pressato a freddo. Doppia frittura per alcuni ingredienti. 10 posti al bancone + 2 tavoli. Cena ¥15.000–¥19.999/persona. Aperto anche a pranzo martedì–venerdì (¥10.000–¥14.999).</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://omakaseje.com/restaurants/si733726" class="btn btn-gold" target="_blank">📅 Prenota (Omakase)</a>
+        <a href="https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/kyobashi-tempura-fukamachi" class="btn btn-ghost" target="_blank">⭐ Michelin</a>
+        <a href="https://maps.google.com/?q=Tempura+Fukamachi+Kyobashi+Tokyo" class="btn btn-ghost" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">💡 <strong>Alternativa scelta</strong> a Tempura Kondo (2⭐ quasi impossibile da prenotare). Fukamachi offre la stessa esperienza artigianale con 1⭐ Michelin a prezzo inferiore e prenotabilità molto maggiore. Optare per il <strong>pranzo</strong> per risparmiare ulteriormente (~€80/persona).</div>
+  </div>
+</div>
+
+<!-- ===== 5 AGOSTO ===== -->
+<div class="day-card" id="g5">
+  <div class="day-header">
+    <div class="day-num"><span class="n">5</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Tokyo Moderna + Golden Gai</h2>
+      <div class="location">Tokyo · Shibuya · Harajuku · Shinjuku</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗓️ Programma consigliato</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc">Harajuku: Takeshita Street (moda giovanile), Meiji Jingu (santuario nella foresta)</span></div>
+      <div class="transport-row"><span class="transport-time">11:00</span><span class="transport-desc">Omotesando: la "Champs-Élysées" di Tokyo. Architettura di Tadao Ando (Omotesando Hills). Negozi di lusso e concept store</span></div>
+      <div class="transport-row"><span class="transport-time">13:00</span><span class="transport-desc">Pranzo: Afuri Ramen Harajuku o Gyoza Lou a Shinjuku</span></div>
+      <div class="transport-row"><span class="transport-time">15:00</span><span class="transport-desc">Shibuya: famoso incrocio, Scramble Square (vista dal 47° piano, gratis!), Shibuya Sky (¥2.000, prenotare)</span></div>
+      <div class="transport-row"><span class="transport-time">19:00</span><span class="transport-desc">Golden Gai a Shinjuku: labirinto di 200 minuscoli bar da 5–8 posti. Esperienza unica al mondo</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌆 Visite principali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🚶</span>
+        <div class="activity-body">
+          <div class="activity-name">Shibuya Scramble — l'incrocio più affollato del mondo</div>
+          <div class="activity-desc">Ogni 2 minuti 3.000 persone attraversano simultaneamente. Migliore vista dall'interno dello Starbucks di fronte (2° piano) o dal Mag's Park sopra il 109.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Shibuya+Scramble+Crossing+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🏘️</span>
+        <div class="activity-body">
+          <div class="activity-name">Golden Gai — Shinjuku</div>
+          <div class="activity-desc">6 vicoli con oltre 200 bar minuscoli, ciascuno con tema proprio (jazz, cinema, letteratura). Aperti da ~20:00. Alcuni accettano solo giapponesi — cercare quelli con scritto "welcome" o "tourists welcome".</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Golden+Gai+Shinjuku+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🌿</span>
+        <div class="activity-body">
+          <div class="activity-name">Meiji Jingu — santuario nella foresta</div>
+          <div class="activity-desc">Dedicato all'imperatore Meiji. 100.000 alberi piantati da volontari nel 1920. Ingresso gratuito. Aprire le ore 5:00, chiude al tramonto.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Meiji+Jingu+Shrine+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍣 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Sushi Edomae · 1 Stella Michelin · Art × Sushi · Nakameguro</div>
+        <div class="dinner-name">Udatsu Sushi</div>
+        <span class="price-pill">~€70–130 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">1 stella Michelin a Nakameguro. Concept unico "Art × Sushi": counter in cipresso di 150 anni, pareti in cemento con opere d'arte originali — sembra una galleria. Chef dedicato all'Edomae tradizionale con ingredienti di prima scelta (abalone, uni, akami). 9 posti al bancone + sala privata. Pranzo da ¥8.800, cena da ~¥20.000. Zona Nakameguro perfetta per aperitivo lungo il canale prima della cena.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://omakase.in/en/r/udatsu" class="btn btn-gold" target="_blank">📅 Prenota (Omakase)</a>
+        <a href="https://maps.google.com/?q=Udatsu+Sushi+Nakameguro+Tokyo" class="btn btn-ghost" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">💡 <strong>Alternativa scelta</strong> a Sushi Hashimoto (quasi impossibile da prenotare, €330/persona). Udatsu offre 1⭐ Michelin con prenotazione online immediata e prezzi molto più accessibili. Il <strong>pranzo a ¥8.800</strong> (~€55) è una delle migliori offerte di sushi Michelin di Tokyo.</div>
+  </div>
+</div>
+
+<!-- ===== 6 AGOSTO ===== -->
+<div class="day-card" id="g6">
+  <div class="day-header">
+    <div class="day-num"><span class="n">6</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Gita a Nikko</h2>
+      <div class="location">Tokyo base · Nikko day trip</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">07:00</span><span class="transport-desc">Colazione presto in hotel</span></div>
+      <div class="transport-row"><span class="transport-time">07:30</span><span class="transport-desc">Partenza da <strong>Ueno Station</strong> → Nikko. Shinkansen Tohoku a Utsunomiya (50 min, coperto JR Pass) + JR Nikko Line (45 min). Totale ~1h45. Alternativa: Limited Express Spacia X da Asakusa (Tobu) → Nikko in 2h, ~¥2.720 (non JR Pass).</span></div>
+      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc">Arrivo a Nikko Station</span></div>
+      <div class="transport-row"><span class="transport-time">16:30</span><span class="transport-desc">Partenza da Nikko per rientro a Tokyo</span></div>
+      <div class="transport-row"><span class="transport-time">18:30</span><span class="transport-desc">Arrivo Tokyo</span></div>
+      <div class="transport-tip">💡 Acquistare World Heritage Pass Nikko (¥1.000): copre l'ingresso a Toshogu e altri santuari del sito UNESCO.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">⛩️ Visite Nikko</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🏯</span>
+        <div class="activity-body">
+          <div class="activity-name">Nikko Toshogu — mausoleo del Shogun Tokugawa</div>
+          <div class="activity-desc">Uno dei complessi religiosi più ornamentali del Giappone (1617). Famoso per i tre scimmiette "non vedo, non sento, non parlo" e la Gate Yomeimon. Patrimonio UNESCO. ¥1.300 ingresso.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Nikko+Toshogu+Shrine" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🌉</span>
+        <div class="activity-body">
+          <div class="activity-name">Shinkyo Bridge — il Ponte Sacro</div>
+          <div class="activity-desc">Ponte vermiglio (1636) sul fiume Daiya. Simbolo di Nikko. Vista spettacolare. Ingresso: ¥300. A 10 min a piedi dalla stazione.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Shinkyo+Bridge+Nikko" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🌊</span>
+        <div class="activity-body">
+          <div class="activity-name">Kegon Waterfall — facoltativo</div>
+          <div class="activity-desc">97m di cascata, una delle più belle del Giappone. Bus da Nikko Station a Chuzenji-ko (50 min, ¥1.200). Se il tempo lo permette, vale il viaggio.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Kegon+Falls+Nikko" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍖 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Yakiniku · A5 Wagyu · Prenotazione consigliata</div>
+        <div class="dinner-name">Ushigoro Ginza</div>
+        <span class="price-pill">~€100-220 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Wagyu kuroge A5 da allevamenti selezionati (Tamura e Kawagishi Farm). Ambiente chic con stanze private. 2 min da Ginza-itchome Station. Prenotare minimo 72h prima. Course da ¥12.000–¥25.000.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://tabelog.com/en/tokyo/A1301/A130101/13226719/" class="btn btn-gold" target="_blank">📅 Prenota (Tabelog)</a>
+        <a href="https://maps.google.com/?q=Ushigoro+Ginza+Tokyo" class="btn btn-ghost" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 7 AGOSTO ===== -->
+<div class="day-card" id="g7">
+  <div class="day-header">
+    <div class="day-num"><span class="n">7</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Tokyo → Takayama</h2>
+      <div class="location">Takayama · Gifu · Alpi Giapponesi</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Nananohi Machiya House</div>
+        <span class="price-pill">~€600 <span class="price-label">intera casa · per notte</span></span>
+        <div class="hotel-note">Casa tradizionale machiya · 4 camere per 8 ospiti · a 3 min dal centro storico · Hinoki cypress bath · Giardino interno con acero</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://www.machiya-inn-japan.com/takayama/mri-takayama/accommodations/nananohi/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Nananohi+Machiya+House+Takayama" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">⚠️ Check-in: recarsi all'ufficio MACHIYA a 5 Chome-13-17 Hanasatomachi. Check-in 15:00–19:00. Se arrivo dopo le 19, avvisare in anticipo.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">06:30</span><span class="transport-desc">Check-out hotel Tokyo. Consegnare bagagli extra in deposito o spedirli (takkyubin) a Takayama.</span></div>
+      <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc"><strong>Tokyo Station → Nagoya</strong> Shinkansen Nozomi (1h40, coperto JR Pass). Prendere treno delle ~8:00</span></div>
+      <div class="transport-row"><span class="transport-time">09:40</span><span class="transport-desc">Arrivo Nagoya. Breve pausa, eventuale colazione.</span></div>
+      <div class="transport-row"><span class="transport-time">10:10</span><span class="transport-desc"><strong>Nagoya → Takayama</strong> Limited Express Hida (2h18, coperto JR Pass). Paesaggio spettacolare attraverso le Alpi.</span></div>
+      <div class="transport-row"><span class="transport-time">12:28</span><span class="transport-desc">Arrivo <strong>Takayama Station</strong></span></div>
+      <div class="transport-tip">💡 Il treno Hida passa attraverso gole e tunnel montani — sedersi lato sinistro andando verso Takayama per le viste migliori.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌿 Attività pomeridiane</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🏘️</span>
+        <div class="activity-body">
+          <div class="activity-name">Sanmachi Suji — quartiere storico</div>
+          <div class="activity-desc">Tre strade parallele con case mercantili dell'era Edo perfettamente conservate. Sake brewery, negozi di miso, artigianato Hida. Il cuore autentico di Takayama. Gratis.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Sanmachi+Suji+Takayama" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🍶</span>
+        <div class="activity-body">
+          <div class="activity-name">Quartiere Sake — degustazione</div>
+          <div class="activity-desc">Takayama ha 6 storiche distillerie di sake. Cercare la sfera di cedro (sugi-dama) appesa all'ingresso — indica produzione di nuovo sake. Ingresso e degustazione spesso gratuiti o ¥200.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Takayama+sake+breweries+district" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🏛️</span>
+        <div class="activity-body">
+          <div class="activity-name">Takayama Jinya — palazzo governativo Edo</div>
+          <div class="activity-desc">L'unico palazzo governativo shogunale sopravvissuto in Giappone (1816). Camere, cucine, magazzini originali. ¥440. Aperto 8:45–17:00. A 5 min a piedi dalla Machiya House.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Takayama+Jinya" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍽️ Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Cucina Hida · Hida Wagyu · Locale tipico</div>
+        <div class="dinner-name">Kyoya</div>
+        <span class="price-pill">~€50 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Ristorante tradizionale nel cuore di Takayama, specializzato in Hida beef (wagyu locale delle Alpi) e cucina kaiseki di montagna. Atmosfera autentica in casa machiya. Prenota per tempo.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Kyoya+restaurant+Takayama" class="btn btn-gold" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 8 AGOSTO ===== -->
+<div class="day-card" id="g8">
+  <div class="day-header">
+    <div class="day-num"><span class="n">8</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Shirakawa-go → Kanazawa</h2>
+      <div class="location">Shirakawa-go · Kanazawa · Ishikawa</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Hyatt Centric Kanazawa</div>
+        <span class="price-pill">~€320 <span class="price-label">2 camere · per notte</span></span>
+        <div class="hotel-note">Direttamente di fronte alla stazione di Kanazawa · 253 camere · Roof Terrace Bar al 14° piano · National Geographic Best of World 2025</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://www.hyatt.com/hyatt-centric/en-US/kmqct-hyatt-centric-kanazawa/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Hyatt+Centric+Kanazawa" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚌 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Miyagawa Morning Market: il mercato mattutino di Takayama (7:00–12:00). Frutta, verdura, mochi, artigianato.</span></div>
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc"><strong>Bus Takayama → Shirakawa-go</strong> (~50 min, ¥2.600). Prenotare in anticipo — in agosto sempre pieno. Operatore: Nohi Bus.</span></div>
+      <div class="transport-row"><span class="transport-time">10:00</span><span class="transport-desc">Arrivo Shirakawa-go. ~2h30 di visita.</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Bus Shirakawa-go → Kanazawa</strong> (~1h15, ¥2.500). Prenotare online su Nohi Bus.</span></div>
+      <div class="transport-row"><span class="transport-time">13:45</span><span class="transport-desc">Arrivo <strong>Kanazawa Station</strong>. Check-in Hyatt Centric (3 min a piedi dalla stazione).</span></div>
+      <div class="transport-tip">💡 Prenotare ENTRAMBI i bus Nohi in anticipo su: <a href="https://www.nouhibus.co.jp/en/" target="_blank">nouhibus.co.jp/en</a>. In agosto esauriti settimane prima.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌿 Visite Shirakawa-go</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🏔️</span>
+        <div class="activity-body">
+          <div class="activity-name">Villaggio UNESCO Shirakawa-go</div>
+          <div class="activity-desc">Case gassho-zukuri (tetto a "mani in preghiera", 60° di inclinazione) che resistono a 2 metri di neve. Il villaggio di Ogimachi è il più grande. Vista panoramica dal belvedere (10 min a piedi). ¥300 per entrare nel villaggio.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Shirakawa-go+UNESCO+village" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🏡</span>
+        <div class="activity-body">
+          <div class="activity-name">Casa Wada — interno visitabile</div>
+          <div class="activity-desc">La casa gassho-zukuri più grande del villaggio (4 piani). Strumenti agricoli originali, bachi da seta, oggetti quotidiani dell'800. ¥300.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Wada+House+Shirakawa-go" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍽️ Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Cucina Kanazawa · Frutto di mare Hokuriku</div>
+        <div class="dinner-name">Fuwari</div>
+        <span class="price-pill">~€40 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Ristorante accogliente specializzato nel pescato fresco del Mar del Giappone (nodoguro, granchio Kano) e ingredienti Kaga. Atmosfera intima, ottimo per un primo assaggio di Kanazawa.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Fuwari+restaurant+Kanazawa" class="btn btn-gold" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">💡 Dopo cena: salire al Roof Terrace Bar del Hyatt (14° piano) per cocktail con vista su Kanazawa. Aperto fino a tardi.</div>
+  </div>
+</div>
+
+<!-- ===== 9 AGOSTO ===== -->
+<div class="day-card" id="g9">
+  <div class="day-header">
+    <div class="day-num"><span class="n">9</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Kanazawa — giornata intera</h2>
+      <div class="location">Kanazawa · Ishikawa</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗓️ Programma consigliato</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">07:00</span><span class="transport-desc">Omicho Market: il mercato del pesce di Kanazawa (6:00–17:00). Granchio Kano, ostriche, donburi con frutti di mare. Aperti anche la domenica.</span></div>
+      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc">Kenroku-en Garden: uno dei 3 giardini più belli del Giappone. Aprire alle 7:00 in agosto. ¥320. Prevedere 1h30.</span></div>
+      <div class="transport-row"><span class="transport-time">11:30</span><span class="transport-desc">Kanazawa Castle Park (adiacente a Kenroku-en, ingresso gratuito)</span></div>
+      <div class="transport-row"><span class="transport-time">13:00</span><span class="transport-desc">Pranzo nel quartiere Katamachi: specialità Kanazawa curry o Hanton Rice</span></div>
+      <div class="transport-row"><span class="transport-time">14:30</span><span class="transport-desc">Distretto samurai Nagamachi: canali, mura in fango, case dello shogunato. Samurai House Nomura aperta. ¥550.</span></div>
+      <div class="transport-row"><span class="transport-time">16:30</span><span class="transport-desc">21st Century Museum of Contemporary Art: "Swimming Pool" di Leandro Erlich. ¥450 collezione permanente.</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🐟 Visite principali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🌸</span>
+        <div class="activity-body">
+          <div class="activity-name">Kenroku-en Garden</div>
+          <div class="activity-desc">Giardino dell'era Edo (XVII sec). 11,4 ettari con stagni, laghetti, lanterne di pietra, cascate. In agosto aperto 7:00–18:00. Ideale la mattina presto.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Kenrokuen+Garden+Kanazawa" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.pref.ishikawa.jp/siro-niwa/kenrokuen/e/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🎨</span>
+        <div class="activity-body">
+          <div class="activity-name">21st Century Museum of Contemporary Art</div>
+          <div class="activity-desc">Architettura circolare rivoluzionaria (Kazuyo Sejima). "Swimming Pool" — l'installazione dove sembra di nuotare sotto la piazza è unica al mondo. Sempre sold out — prenotare online!</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=21st+Century+Museum+of+Contemporary+Art+Kanazawa" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.kanazawa21.jp/en" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍽️ Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Cucina Kaiseki Kanazawa</div>
+        <div class="dinner-name">Kokochiya</div>
+        <span class="price-pill">~€60 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Cucina kaiseki tradizionale di Kanazawa in ambiente caldo e intimo. Ingredienti stagionali Kaga: Kaga crab, nodoguro rockfish, Kaga vegetables. Prenotazione consigliata.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Kokochiya+restaurant+Kanazawa" class="btn btn-gold" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 10 AGOSTO ===== -->
+<div class="day-card" id="g10">
+  <div class="day-header">
+    <div class="day-num"><span class="n">10</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Kanazawa → Kyoto</h2>
+      <div class="location">Kyoto · Gion · Pontocho</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Nohga Hotel Kiyomizu Kyoto</div>
+        <span class="price-pill">~€310 <span class="price-label">2 camere · per notte</span></span>
+        <div class="hotel-note">Boutique hotel nel quartiere Gion/Higashiyama · Valutazione 9.8/10 — il più alto di Kyoto · A piedi da Kiyomizu-dera, Fushimi Inari, Hanamikoji · Ristorante con cucina creativa</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://nohgahotel.com/kiyomizu/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Nohga+Hotel+Kiyomizu+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">Mattina</span><span class="transport-desc">Colazione e check-out Hyatt. Deposito bagagli in stazione o spedizione (takkyubin).</span></div>
+      <div class="transport-row"><span class="transport-time">Dep.</span><span class="transport-desc"><strong>Kanazawa → Kyoto</strong> via Limited Express Thunderbird (2h22, coperto JR Pass fino a Tsuruga) + Shinkansen Tsuruga → Kyoto (23 min con Haruka Shinkansen). Partenze ogni ~30 min.</span></div>
+      <div class="transport-row"><span class="transport-time">Arr.</span><span class="transport-desc">Arrivo Kyoto. Metro/Bus o taxi verso l'hotel (15 min).</span></div>
+      <div class="transport-tip">💡 Dal 2024 il Shinkansen Hokuriku collega direttamente Kanazawa–Tsuruga. Con JR Pass coperto tutto. Biglietti: <a href="https://www.jreast.co.jp/e/trainreservation/" target="_blank">JR East</a>.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌆 Attività serali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🏮</span>
+        <div class="activity-body">
+          <div class="activity-name">Gion — il quartiere delle geisha</div>
+          <div class="activity-desc">Le strade Hanamikoji e Shinbashi sono le più fotogeniche di Kyoto. Sera: possibile avvistare maiko (geisha in addestramento) che si recano agli appuntamenti. Rispettare la privacy — no foto ravvicinate.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Gion+district+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🌊</span>
+        <div class="activity-body">
+          <div class="activity-name">Pontocho — vicolo gastronomico</div>
+          <div class="activity-desc">Stradina lunga 500m parallela al fiume Kamo. 100+ ristoranti e bar su due piani. In estate i ristoranti aprono le terrazze "yuka" sul fiume. Atmosfera unica a Kyoto.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Pontocho+alley+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍜 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Kaiseki · Cucina Kyoto · Prenotazione obbligatoria</div>
+        <div class="dinner-name">Gion Karyo</div>
+        <span class="price-pill">~€80 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Cucina kaiseki nel cuore di Gion. Ingredienti stagionali in preparazioni che riflettono la cultura culinaria di Kyoto. Ambiente elegante e tradizionale. Prenotazione obbligatoria.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Gion+Karyo+Kyoto" class="btn btn-gold" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 11 AGOSTO ===== -->
+<div class="day-card" id="g11">
+  <div class="day-header">
+    <div class="day-num"><span class="n">11</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Fushimi Inari</h2>
+      <div class="location">Kyoto · Fushimi</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗓️ Programma consigliato</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">05:30</span><span class="transport-desc">⭐ Partenza PRESTO per Fushimi Inari. Treno JR Nara Line da Kyoto Station (5 min, ¥150). In agosto le folle iniziano alle 8:00!</span></div>
+      <div class="transport-row"><span class="transport-time">06:00</span><span class="transport-desc">Arrivo Fushimi Inari: alba attraverso i torii. Salita completa: 2h30 andata/ritorno fino alla cima (233m).</span></div>
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc">Rientro e colazione a Kyoto. Mercato di Nishiki (9:00–18:00): "la cucina di Kyoto", 100 negozi in 400m.</span></div>
+      <div class="transport-row"><span class="transport-time">13:00</span><span class="transport-desc">Pomeriggio libero: Nijo-jo Castle (¥800), Philosopher's Path (in estate fiorito), Kinkaku-ji (padiglione dorato, ¥500).</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">⛩️ Visite</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🟠</span>
+        <div class="activity-body">
+          <div class="activity-name">Fushimi Inari Taisha — 10.000 torii</div>
+          <div class="activity-desc">Il santuario con i tunnel di torii arancioni che salgono sul Monte Inari. Aperto 24h, gratis. Sentiero completo fino alla cima: 4km, 2h30. Fermata a Yotsutsuji (metà percorso) per vista panoramica su Kyoto. Agosto caldo e umido — portare acqua!</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Fushimi+Inari+Taisha+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="http://inari.jp/en/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🛍️</span>
+        <div class="activity-body">
+          <div class="activity-name">Nishiki Market — la cucina di Kyoto</div>
+          <div class="activity-desc">400m di mercato coperto con 100+ botteghe. Specialità: yudofu, tsukemono (verdure sottaceto), wagashi dolci, tofu fritto, dashi. Piatti pronti da street food da ¥200.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Nishiki+Market+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍤 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Tempura · Classico di Kyoto · Giardino tradizionale</div>
+        <div class="dinner-name">Tempura Yoshikawa</div>
+        <span class="price-pill">~€50–70 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Istituzione classica di Kyoto, in una zona residenziale tranquilla vicino a Oike. Ambiente tradizionale con giardino giapponese visibile durante il pasto, sale private, amato dai locali. Il pranzo (¥4.000–¥6.000) è significativamente più economico della cena. Prenotazione consigliata per la sera.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Tempura+Yoshikawa+Kyoto" class="btn btn-gold" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/kyoto/A2601/A260101/26001810/" class="btn btn-ghost" target="_blank">📅 Tabelog</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 12 AGOSTO ===== -->
+<div class="day-card" id="g12">
+  <div class="day-header">
+    <div class="day-num"><span class="n">12</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Arashiyama</h2>
+      <div class="location">Kyoto · Arashiyama</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗓️ Programma consigliato</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">07:00</span><span class="transport-desc">Partenza presto: bus n°11 da Kawaramachi o Hankyu Line Kyoto → Katsura → Arashiyama (30 min). Arrivare prima delle 9:00 per la Bamboo Grove senza folle!</span></div>
+      <div class="transport-row"><span class="transport-time">07:30</span><span class="transport-desc">Bamboo Grove: la luce mattutina filtra attraverso i bambù — magico. Poi Okochi Sanso (villa di un attore cinema, ¥1.000 con tè).</span></div>
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc">Tenryu-ji Temple Garden (¥500): giardino UNESCO con stagno che riflette le montagne. Il più bello di Arashiyama.</span></div>
+      <div class="transport-row"><span class="transport-time">11:00</span><span class="transport-desc">Togetsukyo Bridge: il "ponte che attraversa la luna". Foto con le montagne sullo sfondo. Bar con matcha e wagashi.</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc">Pranzo ad Arashiyama: tofu cuisine (Sagano, Shigetsu nel Tenryu-ji) o noodles udofu.</span></div>
+      <div class="transport-row"><span class="transport-time">15:00</span><span class="transport-desc">Sagano Romantic Train (¥880): trenino turistico attraverso la gola Hozu. Facoltativo ma consigliato.</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌿 Visite principali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🎋</span>
+        <div class="activity-body">
+          <div class="activity-name">Bamboo Grove — Sagano</div>
+          <div class="activity-desc">Il bosco di bambù più famoso al mondo. Percorso di 500m tra culmi alti 20m. Gratis, aperto 24h. Assolutamente da visitare prima delle 8:00 o dopo le 18:00 in agosto per evitare le folle asiatiche.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Arashiyama+Bamboo+Grove+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🏯</span>
+        <div class="activity-body">
+          <div class="activity-name">Tenryu-ji Temple</div>
+          <div class="activity-desc">Fondato nel 1339, Patrimonio UNESCO. Il giardino Zen con stagno è considerato uno dei più belli del Giappone. ¥500 giardino, ¥800 con interno tempio. Aperto 8:30–17:00.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Tenryu-ji+Temple+Arashiyama+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.tenryuji.com/en/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍽️ Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Kaiseki · 3 Stelle Michelin · Esperienza suprema</div>
+        <div class="dinner-name">Kikunoi</div>
+        <span class="price-pill">~€280-450 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Una delle kaiseki più celebrate al mondo. Chef Murata Yoshihiro. La sede principale (honten) è a Higashiyama. Tre stelle Michelin. Prenotare con 1–2 mesi di anticipo. ~¥30.000–¥50.000/persona.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://kikunoi.jp/en/" class="btn btn-gold" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Kikunoi+honten+Kyoto" class="btn btn-ghost" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">⚠️ Kikunoi è tra le prenotazioni più difficili di Kyoto. Prenotare via sito ufficiale o via <a href="https://www.tableall.com/restaurant/127" target="_blank">TableAll</a>.</div>
+  </div>
+</div>
+
+<!-- ===== 13 AGOSTO ===== -->
+<div class="day-card" id="g13">
+  <div class="day-header">
+    <div class="day-num"><span class="n">13</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Gita a Nara</h2>
+      <div class="location">Nara · Deer Park · Todai-ji</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">08:30</span><span class="transport-desc"><strong>Kyoto → Nara</strong> JR Nara Line (44 min, ¥720, coperto JR Pass). Treni ogni 30 min da Kyoto Station.</span></div>
+      <div class="transport-row"><span class="transport-time">09:15</span><span class="transport-desc">Arrivo Nara Station. A piedi verso Nara Deer Park (~20 min) o bus n°1/2 (¥220).</span></div>
+      <div class="transport-row"><span class="transport-time">15:00</span><span class="transport-desc">Rientro a Kyoto. Sera libera o negozi nel quartiere Teramachi.</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🦌 Visite principali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🦌</span>
+        <div class="activity-body">
+          <div class="activity-name">Nara Deer Park — 1.300 cervi sacri</div>
+          <div class="activity-desc">I cervi (shika) sono considerati messaggeri degli dei ed errano liberamente nel parco. Acquistare shika-senbei (¥200) per nutrirli — attenzione, sono insistenti! Ingresso al parco gratuito.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Nara+Deer+Park+Japan" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🏛️</span>
+        <div class="activity-body">
+          <div class="activity-name">Todai-ji Temple — Grande Buddha</div>
+          <div class="activity-desc">Il più grande edificio in legno del mondo (745 d.C.). Ospita il Grande Buddha (Daibutsu) in bronzo: 15m di altezza, 500 tonnellate. ¥1.000 ingresso. Aperto 7:30–17:30.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Todaiji+Temple+Nara" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.todaiji.or.jp/english/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">⛩️</span>
+        <div class="activity-body">
+          <div class="activity-name">Kasuga Taisha — lanterne di bronzo</div>
+          <div class="activity-desc">Santuario Shinto fondato nel 768. Famoso per le 3.000 lanterne di pietra e bronzo. Patrimonio UNESCO. ¥500 per il corridoio interno delle lanterne. Circondato da foresta primordiale.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Kasuga+Taisha+Shrine+Nara" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍽️ Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Cena libera · Quartiere Pontocho o Gion</div>
+        <div class="dinner-name">Serata libera a Kyoto</div>
+        <span class="price-pill">~€30-50 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Dopo il rientro da Nara, cena informale a Pontocho con le terrazze yuka sul fiume Kamo (solo in estate!). Oppure izakaya nel quartiere Nakagyo. Budget: ¥3.000–¥5.000/persona.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Pontocho+Kyoto+yuka" class="btn btn-gold" target="_blank">📍 Pontocho</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 14 AGOSTO ===== -->
+<div class="day-card" id="g14">
+  <div class="day-header">
+    <div class="day-num"><span class="n">14</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Kyoto → Amanohashidate</h2>
+      <div class="location">Amanohashidate · Kyoto del Mare</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Ryokan</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Monjusou Shourotei</div>
+        <span class="price-pill">~€400 <span class="price-label">2 camere · kaiseki inclusa</span></span>
+        <div class="hotel-note">Ryokan gemello del Monjusou (stessa proprietà) · Architettura sukiya tradizionale a un piano · Giardino con vista sul Mar del Giappone · Onsen privati in alcune camere · Recentemente rinnovato · 6 min dalla stazione</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://shourotei.com/en/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Monjusou+Shourotei+Amanohashidate" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">Mattina</span><span class="transport-desc">Check-out Nohga Hotel Kiyomizu. Deposito bagagli o spedizione.</span></div>
+      <div class="transport-row"><span class="transport-time">Dep.</span><span class="transport-desc"><strong>Kyoto → Amanohashidate</strong> Limited Express Hashidate (2h, non coperto JR Pass standard, ~¥4.200). Partenze: 5:59, 9:01, 11:01, 13:01 da Kyoto Station.</span></div>
+      <div class="transport-row"><span class="transport-time">Arr.</span><span class="transport-desc">Arrivo Amanohashidate Station. Il ryokan offre navetta dalla stazione (prenotare in anticipo).</span></div>
+      <div class="transport-tip">💡 Amanohashidate è in "Kyoto by the Sea" (nord della prefettura). Richiede il Sanin-Kinki Tsuusuru Pass o biglietto separato (~¥4.200 A/R).</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌅 Attività</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🌉</span>
+        <div class="activity-body">
+          <div class="activity-name">Amanohashidate — "Ponte verso il Cielo"</div>
+          <div class="activity-desc">Sandbar di 3,6km con 8.000 pini, uno dei 3 scenari più belli del Giappone. Vista panoramica da Kasamatsu Park (funivia ¥850) guardando la sandbar fra le gambe — tradizione giapponese! In agosto affollata ma spettacolare.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Amanohashidate+Kyoto" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">♨️</span>
+        <div class="activity-body">
+          <div class="activity-name">Onsen al Monjusou Shourotei</div>
+          <div class="activity-desc">Bagni termali con vista sulla baia e sul giardino. Fonte alcalina benefica per la pelle. Alcune camere hanno onsen privato en-suite — verificare al momento della prenotazione. Incluso nel pernottamento.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍱 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Kaiseki inclusa nel ryokan</div>
+        <div class="dinner-name">Cena Kaiseki al Monjusou Shourotei</div>
+        <span class="price-pill">inclusa <span class="price-label">nel ryokan</span></span>
+        <div class="dinner-note">Kaiseki Kitakaiseki multi-portata con frutti di mare freschi del Mar del Giappone (granchio, pesce, alghe), verdure stagionali e tofu locale. Cucina affidata a chef dedicato, servita in sala panoramica o in camera. Inclusa nella tariffa del ryokan.</div>
+      </div>
+      <div class="dinner-actions">
+        <span style="font-size:11px;opacity:0.5">Inclusa nel<br>pernottamento</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 15 AGOSTO ===== -->
+<div class="day-card" id="g15">
+  <div class="day-header">
+    <div class="day-num"><span class="n">15</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Amanohashidate → Osaka</h2>
+      <div class="location">Osaka · Dotonbori · Namba</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Conrad Osaka</div>
+        <span class="price-pill">~€650 <span class="price-label">2 camere · per notte</span></span>
+        <div class="hotel-note">Piani 33–40 del Nakanoshima Festival Tower · Viste panoramiche su Osaka e la baia · Piscina coperta riscaldata · 40 Sky Bar con cocktail · 4 ristoranti · Valutazione 9.5/10 — #1 hotel lusso Osaka 2025</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://conradhotels.hilton.com/en/hotels/japan/conrad-osaka-OSACCFI/index.html" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Conrad+Osaka+Nakanoshima" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">Mattina</span><span class="transport-desc">Colazione kaiseki in ryokan e ultime passeggiate sulla sandbar di Amanohashidate.</span></div>
+      <div class="transport-row"><span class="transport-time">Dep.</span><span class="transport-desc"><strong>Amanohashidate → Osaka</strong> Limited Express Hashidate + Kyoto + Shinkansen (totale ~3h30, ~¥6.000).</span></div>
+      <div class="transport-row"><span class="transport-time">Pom.</span><span class="transport-desc">Arrivo Osaka. Check-in Conrad Osaka (5 min di metro da Higobashi Station). Pomeriggio libero — aperitivo all'40 Sky Bar al 40° piano con vista sulla città.</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌆 Attività serali</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🎡</span>
+        <div class="activity-body">
+          <div class="activity-name">Dotonbori — il cuore di Osaka</div>
+          <div class="activity-desc">Il canal district più vivace di Osaka. Neon, takoyaki, okonomiyaki, il famoso Glico Running Man. In agosto caldissimo ma esplosivo. Sera: passeggiata lungo il canale.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Dotonbori+Osaka" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🚤</span>
+        <div class="activity-body">
+          <div class="activity-name">Tombori River Cruise — crociera serale</div>
+          <div class="activity-desc">20 min di crociera sul canale Dotonbori con vista sui neon riflessi nell'acqua. Partenze ogni 30 min 13:00–21:00. ¥1.000/persona. Prenotare o pagare all'imbarco.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Tombori+River+Cruise+Osaka" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://tombori-cruise.com/en/" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍜 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Okonomiyaki · Storico dal 1945</div>
+        <div class="dinner-name">Mizuno</div>
+        <span class="price-pill">~€14 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Il tempio dell'okonomiyaki a Dotonbori dal 1945. La ricetta originale Osaka-style (non Hiroshima). Sempre fila, ma gestita bene. Griglia al tavolo. Niente prenotazioni, solo fila. ~¥1.500/persona.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Mizuno+Okonomiyaki+Dotonbori+Osaka" class="btn btn-gold" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 16 AGOSTO ===== -->
+<div class="day-card" id="g16">
+  <div class="day-header">
+    <div class="day-num"><span class="n">16</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Osaka → Miyajima</h2>
+      <div class="location">Miyajima · Itsukushima Shrine · Hiroshima</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Ryokan</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Ryokan Iwaso — Miyajima</div>
+        <span class="price-pill">€950 <span class="price-label">2 camere · kaiseki inclusa</span></span>
+        <div class="hotel-note">Dal 1854 · Unico ryokan Michelin di Hiroshima · A 3 min dal santuario Itsukushima · Onsen con vista foresta · Cervi selvatici nel giardino</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://www.iwaso.com/english" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Iwaso+Ryokan+Miyajima+Hiroshima" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">08:30</span><span class="transport-desc">Check-out Conrad Osaka. Taxi verso Shin-Osaka Station (15 min, ~¥1.500).</span></div>
+      <div class="transport-row"><span class="transport-time">09:15</span><span class="transport-desc"><strong>Shin-Osaka → Hiroshima</strong> Shinkansen Nozomi (~1h05, coperto JR Pass).</span></div>
+      <div class="transport-row"><span class="transport-time">10:20</span><span class="transport-desc">Hiroshima: <strong>pausa consigliata</strong> al Peace Memorial Park e Atomic Bomb Dome — esperienza commovente e imprescindibile. ~2h.</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc">Pranzo a Hiroshima: okonomiyaki stile Hiroshima (diverso da quello di Osaka — stratificato) da Micchan o Hassei.</span></div>
+      <div class="transport-row"><span class="transport-time">14:00</span><span class="transport-desc"><strong>Hiroshima → Miyajimaguchi</strong> JR Sanyo Line (25 min, coperto JR Pass).</span></div>
+      <div class="transport-row"><span class="transport-time">14:30</span><span class="transport-desc"><strong>Traghetto Miyajimaguchi → Miyajima</strong> 10 min, ¥200 (o gratis con JR Pass!). Frequenza ogni 15 min.</span></div>
+      <div class="transport-row"><span class="transport-time">14:45</span><span class="transport-desc">Arrivo Miyajima. Il ryokan Iwaso offre navetta (o 15 min a piedi dal porto).</span></div>
+      <div class="transport-tip">💡 Il traghetto verso Miyajima è operato da JR — gratuito con JR Pass! Arrivare nel pomeriggio permette di godersi il tramonto al santuario e la magia serale dell'isola senza turisti.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">⛩️ Visite Miyajima</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">⛩️</span>
+        <div class="activity-body">
+          <div class="activity-name">Itsukushima Shrine — torii galleggiante</div>
+          <div class="activity-desc">Il torii arancione sull'acqua è uno dei simboli del Giappone. Costruito su palafitte nel mare (1168). In alta marea sembra galleggiare. Al calare della marea si può camminare fino al torii. ¥500 per il santuario.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Itsukushima+Shrine+Miyajima" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://www.miyajima.or.jp/english/spot/spot_itsukushima.html" class="btn btn-primary" target="_blank">🌐 Sito</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🌄</span>
+        <div class="activity-body">
+          <div class="activity-name">Monte Misen — tramonto spettacolare</div>
+          <div class="activity-desc">La vetta sacra dell'isola (535m). Funivia fino a quasi in cima (¥2.000 A/R) + 30 min a piedi. Vista sul Mare Interno al tramonto. Scendere prima dell'ultima funivia (17:00).</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Mount+Misen+Miyajima" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🦌</span>
+        <div class="activity-body">
+          <div class="activity-name">Miyajima dopo il tramonto</div>
+          <div class="activity-desc">Quando i turisti giornalieri se ne vanno, l'isola si trasforma. Cervi nei vicoli, lanterne illuminate, santuario quasi deserto. La vera magia di Miyajima. Passeggiare fino alle 22:00.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍱 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Kaiseki inclusa nel ryokan · Michelin</div>
+        <div class="dinner-name">Cena Kaiseki all'Iwaso</div>
+        <span class="price-pill">inclusa <span class="price-label">nel ryokan</span></span>
+        <div class="dinner-note">Il ryokan Iwaso è l'unico riconosciuto Michelin a Hiroshima. Kaiseki con specialità locali: ostrica di Hiroshima, momiji manju (dolci tipici di Miyajima), anago (anguilla di mare). Servita in camera con abiti yukata forniti.</div>
+      </div>
+      <div class="dinner-actions">
+        <span style="font-size:11px;opacity:0.5">Inclusa nel<br>pernottamento</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 17 AGOSTO ===== -->
+<div class="day-card" id="g17">
+  <div class="day-header">
+    <div class="day-num"><span class="n">17</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Miyajima → Naoshima</h2>
+      <div class="location">Naoshima · Isola d'Arte · Mar Interno di Seto</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">Naoshima Ryokan Roka</div>
+        <span class="price-pill">~€650 <span class="price-label">2 camere · kaiseki inclusa</span></span>
+        <div class="hotel-note">Ryokan di lusso (2022) · 11 camere con onsen privato en-suite · Cucina kaiseki citata dalla Guida Michelin 2024 · Navetta gratuita porto–ryokan · Biciclette elettriche incluse · A 5 min dall'Art House Project · Valutazione 9.4/10</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://roka.voyage/en/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=Naoshima+Ryokan+Roka" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">💡 <strong>Alternativa scelta</strong> a Benesse House (frequentemente sold out, ~€900/notte). Ryokan Roka offre onsen privato in ogni camera, cucina Michelin-level e navetta gratuita — a un prezzo inferiore. Solo 11 camere: prenotare subito su roka.voyage/en</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">07:30</span><span class="transport-desc">Colazione kaiseki in ryokan. Ultima passeggiata mattutina sull'isola deserta con i cervi.</span></div>
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc">Traghetto <strong>Miyajima → Miyajimaguchi</strong> (10 min, gratis JR Pass) + JR Sanyo Line → <strong>Hiroshima</strong> (25 min).</span></div>
+      <div class="transport-row"><span class="transport-time">10:00</span><span class="transport-desc"><strong>Hiroshima → Okayama</strong> Shinkansen Nozomi (37 min, coperto JR Pass).</span></div>
+      <div class="transport-row"><span class="transport-time">11:15</span><span class="transport-desc"><strong>Okayama → Uno</strong> JR Uno Line (1h, coperto JR Pass).</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Traghetto Uno → Naoshima (Miyanoura Port)</strong> ~20 min, ¥300. Frequenza: ogni ~1h.</span></div>
+      <div class="transport-row"><span class="transport-time">13:00</span><span class="transport-desc">Arrivo Naoshima. Il Ryokan Roka offre navetta gratuita dal porto di Miyanoura — avvisare in anticipo. Check-in dalle 15:00.</span></div>
+      <div class="transport-tip">💡 Naoshima si gira in bicicletta (noleggio ¥500 vicino al porto). Chichu Art Museum: biglietti SOLO online in anticipo — sold out frequentissimi! Il pomeriggio è perfetto per l'Art House Project nel villaggio.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🎨 Visite Naoshima</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🏛️</span>
+        <div class="activity-body">
+          <div class="activity-name">Chichu Art Museum — Tadao Ando</div>
+          <div class="activity-desc">Museum scavato nella montagna da Tadao Ando (2004). Ospita Monet, James Turrell, Walter De Maria. Luce naturale come elemento chiave. Biglietti online obbligatori: ¥2.100. Aperto 10:00–17:00 (chiuso lunedì).</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=Chichu+Art+Museum+Naoshima" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://benesse-artsite.jp/en/art/chichu.html" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🎃</span>
+        <div class="activity-body">
+          <div class="activity-name">Yayoi Kusama — Yellow Pumpkin</div>
+          <div class="activity-desc">La zucca gialla a pois di Kusama sul molo di Naoshima è il simbolo dell'isola. La versione rossa è al Museum Benesse. Foto iconiche garantite. Gratis da fuori.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Yayoi+Kusama+Pumpkin+Naoshima" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🏘️</span>
+        <div class="activity-body">
+          <div class="activity-name">Art House Project — Honmura Village</div>
+          <div class="activity-desc">7 case tradizionali trasformate in installazioni d'arte permanenti (Hiroshi Sugimoto, James Turrell ecc.). Pass combinato ¥1.050. Pomeriggio sufficiente per visitarle tutte.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Art+House+Project+Naoshima+Honmura" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍣 Cena</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Sushi · Frutti di mare Setouchi</div>
+        <div class="dinner-name">Setouchi Sushi Nagi</div>
+        <span class="price-pill">~€40 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Sushi con pescato fresco del Mar Interno di Seto — la qualità del pesce in questa zona è eccezionale. Atmosfera informale, prezzi ragionevoli. Prenotare per tempo.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://maps.google.com/?q=Sushi+Nagi+Naoshima" class="btn btn-gold" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 18 AGOSTO ===== -->
+<div class="day-card" id="g18">
+  <div class="day-header">
+    <div class="day-num"><span class="n">18</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Naoshima → Tokyo — Ultima notte</h2>
+      <div class="location">Tokyo · Ginza · Tsukiji</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🏨 Hotel</div>
+    <div class="hotel-card">
+      <div>
+        <div class="hotel-name">TSUKI Tokyo Hotel</div>
+        <span class="price-pill">€340 <span class="price-label">2 camere · per notte</span></span>
+        <div class="hotel-note">Hotel design a Tsukiji · Camere con bagno in cipresso hinoki · Sake Bar TABLE TSUKI · 5 min da Tsukiji Market · Stile japonisant contemporaneo</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a href="https://www.tsukihotel.com/en/" class="btn btn-primary" target="_blank">🌐 Sito</a>
+        <a href="https://maps.google.com/?q=TSUKI+Hotel+Tsukiji+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🚄 Trasporti</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Colazione kaiseki al Ryokan Roka. Ultima passeggiata sull'isola — mattina presto è magica senza turisti. Roka offre navetta gratuita al porto per il check-out.</span></div>
+      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc">Traghetto <strong>Naoshima → Uno Port</strong> (20 min, ¥300).</span></div>
+      <div class="transport-row"><span class="transport-time">10:45</span><span class="transport-desc"><strong>Uno → Okayama</strong> JR Uno Line (1h, coperto JR Pass).</span></div>
+      <div class="transport-row"><span class="transport-time">12:00</span><span class="transport-desc"><strong>Okayama → Tokyo</strong> Shinkansen Nozomi (~3h10, coperto JR Pass). Arrivare in anticipo — periodo Obon!</span></div>
+      <div class="transport-row"><span class="transport-time">15:15</span><span class="transport-desc">Arrivo Tokyo Station. Metro verso Tsukiji e check-in TSUKI Hotel.</span></div>
+      <div class="transport-tip">💡 Il 18 agosto è ancora periodo Obon (15–18 ago): shinkansen affollati al massimo. Prenotare posti assegnati in anticipo con JR Pass!</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🌆 Attività pomeriggio/sera</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">🐟</span>
+        <div class="activity-body">
+          <div class="activity-name">Mercato Esterno di Tsukiji</div>
+          <div class="activity-desc">Il mercato esterno (yokocho) è ancora aperto e brulicante. Sushi e oyster freschissimi da mangiare in piedi. Migliore orario: mattina (7:00–11:00) o sera per i ristoranti.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Tsukiji+Outer+Market+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">🛍️</span>
+        <div class="activity-body">
+          <div class="activity-name">Shopping finale — Ginza e Tsukiji</div>
+          <div class="activity-desc">Ultimi acquisti: Itoya (cartoleria, 12 piani), Ginza Six, Dover Street Market Tokyo. Tax free refund negli store autorizzati su presentazione passaporto.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Ginza+Six+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🍽️ Cena finale</div>
+    <div class="dinner-card">
+      <div class="dinner-body">
+        <div class="dinner-type">Cucina Francese-Giapponese · 2 Stelle Michelin + Green Star · World's 50 Best</div>
+        <div class="dinner-name">Florilège</div>
+        <span class="price-pill">~€80–120 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Chef Hiroyasu Kawate. 2 stelle Michelin + Green Star. Counter aperto attorno alla cucina a vista — si vede lo chef lavorare. Cucina francese con ingredienti giapponesi stagionali e focus su sostenibilità. Già nella lista World's 50 Best Restaurants. A Harajuku/Jingumae — zona perfetta per un dopo-cena passeggiata. Cena ~¥13.000–¥18.000/persona. Prenotazione molto più accessibile rispetto a Narisawa.</div>
+      </div>
+      <div class="dinner-actions">
+        <a href="https://www.tableall.com/restaurant/florilege" class="btn btn-gold" target="_blank">📅 Prenota (TableAll)</a>
+        <a href="https://maps.google.com/?q=Florilege+restaurant+Harajuku+Tokyo" class="btn btn-ghost" target="_blank">📍 Maps</a>
+      </div>
+    </div>
+    <div class="warning">💡 <strong>Alternativa scelta</strong> a Narisawa (€320-450/persona, prenotazione quasi impossibile). Florilège ha lo stesso livello di riconoscimenti internazionali (2⭐ + Green Star + World's 50 Best), costa un terzo e si prenota facilmente su TableAll. La cena di gala perfetta per chiudere il viaggio.</div>
+  </div>
+</div>
+
+<!-- ===== 19 AGOSTO ===== -->
+<div class="day-card" id="g19">
+  <div class="day-header">
+    <div class="day-num"><span class="n">19</span><span class="m">Ago</span></div>
+    <div class="day-title-block">
+      <h2>Ultimo giorno + Partenza</h2>
+      <div class="location">Tokyo · TeamLab · Daikanyama · Narita</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗓️ Programma</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Colazione a Tsukiji: sushi di primo mattino o oyster bar nel mercato esterno.</span></div>
+      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc"><strong>TeamLab Planets</strong> (Toyota, Toyosu): prenotare ONLINE obbligatoriamente. ¥3.200. 1h30 sufficiente.</span></div>
+      <div class="transport-row"><span class="transport-time">11:30</span><span class="transport-desc"><strong>Daikanyama</strong>: il quartiere più cool di Tokyo. Daikanyama T-Site (libreria di design), Nakameguro (canal district), caffè indipendenti. Ultima passeggiata nella Tokyo vera.</span></div>
+      <div class="transport-row"><span class="transport-time">14:00</span><span class="transport-desc">Rientro hotel. Luggage pickup. Check-out. Consegnare i bagagli in deposito se necessario.</span></div>
+      <div class="transport-row"><span class="transport-time">17:00</span><span class="transport-desc">Partenza verso Narita. N'EX dalla stazione Shimbashi (~50 min) o Limousine Bus da Ginza (~75 min). <strong>Volo alle 20:00 → partire ENTRO LE 17:00 al massimo.</strong></span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🎨 Visite</div>
+    <div class="activities-grid">
+      <div class="activity-item">
+        <span class="activity-icon">💫</span>
+        <div class="activity-body">
+          <div class="activity-name">TeamLab Planets — arte digitale immersiva</div>
+          <div class="activity-desc">Camminare nell'acqua, specchi infiniti, fiori digitali. Biglietti SOLO ONLINE — esauriti settimane prima. TeamLab Planets è più compatto e intimo di Borderless (chiuso). 10 min da Shin-Kiba Station.</div>
+          <div class="activity-links">
+            <a href="https://maps.google.com/?q=TeamLab+Planets+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://planets.teamlab.art/tokyo/" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+          </div>
+        </div>
+      </div>
+      <div class="activity-item">
+        <span class="activity-icon">📚</span>
+        <div class="activity-body">
+          <div class="activity-name">Daikanyama T-Site — libreria iconica</div>
+          <div class="activity-desc">La libreria-concept store più fotografata di Tokyo. Architettura di Masatoshi Sano, aperta 24h, caffè Anjin all'interno. Nakameguro canale a 5 min a piedi. Zona arty e cool per l'ultimo pranzo.</div>
+          <div class="activity-links"><a href="https://maps.google.com/?q=Daikanyama+T-Site+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">✈️ Partenza</div>
+    <div class="transport-box">
+      <div class="transport-row"><span class="transport-time">20:00</span><span class="transport-desc">Volo da Tokyo Narita (NRT)</span></div>
+      <div class="transport-row"><span class="transport-time">17:00</span><span class="transport-desc">Partenza TSUKI Hotel per N'EX o Limousine Bus</span></div>
+      <div class="transport-row"><span class="transport-time">18:00</span><span class="transport-desc">Arrivo Narita — check-in e sicurezza (2h prima consigliato)</span></div>
+      <div class="transport-tip">💡 Opzione taxi privato da TSUKI verso Narita: ~¥25.000 (split 2 taxi per 8 persone = ~€80/taxi). Comoda con bagagli. Prenotare su <a href="https://www.nearme.jp/en/" target="_blank">NearMe</a> o tramite hotel.</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+
+<!-- ===== TOTALI BUDGET ===== -->
+<div class="totals-section" id="totali">
+  <div class="totals-inner">
+    <div class="totals-header-label">Riepilogo</div>
+    <h2 class="totals-title">Budget Hotel &amp; Ristoranti</h2>
+    <div class="totals-grid">
+
+      <!-- HOTEL -->
+      <div class="totals-block">
+        <div class="totals-block-title">🏨 Hotel &amp; Ryokan · 2 camere doppie</div>
+        <div class="totals-row"><span class="t-name">Mitsui Garden Ginza Premier</span><span class="t-nights">4 notti</span><span class="t-price">€1.500</span></div>
+        <div class="totals-row"><span class="t-name">Nananohi Machiya Takayama</span><span class="t-nights">1 notte</span><span class="t-price approx">~€600</span></div>
+        <div class="totals-row"><span class="t-name">Hyatt Centric Kanazawa</span><span class="t-nights">2 notti</span><span class="t-price approx">~€640</span></div>
+        <div class="totals-row"><span class="t-name">Nohga Hotel Kiyomizu Kyoto</span><span class="t-nights">4 notti</span><span class="t-price approx">~€1.240</span></div>
+        <div class="totals-row"><span class="t-name">Monjusou Shourotei Amanohashidate</span><span class="t-nights">1 notte</span><span class="t-price approx">~€400</span></div>
+        <div class="totals-row"><span class="t-name">Conrad Osaka</span><span class="t-nights">1 notte</span><span class="t-price approx">~€650</span></div>
+        <div class="totals-row"><span class="t-name">Ryokan Iwaso Miyajima</span><span class="t-nights">1 notte</span><span class="t-price">€950</span></div>
+        <div class="totals-row"><span class="t-name">Naoshima Ryokan Roka</span><span class="t-nights">1 notte</span><span class="t-price approx">~€650</span></div>
+        <div class="totals-row"><span class="t-name">TSUKI Tokyo Hotel</span><span class="t-nights">1 notte</span><span class="t-price">€340</span></div>
+        <div class="totals-sum">
+          <span class="sum-label">Totale Hotel · 16 notti</span>
+          <span class="sum-amount">~€6.590</span>
+        </div>
+      </div>
+
+      <!-- RISTORANTI -->
+      <div class="totals-block">
+        <div class="totals-block-title">🍽️ Ristoranti · stima per 8 persone</div>
+        <div class="totals-row"><span class="t-name">Ginza Kagari (ramen)</span><span class="t-nights">8 pers</span><span class="t-price approx">~€120</span></div>
+        <div class="totals-row"><span class="t-name">Tempura Fukamachi ⭐</span><span class="t-nights">8 pers</span><span class="t-price approx">~€800–1.120</span></div>
+        <div class="totals-row"><span class="t-name">Udatsu Sushi ⭐</span><span class="t-nights">8 pers</span><span class="t-price approx">~€560–1.040</span></div>
+        <div class="totals-row"><span class="t-name">Ushigoro Ginza (wagyu)</span><span class="t-nights">8 pers</span><span class="t-price approx">~€800-1.760</span></div>
+        <div class="totals-row"><span class="t-name">Kyoya Takayama</span><span class="t-nights">8 pers</span><span class="t-price approx">~€400</span></div>
+        <div class="totals-row"><span class="t-name">Fuwari + Kokochiya + Gion Karyo</span><span class="t-nights">8 pers</span><span class="t-price approx">~€1.440</span></div>
+        <div class="totals-row"><span class="t-name">Tempura Yoshikawa + Kikunoi ⭐⭐⭐</span><span class="t-nights">8 pers</span><span class="t-price approx">~€2.000-3.760</span></div>
+        <div class="totals-row"><span class="t-name">Kaiseki Monjusou + Iwaso</span><span class="t-nights">8 pers</span><span class="t-price approx">inclusa</span></div>
+        <div class="totals-row"><span class="t-name">Mizuno (okonomiyaki)</span><span class="t-nights">8 pers</span><span class="t-price approx">~€110</span></div>
+        <div class="totals-row"><span class="t-name">Florilège ⭐⭐ + Green Star</span><span class="t-nights">8 pers</span><span class="t-price approx">~€640-960</span></div>
+        <div class="totals-sum">
+          <span class="sum-label">Totale Ristoranti · stima</span>
+          <span class="sum-amount">~€7-11k</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GRAND TOTAL -->
+    <div class="totals-grand">
+      <div>
+        <div class="totals-grand-label">Stima totale per 8 persone</div>
+        <div class="totals-grand-title">Hotel + Ristoranti (esclusi voli e trasporti)</div>
+      </div>
+      <div class="totals-grand-amount">~€13-18k</div>
+    </div>
+    <div class="totals-note">
+      💡 Tutti i prezzi sono <strong>indicativi</strong> e si riferiscono ad agosto 2025 · 2 camere doppie per l'hotel · 8 persone per i ristoranti.<br>
+      I prezzi degli hotel marcati con ~ possono variare significativamente in base alla disponibilità e al tipo di camera.<br>
+      I prezzi con kaiseki inclusa (Monjusou Shourotei, Ryokan Roka e Iwaso) comprendono cena e colazione per 2 persone per camera.
+    </div>
+  </div>
+</div>
+
+<!-- ===== RISORSE UTILI ===== -->
+<section class="resources-section" id="risorse">
+  <div class="resources-inner">
+
+    <div class="resources-header">
+      <div class="resources-header-label">Riferimenti</div>
+      <h2 class="resources-title">Link utili & App</h2>
+      <p class="resources-subtitle">Tutto quello che serve prenotare, scaricare e tenere a portata di mano prima di partire.</p>
+    </div>
+
+    <!-- TRASPORTI -->
+    <div class="res-block">
+      <div class="res-block-title">🚄 Trasporti — Prenotazioni</div>
+      <div class="res-grid">
+
+        <a href="https://www.jrailpass.com/" target="_blank" class="res-card">
+          <div class="res-card-icon">🎫</div>
+          <div class="res-card-body">
+            <div class="res-card-name">JR Pass</div>
+            <div class="res-card-desc">Il pass ferroviario per stranieri. Copre Shinkansen, N'EX, traghetto Miyajima. Acquistare prima di partire dall'Italia — online o in agenzia.</div>
+            <div class="res-card-url">jrailpass.com</div>
+          </div>
+        </a>
+
+        <a href="https://www.jreast.co.jp/e/trainreservation/" target="_blank" class="res-card">
+          <div class="res-card-icon">🚅</div>
+          <div class="res-card-body">
+            <div class="res-card-name">JR East — Prenotazione posti Shinkansen</div>
+            <div class="res-card-desc">Prenotare i posti assegnati sullo Shinkansen (obbligatorio in periodo Obon, 13–18 agosto). Con JR Pass la prenotazione del posto è gratuita.</div>
+            <div class="res-card-url">jreast.co.jp</div>
+          </div>
+        </a>
+
+        <a href="https://www.nouhibus.co.jp/en/" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🚌</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Nohi Bus ⚠️ Urgente</div>
+            <div class="res-card-desc">Bus Takayama → Shirakawa-go → Kanazawa (8 agosto). In agosto sold out settimane prima. Prenotare subito online.</div>
+            <div class="res-card-url">nouhibus.co.jp/en</div>
+          </div>
+        </a>
+
+        <a href="https://www.limousinebus.co.jp/en/" target="_blank" class="res-card">
+          <div class="res-card-icon">🚐</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Airport Limousine Bus</div>
+            <div class="res-card-desc">Bus diretto Narita/Haneda → Ginza/hotel. Comodo con bagagli, ~¥1.500. Prenotare per il rientro del 19 agosto se si preferisce al treno.</div>
+            <div class="res-card-url">limousinebus.co.jp/en</div>
+          </div>
+        </a>
+
+        <a href="https://tyo-nrt.com/en/" target="_blank" class="res-card">
+          <div class="res-card-icon">🚍</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Access Narita Bus</div>
+            <div class="res-card-desc">Alternativa economica al treno: bus Narita → Tokyo Station/Ginza ~¥1.000, ogni 20 min. Nessuna prenotazione necessaria.</div>
+            <div class="res-card-url">tyo-nrt.com/en</div>
+          </div>
+        </a>
+
+        <a href="https://www.nearme.jp/en/" target="_blank" class="res-card">
+          <div class="res-card-icon">🚖</div>
+          <div class="res-card-body">
+            <div class="res-card-name">NearMe — Taxi condiviso aeroporto</div>
+            <div class="res-card-desc">Taxi privato condiviso da/per Narita. Prenotare in anticipo. Per 8 persone (2 taxi) ~€80/taxi. Perfetto all'arrivo con bagagli.</div>
+            <div class="res-card-url">nearme.jp/en</div>
+          </div>
+        </a>
+
+        <a href="https://www.busnavi-japan.com/free/" target="_blank" class="res-card">
+          <div class="res-card-icon">🛳️</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Ferries Naoshima / Miyajima</div>
+            <div class="res-card-desc">Traghetti Uno–Naoshima (¥300) e Miyajimaguchi–Miyajima (¥200, gratis con JR Pass). Frequenza ogni 15–60 min. Nessuna prenotazione necessaria.</div>
+            <div class="res-card-url">shodoshima-ferry.co.jp</div>
+          </div>
+        </a>
+
+        <a href="https://www.kyoto-access.com/eng/getting/ltd_exp.htm" target="_blank" class="res-card">
+          <div class="res-card-icon">🚃</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Limited Express Hashidate — Amanohashidate</div>
+            <div class="res-card-desc">Kyoto → Amanohashidate, 2h. Non coperto dal JR Pass standard (~¥4.200). Verificare se conviene il Sanin-Kinki Tsuusuru Pass.</div>
+            <div class="res-card-url">westjr.co.jp</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- RISTORANTI -->
+    <div class="res-block">
+      <div class="res-block-title">🍽️ Ristoranti — Prenotazioni</div>
+      <div class="res-grid">
+
+        <a href="https://myconciergejapan.com/restaurants/tempura-kondo/" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🍤</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Tempura Kondo ⚠️</div>
+            <div class="res-card-desc">Prenotazione solo via My Concierge Japan (in inglese). 2 stelle Michelin, pochissimi posti. Prenotare appena possibile.</div>
+            <div class="res-card-url">myconciergejapan.com</div>
+          </div>
+        </a>
+
+        <a href="https://omakase.in/en/r/gw622283" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🍣</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Sushi Hashimoto ⚠️</div>
+            <div class="res-card-desc">Prenotazione apre il <strong>5 luglio alle 12:00 JST</strong>. 8 posti totali, 1 stella Michelin. Collegarsi esattamente all'orario su omakase.in.</div>
+            <div class="res-card-url">omakase.in</div>
+          </div>
+        </a>
+
+        <a href="https://www.narisawa-yoshihiro.com/reservation" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🌿</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Narisawa ⚠️</div>
+            <div class="res-card-desc">Prenotazione apre il <strong>1° luglio alle 10:00 JST</strong>. 2 stelle + Green Star Michelin. Tra i 50 migliori ristoranti al mondo.</div>
+            <div class="res-card-url">narisawa-yoshihiro.com</div>
+          </div>
+        </a>
+
+        <a href="https://kikunoi.jp/en/" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🎋</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Kikunoi Kyoto ⚠️</div>
+            <div class="res-card-desc">3 stelle Michelin, kaiseki supremo. Prenotare via sito ufficiale o TableAll con 1–2 mesi di anticipo.</div>
+            <div class="res-card-url">kikunoi.jp/en</div>
+          </div>
+        </a>
+
+        <a href="https://www.tableall.com/" target="_blank" class="res-card">
+          <div class="res-card-icon">📋</div>
+          <div class="res-card-body">
+            <div class="res-card-name">TableAll</div>
+            <div class="res-card-desc">Piattaforma per prenotare i ristoranti più esclusivi del Giappone (Kikunoi, Narisawa, ecc.). Alternativa se il sito ufficiale è pieno.</div>
+            <div class="res-card-url">tableall.com</div>
+          </div>
+        </a>
+
+        <a href="https://omakaseje.com/" target="_blank" class="res-card">
+          <div class="res-card-icon">🥢</div>
+          <div class="res-card-body">
+            <div class="res-card-name">OMAKASE Japan</div>
+            <div class="res-card-desc">Partner ufficiale Michelin per prenotazioni in Giappone. Utile per ristoranti come Tempura Kondo e altri difficilmente prenotabili.</div>
+            <div class="res-card-url">omakaseje.com</div>
+          </div>
+        </a>
+
+        <a href="https://tabelog.com/en/" target="_blank" class="res-card">
+          <div class="res-card-icon">🗾</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Tabelog</div>
+            <div class="res-card-desc">Il TripAdvisor giapponese — il più usato dai locali. Prenotazioni online per migliaia di ristoranti (Ushigoro, Kokochiya, ecc.). Disponibile in inglese.</div>
+            <div class="res-card-url">tabelog.com/en</div>
+          </div>
+        </a>
+
+        <a href="https://guide.michelin.com/us/en/japan-region/restaurants" target="_blank" class="res-card">
+          <div class="res-card-icon">⭐</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Michelin Guide Giappone</div>
+            <div class="res-card-desc">Guida completa con prenotazione integrata. Utile per trovare alternative se i ristoranti principali sono esauriti.</div>
+            <div class="res-card-url">guide.michelin.com</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ATTRAZIONI -->
+    <div class="res-block">
+      <div class="res-block-title">🎟️ Attrazioni — Biglietti online</div>
+      <div class="res-grid">
+
+        <a href="https://benesse-artsite.jp/en/stay/" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🎨</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Benesse House Naoshima ⚠️</div>
+            <div class="res-card-desc">Hotel + museum. Sold out mesi prima. Prenotare appena possibile. Dal 1° agosto 2026 cambierà il sistema — verificare sul sito.</div>
+            <div class="res-card-url">benesse-artsite.jp/en/stay</div>
+          </div>
+        </a>
+
+        <a href="https://benesse-artsite.jp/en/art/chichu.html" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">🏛️</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Chichu Art Museum ⚠️</div>
+            <div class="res-card-desc">Biglietti SOLO online, spesso sold out settimane prima. ¥2.100. Prenotare contestualmente all'hotel Benesse.</div>
+            <div class="res-card-url">benesse-artsite.jp</div>
+          </div>
+        </a>
+
+        <a href="https://planets.teamlab.art/tokyo/" target="_blank" class="res-card res-card-urgent">
+          <div class="res-card-icon">💫</div>
+          <div class="res-card-body">
+            <div class="res-card-name">TeamLab Planets ⚠️</div>
+            <div class="res-card-desc">Biglietti online obbligatori, esauriti con 2–3 settimane di anticipo in agosto. ¥3.200. Prenotare subito.</div>
+            <div class="res-card-url">planets.teamlab.art/tokyo</div>
+          </div>
+        </a>
+
+        <a href="https://www.tokyo-skytree.jp/en/" target="_blank" class="res-card">
+          <div class="res-card-icon">🗼</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Tokyo Skytree</div>
+            <div class="res-card-desc">Prenotare online per evitare code enormi in agosto. Tembo Deck (350m) ¥2.100 + Tembo Galleria (450m) +¥1.000.</div>
+            <div class="res-card-url">tokyo-skytree.jp/en</div>
+          </div>
+        </a>
+
+        <a href="https://www.kanazawa21.jp/en" target="_blank" class="res-card">
+          <div class="res-card-icon">🏊</div>
+          <div class="res-card-body">
+            <div class="res-card-name">21st Century Museum Kanazawa</div>
+            <div class="res-card-desc">"Swimming Pool" di Leandro Erlich. Biglietti per la collezione permanente online — sold out frequentemente. ¥450.</div>
+            <div class="res-card-url">kanazawa21.jp/en</div>
+          </div>
+        </a>
+
+        <a href="https://tombori-cruise.com/en/" target="_blank" class="res-card">
+          <div class="res-card-icon">🚤</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Tombori River Cruise — Osaka</div>
+            <div class="res-card-desc">Crociera serale sul canale Dotonbori con vista sui neon. ¥1.000/persona. Nessuna prenotazione necessaria, pagamento all'imbarco.</div>
+            <div class="res-card-url">tombori-cruise.com/en</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- APP UTILI -->
+    <div class="res-block">
+      <div class="res-block-title">📱 App da scaricare prima di partire</div>
+      <div class="res-grid res-grid-apps">
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">🗺️</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Google Maps</div>
+            <div class="res-card-desc">Scaricare offline le mappe di Tokyo, Kyoto, Osaka, Kanazawa. Funziona perfettamente per trasporti pubblici giapponesi.</div>
+            <div class="app-badges">
+              <a href="https://apps.apple.com/app/google-maps/id585027354" target="_blank" class="app-badge">App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps" target="_blank" class="app-badge">Google Play</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">🚇</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Japan Official Travel App</div>
+            <div class="res-card-desc">App ufficiale del Japan Tourism Agency. Mappe offline, orari treni, traduttore, info su attrazioni. Funziona anche senza internet.</div>
+            <div class="app-badges">
+              <a href="https://apps.apple.com/app/japan-official-travel-app/id1091893082" target="_blank" class="app-badge">App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=jp.co.yahoo.android.travel" target="_blank" class="app-badge">Google Play</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">🚉</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Hyperdia / Navitime Japan</div>
+            <div class="res-card-desc">Il migliore per pianificare treni e metro in Giappone. Orari precisi, trasferimenti, prezzi. Alternativa: Google Maps funziona benissimo anche per questo.</div>
+            <div class="app-badges">
+              <a href="https://apps.apple.com/app/navitime-japan-travel/id480350222" target="_blank" class="app-badge">App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=com.navitime.inbound.transit" target="_blank" class="app-badge">Google Play</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">💳</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Suica / IC Card (mobile)</div>
+            <div class="res-card-desc">La tessera prepagata per metro, bus, convenience store e distributori. Su iPhone si aggiunge direttamente a Wallet. Su Android: app Suica. Caricare ¥5.000–¥10.000 all'arrivo.</div>
+            <div class="app-badges">
+              <a href="https://www.jreast.co.jp/e/mobilesuica/" target="_blank" class="app-badge">Info Suica</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">🈳</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Google Translate</div>
+            <div class="res-card-desc">Scaricare offline il pacchetto lingua giapponese. La modalità fotocamera traduce menu e cartelli in tempo reale — indispensabile. Funziona anche offline.</div>
+            <div class="app-badges">
+              <a href="https://apps.apple.com/app/google-translate/id414706506" target="_blank" class="app-badge">App Store</a>
+              <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.translate" target="_blank" class="app-badge">Google Play</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">💴</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Wise (ex TransferWise)</div>
+            <div class="res-card-desc">Carta di debito con cambio al tasso reale, senza commissioni nascoste. Perfetta per prelevare yen agli ATM giapponesi (7-Eleven e JP Post Bank li accettano).</div>
+            <div class="app-badges">
+              <a href="https://wise.com/" target="_blank" class="app-badge">wise.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">📦</div>
+          <div class="res-card-body">
+            <div class="res-card-name">Yamato Transport (Takkyubin)</div>
+            <div class="res-card-desc">Spedire i bagagli tra hotel (~¥1.500–¥2.500/valigia). Indispensabile per i giorni di spostamento. Si prenota direttamente dall'hotel o dai convenience store (7-Eleven, Lawson).</div>
+            <div class="app-badges">
+              <a href="https://www.kuronekoyamato.co.jp/ytc/en/" target="_blank" class="app-badge">kuronekoyamato.co.jp</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="res-card res-card-app">
+          <div class="res-card-icon">📶</div>
+          <div class="res-card-body">
+            <div class="res-card-name">eSIM / Pocket WiFi</div>
+            <div class="res-card-desc">Opzione 1: eSIM (Airalo, Ubigi) — acquistare prima della partenza, attivare all'arrivo. Opzione 2: Pocket WiFi in aeroporto (~¥700/giorno). Per 8 persone, 2–3 pocket WiFi coprono tutti.</div>
+            <div class="app-badges">
+              <a href="https://www.airalo.com/" target="_blank" class="app-badge">Airalo eSIM</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRATICHE -->
+    <div class="res-block">
+      <div class="res-block-title">📌 Informazioni pratiche</div>
+      <div class="res-grid res-grid-tips">
+
+        <div class="res-tip-card">
+          <div class="res-tip-icon">💰</div>
+          <div class="res-tip-title">Budget indicativo/persona</div>
+          <div class="res-tip-body">
+            <div class="res-tip-row"><span>JR Pass (21 giorni)</span><span>~€500</span></div>
+            <div class="res-tip-row"><span>Ristoranti Michelin (4 cene)</span><span>~€500</span></div>
+            <div class="res-tip-row"><span>Cene casual (13 sere)</span><span>~€250</span></div>
+            <div class="res-tip-row"><span>Trasporti locali (metro/bus)</span><span>~€80</span></div>
+            <div class="res-tip-row"><span>Biglietti attrazioni</span><span>~€80</span></div>
+            <div class="res-tip-row res-tip-total"><span>Totale stimato (esclusi hotel e voli)</span><span>~€1.400</span></div>
+          </div>
+        </div>
+
+        <div class="res-tip-card">
+          <div class="res-tip-icon">📅</div>
+          <div class="res-tip-title">Calendario prenotazioni urgenti</div>
+          <div class="res-tip-body">
+            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Benesse House, Chichu Museum, Tempura Kondo, Kikunoi, TeamLab</span></div>
+            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Bus Nohi (Takayama → Kanazawa)</span></div>
+            <div class="res-tip-row"><span>1° luglio ore 10:00 JST</span><span>Narisawa</span></div>
+            <div class="res-tip-row"><span>5 luglio ore 12:00 JST</span><span>Sushi Hashimoto</span></div>
+            <div class="res-tip-row"><span>Prima della partenza</span><span>JR Pass, eSIM/WiFi, posti Shinkansen Obon</span></div>
+          </div>
+        </div>
+
+        <div class="res-tip-card">
+          <div class="res-tip-icon">🌡️</div>
+          <div class="res-tip-title">Agosto in Giappone</div>
+          <div class="res-tip-body">
+            <div class="res-tip-row"><span>Temperatura</span><span>30–37°C con umidità alta</span></div>
+            <div class="res-tip-row"><span>Obon (ferragosto giapponese)</span><span>13–18 agosto — treni e attrazioni affollate</span></div>
+            <div class="res-tip-row"><span>Cosa portare</span><span>Crema solare SPF50, ventaglio, asciugamano raffreddante, bottiglietta d'acqua ricaricabile</span></div>
+            <div class="res-tip-row"><span>Contanti</span><span>Portare sempre yen — molti posti non accettano carte</span></div>
+            <div class="res-tip-row"><span>ATM</span><span>7-Eleven e JP Post Bank accettano carte straniere 24/7</span></div>
+          </div>
+        </div>
+
+        <div class="res-tip-card">
+          <div class="res-tip-icon">🎒</div>
+          <div class="res-tip-title">Cosa non dimenticare</div>
+          <div class="res-tip-body">
+            <div class="res-tip-row"><span>JR Pass (ordinare online)</span><span>✓ Prima della partenza</span></div>
+            <div class="res-tip-row"><span>Adattatore presa (tipo A, no terra)</span><span>✓ Il Giappone usa 100V/60Hz</span></div>
+            <div class="res-tip-row"><span>Scarpe comode e calzini puliti</span><span>✓ Si tolgono le scarpe in molti posti</span></div>
+            <div class="res-tip-row"><span>Piccolo zaino per le gite</span><span>✓ Takkyubin per i bagagli grandi</span></div>
+            <div class="res-tip-row"><span>Powerbank</span><span>✓ Giornate lunghe, poche prese</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Itinerario Giappone 3–19 Agosto 2025 · 8 persone · Generato con 💛 da Claude</p>
+  <p style="margin-top:8px">Tutti i prezzi in JPY sono indicativi (2025). Verificare orari e tariffe prima della partenza. <br><a href="https://www.jrailpass.com/" target="_blank">JR Pass ufficiale</a> · <a href="https://www.japan.travel/en/" target="_blank">Japan Tourism</a></p>
+</footer>
+
+
+<script>
+(function() {
+  // Load saved state
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem('jp_bookings') || '{}'); } catch(e) {}
+
+  function makeToggle(id, darkMode) {
+    var btn = document.createElement('button');
+    btn.className = 'book-toggle' + (saved[id] ? ' booked' : '');
+    btn.setAttribute('aria-label', 'Segna come prenotato');
+    btn.setAttribute('title', 'Clicca per segnare come prenotato');
+    btn.innerHTML = '<span class="check-circle"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="book-label">' + (saved[id] ? 'Prenotato' : 'Prenota') + '</span>';
+    btn.addEventListener('click', function() {
+      var isBooked = btn.classList.toggle('booked');
+      btn.querySelector('.book-label').textContent = isBooked ? 'Prenotato' : 'Prenota';
+      saved[id] = isBooked;
+      try { localStorage.setItem('jp_bookings', JSON.stringify(saved)); } catch(e) {}
+    });
+    return btn;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Hotel cards
+    document.querySelectorAll('.hotel-card').forEach(function(card, i) {
+      var nameEl = card.querySelector('.hotel-name');
+      var name = nameEl ? nameEl.textContent.trim() : 'hotel_' + i;
+      var id = 'hotel_' + name.replace(/\s+/g, '_').toLowerCase().slice(0, 30);
+      var wrapper = card.querySelector('div[style]');
+      if (wrapper) {
+        var toggle = makeToggle(id, false);
+        wrapper.insertBefore(toggle, wrapper.firstChild);
+      }
+    });
+
+    // Dinner cards
+    document.querySelectorAll('.dinner-card').forEach(function(card, i) {
+      var nameEl = card.querySelector('.dinner-name');
+      var name = nameEl ? nameEl.textContent.trim() : 'dinner_' + i;
+      var id = 'rest_' + name.replace(/\s+/g, '_').toLowerCase().slice(0, 30);
+      var actions = card.querySelector('.dinner-actions');
+      if (actions) {
+        var toggle = makeToggle(id, true);
+        actions.insertBefore(toggle, actions.firstChild);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
+
+
+<!-- ===== PAGINA ALTERNATIVE ===== -->
+<!-- Nota: le alternative sono in un modale/sezione separata -->
