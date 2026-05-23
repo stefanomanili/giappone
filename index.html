@@ -628,9 +628,161 @@
   .totals-grand-amount { font-family: 'Shippori Mincho', serif; font-size: 36px; font-weight: 700; color: var(--gold); }
   .totals-note { font-size: 12px; color: var(--muted); margin-top: 14px; line-height: 1.6; }
 
+  /* PHOTO GALLERY */
+  .photo-section {
+    margin-top: 28px;
+    border-top: 1px dashed var(--light);
+    padding-top: 20px;
+  }
+  .photo-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .photo-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    background: var(--paper);
+    border: 1.5px dashed #b0a090;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .photo-upload-btn:hover {
+    border-color: var(--gold);
+    color: var(--ink);
+    background: #fdf8f0;
+  }
+  .photo-count {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .photo-item {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: var(--light);
+    cursor: pointer;
+  }
+  .photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.2s;
+  }
+  .photo-item:hover img { transform: scale(1.04); }
+  .photo-delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.55);
+    color: white;
+    border: none;
+    font-size: 13px;
+    line-height: 22px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  .photo-item:hover .photo-delete { display: block; }
+  .photo-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.5));
+    color: white;
+    font-size: 10px;
+    padding: 12px 6px 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .photo-item:hover .photo-caption { opacity: 1; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 4px;
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 24px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .lightbox-caption {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .lightbox-nav:hover { background: rgba(255,255,255,0.3); }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+
+  @media (max-width: 600px) {
+    .photo-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  }
+
 </style>
 </head>
 <body>
+
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev">‹</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lightbox-caption" id="lb-caption"></div>
+  <button class="lightbox-nav lightbox-next" id="lb-next">›</button>
+</div>
 
 <div class="hero">
   <div class="hero-label">Itinerario Definitivo</div>
@@ -676,6 +828,15 @@
       <h2>Arrivo a Tokyo</h2>
       <div class="location">Tokyo · Ginza</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g3">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g3">📷 Aggiungi foto · 3 Agosto · Arrivo Tokyo</label>
+      <input type="file" id="upload-g3" accept="image/*" multiple style="display:none" data-day="g3">
+      <span class="photo-count" id="count-g3"></span>
+    </div>
+    <div class="photo-grid" id="grid-g3"></div>
   </div>
 
   <div class="section">
@@ -770,6 +931,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g4">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g4">📷 Aggiungi foto · 4 Agosto · Tokyo Classica</label>
+      <input type="file" id="upload-g4" accept="image/*" multiple style="display:none" data-day="g4">
+      <span class="photo-count" id="count-g4"></span>
+    </div>
+    <div class="photo-grid" id="grid-g4"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🗓️ Programma consigliato</div>
     <div class="transport-box">
@@ -838,6 +1008,15 @@
       <h2>Tokyo Moderna + Golden Gai</h2>
       <div class="location">Tokyo · Shibuya · Harajuku · Shinjuku</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g5">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g5">📷 Aggiungi foto · 5 Agosto · Tokyo Moderna</label>
+      <input type="file" id="upload-g5" accept="image/*" multiple style="display:none" data-day="g5">
+      <span class="photo-count" id="count-g5"></span>
+    </div>
+    <div class="photo-grid" id="grid-g5"></div>
   </div>
 
   <div class="section">
@@ -910,6 +1089,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g6">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g6">📷 Aggiungi foto · 6 Agosto · Nikko</label>
+      <input type="file" id="upload-g6" accept="image/*" multiple style="display:none" data-day="g6">
+      <span class="photo-count" id="count-g6"></span>
+    </div>
+    <div class="photo-grid" id="grid-g6"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🚄 Trasporti</div>
     <div class="transport-box">
@@ -978,6 +1166,15 @@
       <h2>Tokyo → Takayama</h2>
       <div class="location">Takayama · Gifu · Alpi Giapponesi</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g7">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g7">📷 Aggiungi foto · 7 Agosto · Takayama</label>
+      <input type="file" id="upload-g7" accept="image/*" multiple style="display:none" data-day="g7">
+      <span class="photo-count" id="count-g7"></span>
+    </div>
+    <div class="photo-grid" id="grid-g7"></div>
   </div>
 
   <div class="section">
@@ -1066,6 +1263,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g8">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g8">📷 Aggiungi foto · 8 Agosto · Shirakawa-go → Kanazawa</label>
+      <input type="file" id="upload-g8" accept="image/*" multiple style="display:none" data-day="g8">
+      <span class="photo-count" id="count-g8"></span>
+    </div>
+    <div class="photo-grid" id="grid-g8"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
@@ -1145,6 +1351,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g9">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g9">📷 Aggiungi foto · 9 Agosto · Kanazawa</label>
+      <input type="file" id="upload-g9" accept="image/*" multiple style="display:none" data-day="g9">
+      <span class="photo-count" id="count-g9"></span>
+    </div>
+    <div class="photo-grid" id="grid-g9"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🗓️ Programma consigliato</div>
     <div class="transport-box">
@@ -1211,6 +1426,15 @@
       <h2>Kanazawa → Kyoto</h2>
       <div class="location">Kyoto · Gion · Pontocho</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g10">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g10">📷 Aggiungi foto · 10 Agosto · Kyoto</label>
+      <input type="file" id="upload-g10" accept="image/*" multiple style="display:none" data-day="g10">
+      <span class="photo-count" id="count-g10"></span>
+    </div>
+    <div class="photo-grid" id="grid-g10"></div>
   </div>
 
   <div class="section">
@@ -1288,6 +1512,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g11">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g11">📷 Aggiungi foto · 11 Agosto · Fushimi Inari</label>
+      <input type="file" id="upload-g11" accept="image/*" multiple style="display:none" data-day="g11">
+      <span class="photo-count" id="count-g11"></span>
+    </div>
+    <div class="photo-grid" id="grid-g11"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🗓️ Programma consigliato</div>
     <div class="transport-box">
@@ -1349,6 +1582,15 @@
       <h2>Arashiyama</h2>
       <div class="location">Kyoto · Arashiyama</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g12">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g12">📷 Aggiungi foto · 12 Agosto · Arashiyama</label>
+      <input type="file" id="upload-g12" accept="image/*" multiple style="display:none" data-day="g12">
+      <span class="photo-count" id="count-g12"></span>
+    </div>
+    <div class="photo-grid" id="grid-g12"></div>
   </div>
 
   <div class="section">
@@ -1417,6 +1659,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g13">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g13">📷 Aggiungi foto · 13 Agosto · Nara</label>
+      <input type="file" id="upload-g13" accept="image/*" multiple style="display:none" data-day="g13">
+      <span class="photo-count" id="count-g13"></span>
+    </div>
+    <div class="photo-grid" id="grid-g13"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🚄 Trasporti</div>
     <div class="transport-box">
@@ -1483,6 +1734,15 @@
       <h2>Kyoto → Amanohashidate</h2>
       <div class="location">Amanohashidate · Kyoto del Mare</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g14">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g14">📷 Aggiungi foto · 14 Agosto · Amanohashidate</label>
+      <input type="file" id="upload-g14" accept="image/*" multiple style="display:none" data-day="g14">
+      <span class="photo-count" id="count-g14"></span>
+    </div>
+    <div class="photo-grid" id="grid-g14"></div>
   </div>
 
   <div class="section">
@@ -1556,6 +1816,15 @@
       <h2>Amanohashidate → Osaka</h2>
       <div class="location">Osaka · Dotonbori · Namba</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g15">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g15">📷 Aggiungi foto · 15 Agosto · Osaka</label>
+      <input type="file" id="upload-g15" accept="image/*" multiple style="display:none" data-day="g15">
+      <span class="photo-count" id="count-g15"></span>
+    </div>
+    <div class="photo-grid" id="grid-g15"></div>
   </div>
 
   <div class="section">
@@ -1634,6 +1903,15 @@
       <h2>Osaka → Miyajima</h2>
       <div class="location">Miyajima · Itsukushima Shrine · Hiroshima</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g16">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g16">📷 Aggiungi foto · 16 Agosto · Miyajima</label>
+      <input type="file" id="upload-g16" accept="image/*" multiple style="display:none" data-day="g16">
+      <span class="photo-count" id="count-g16"></span>
+    </div>
+    <div class="photo-grid" id="grid-g16"></div>
   </div>
 
   <div class="section">
@@ -1721,6 +1999,15 @@
       <h2>Miyajima → Naoshima</h2>
       <div class="location">Naoshima · Isola d'Arte · Mar Interno di Seto</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g17">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g17">📷 Aggiungi foto · 17 Agosto · Naoshima</label>
+      <input type="file" id="upload-g17" accept="image/*" multiple style="display:none" data-day="g17">
+      <span class="photo-count" id="count-g17"></span>
+    </div>
+    <div class="photo-grid" id="grid-g17"></div>
   </div>
 
   <div class="section">
@@ -1813,6 +2100,15 @@
     </div>
   </div>
 
+  <div class="photo-section" id="photos-g18">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g18">📷 Aggiungi foto · 18 Agosto · Tokyo finale</label>
+      <input type="file" id="upload-g18" accept="image/*" multiple style="display:none" data-day="g18">
+      <span class="photo-count" id="count-g18"></span>
+    </div>
+    <div class="photo-grid" id="grid-g18"></div>
+  </div>
+
   <div class="section">
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
@@ -1889,6 +2185,15 @@
       <h2>Ultimo giorno + Partenza</h2>
       <div class="location">Tokyo · TeamLab · Daikanyama · Narita</div>
     </div>
+  </div>
+
+  <div class="photo-section" id="photos-g19">
+    <div class="photo-bar">
+      <label class="photo-upload-btn" for="upload-g19">📷 Aggiungi foto · 19 Agosto · Partenza</label>
+      <input type="file" id="upload-g19" accept="image/*" multiple style="display:none" data-day="g19">
+      <span class="photo-count" id="count-g19"></span>
+    </div>
+    <div class="photo-grid" id="grid-g19"></div>
   </div>
 
   <div class="section">
@@ -2448,6 +2753,173 @@
       }
     });
   });
+})();
+</script>
+
+
+<script>
+(function() {
+  // Shared storage key prefix
+  var PREFIX = 'jp25_photo_';
+  // Max size per photo (compress if larger): 200KB in base64
+  var MAX_B64 = 200 * 1024;
+
+  // ── Compress image to base64 ──────────────────────────────
+  function compressImage(file, callback) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var img = new Image();
+      img.onload = function() {
+        var MAX_DIM = 1200;
+        var w = img.width, h = img.height;
+        if (w > MAX_DIM || h > MAX_DIM) {
+          if (w > h) { h = Math.round(h * MAX_DIM / w); w = MAX_DIM; }
+          else       { w = Math.round(w * MAX_DIM / h); h = MAX_DIM; }
+        }
+        var canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        var quality = 0.82;
+        var b64 = canvas.toDataURL('image/jpeg', quality);
+        // If still too large, reduce quality
+        while (b64.length > MAX_B64 && quality > 0.3) {
+          quality -= 0.1;
+          b64 = canvas.toDataURL('image/jpeg', quality);
+        }
+        callback(b64, file.name);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // ── Storage helpers ───────────────────────────────────────
+  function loadPhotos(day) {
+    try {
+      return JSON.parse(localStorage.getItem(PREFIX + day) || '[]');
+    } catch(e) { return []; }
+  }
+  function savePhotos(day, photos) {
+    try {
+      localStorage.setItem(PREFIX + day, JSON.stringify(photos));
+    } catch(e) {
+      alert('Spazio esaurito. Prova a eliminare alcune foto.');
+    }
+  }
+
+  // ── Lightbox ──────────────────────────────────────────────
+  var lbEl   = document.getElementById('lightbox');
+  var lbImg  = document.getElementById('lb-img');
+  var lbCap  = document.getElementById('lb-caption');
+  var lbClose= document.getElementById('lb-close');
+  var lbPrev = document.getElementById('lb-prev');
+  var lbNext = document.getElementById('lb-next');
+  var lbPhotos = [], lbIndex = 0;
+
+  function openLightbox(photos, index) {
+    lbPhotos = photos; lbIndex = index;
+    showLightboxPhoto();
+    lbEl.classList.add('open');
+  }
+  function showLightboxPhoto() {
+    var p = lbPhotos[lbIndex];
+    lbImg.src = p.src;
+    lbCap.textContent = p.name + ' · ' + (lbIndex+1) + '/' + lbPhotos.length;
+    lbPrev.style.display = lbPhotos.length > 1 ? '' : 'none';
+    lbNext.style.display = lbPhotos.length > 1 ? '' : 'none';
+  }
+  lbClose.onclick = function() { lbEl.classList.remove('open'); };
+  lbEl.onclick = function(e) { if (e.target === lbEl) lbEl.classList.remove('open'); };
+  lbPrev.onclick = function(e) {
+    e.stopPropagation();
+    lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+    showLightboxPhoto();
+  };
+  lbNext.onclick = function(e) {
+    e.stopPropagation();
+    lbIndex = (lbIndex + 1) % lbPhotos.length;
+    showLightboxPhoto();
+  };
+  document.addEventListener('keydown', function(e) {
+    if (!lbEl.classList.contains('open')) return;
+    if (e.key === 'Escape') lbEl.classList.remove('open');
+    if (e.key === 'ArrowLeft')  { lbIndex = (lbIndex-1+lbPhotos.length)%lbPhotos.length; showLightboxPhoto(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex+1)%lbPhotos.length; showLightboxPhoto(); }
+  });
+
+  // ── Render grid for a day ─────────────────────────────────
+  function renderGrid(day) {
+    var photos = loadPhotos(day);
+    var grid  = document.getElementById('grid-' + day);
+    var count = document.getElementById('count-' + day);
+    if (!grid) return;
+    grid.innerHTML = '';
+    count.textContent = photos.length ? photos.length + ' foto' : '';
+
+    photos.forEach(function(p, i) {
+      var item = document.createElement('div');
+      item.className = 'photo-item';
+
+      var img = document.createElement('img');
+      img.src = p.src;
+      img.alt = p.name;
+      img.onclick = function() { openLightbox(photos, i); };
+
+      var cap = document.createElement('div');
+      cap.className = 'photo-caption';
+      cap.textContent = p.name;
+
+      var del = document.createElement('button');
+      del.className = 'photo-delete';
+      del.textContent = '✕';
+      del.title = 'Elimina foto';
+      del.onclick = function(e) {
+        e.stopPropagation();
+        if (confirm('Eliminare questa foto per tutti?')) {
+          var arr = loadPhotos(day);
+          arr.splice(i, 1);
+          savePhotos(day, arr);
+          renderGrid(day);
+        }
+      };
+
+      item.appendChild(img);
+      item.appendChild(cap);
+      item.appendChild(del);
+      grid.appendChild(item);
+    });
+  }
+
+  // ── Wire up file inputs ───────────────────────────────────
+  function initDay(day) {
+    renderGrid(day);
+    var input = document.getElementById('upload-' + day);
+    if (!input) return;
+    input.addEventListener('change', function() {
+      var files = Array.from(input.files);
+      var photos = loadPhotos(day);
+      var processed = 0;
+      if (!files.length) return;
+      files.forEach(function(file) {
+        compressImage(file, function(b64, name) {
+          photos.push({ src: b64, name: name, ts: Date.now() });
+          processed++;
+          if (processed === files.length) {
+            savePhotos(day, photos);
+            renderGrid(day);
+          }
+        });
+      });
+      input.value = ''; // reset so same file can be re-added
+    });
+  }
+
+  // ── Init all days on DOMContentLoaded ─────────────────────
+  var days = ['g3','g4','g5','g6','g7','g8','g9','g10','g11','g12','g13','g14','g15','g16','g17','g18','g19'];
+  document.addEventListener('DOMContentLoaded', function() {
+    days.forEach(function(day) { initDay(day); });
+  });
+
 })();
 </script>
 
