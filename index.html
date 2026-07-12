@@ -771,6 +771,25 @@
     .photo-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
   }
 
+  /* BUS BOOKED BADGE */
+  .bus-booked {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #e8f5e9;
+    border: 1px solid #2d7a4a44;
+    color: #2d7a4a;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+
 </style>
 </head>
 <body>
@@ -795,7 +814,7 @@
 </div>
 
 <div class="alert">
-  <strong>⚠️ Prenotazioni urgenti:</strong> <strong>Sushidan</strong> prenota su Tablecheck — prima possibile. <strong>Florilège</strong> prenota via TableAll — molto più accessibile. <strong>Kyourakutei</strong> prenota via byFood o telefono. <strong>MY LODGE Naoshima</strong> prenota su Booking.com — in agosto esaurisce velocemente.
+  <strong>⚠️ Prenotazioni urgenti:</strong> <strong>Sushidan</strong> prenota su Tablecheck — prima possibile. <strong>Florilège</strong> prenota via TableAll — molto più accessibile. <strong>Kyourakutei</strong> prenota via byFood o telefono.
 </div>
 
 <nav class="nav-strip">
@@ -906,18 +925,18 @@
     <div class="section-label">🍜 Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Ramen · Michelin Guide</div>
-        <div class="dinner-name">Ginza Kagari</div>
-        <span class="price-pill">~€15 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Tori Paitan (ramen crema di pollo) in un vicolo nascosto di Ginza. Solo 8 posti al bancone. Niente prenotazioni — arrivare alle 17:30 per la coda serale. Orari: 11:00–15:00 e 17:30–22:00. Solo contanti. ~¥1.900/persona.</div>
+        <div class="dinner-type">Izakaya alta cucina · Prenotazione online · Ginza</div>
+        <div class="dinner-name">Ginza KAN</div>
+        <span class="price-pill">~€40–50 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Izakaya di alto livello per adulti nel cuore di Ginza. Chef usa ingredienti stagionali al massimo della freschezza con piatti creativi e servizio attento. Menu omakase di portate raffinate — leggero e perfetto dopo un lungo volo. Ambiente elegante ma non formale. Menu in inglese disponibile. Prenotare in anticipo online. Chiuso domenica.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://tabelog.com/en/tokyo/A1301/A130101/13230021/" class="btn btn-gold" target="_blank">📅 Tabelog</a>
-        <a href="https://maps.google.com/?q=Ginza+Kagari+6-4-12+Ginza+Tokyo" class="btn btn-ghost" target="_blank">📍 Maps</a>
-        <span style="font-size:11px;opacity:0.5;text-align:right">No prenotazione<br>Solo contanti</span>
+        <a href="https://jpneazy.com/restaurants/35423" class="btn btn-gold" target="_blank">📅 Prenota (JPNEAZY)</a>
+        <a href="https://tabelog.com/en/tokyo/A1301/A130101/13017664/" class="btn btn-ghost" target="_blank">🌐 Tabelog</a>
+        <a href="https://maps.google.com/?q=Ginza+KAN+Tokyo+izakaya" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
-    <div class="warning">⏱️ Coda prevista 30–60 min. Considerare alternativa: <strong>Ginza Kazami</strong> (ramen adiacente, ugualmente ottimo, meno fila).</div>
+    <div class="warning">💡 Prenotare con qualche settimana di anticipo — molto richiesto. Perfetto per il primo sera: cucina leggera, ambiente accogliente, menu in inglese.</div>
   </div>
 </div>
 
@@ -1292,11 +1311,11 @@
     <div class="section-label">🚌 Trasporti</div>
     <div class="transport-box">
       <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Miyagawa Morning Market: il mercato mattutino di Takayama (7:00–12:00). Frutta, verdura, mochi, artigianato.</span></div>
-      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc"><strong>Bus Takayama → Shirakawa-go</strong> (~50 min, ¥2.600). Prenotare in anticipo — in agosto sempre pieno. Operatore: Nohi Bus.</span></div>
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc"><strong>Bus Takayama → Shirakawa-go</strong> <span class="bus-booked">✓ Prenotato</span> (~50 min, ¥2.600). Operatore: Nohi Bus.</span></div>
       <div class="transport-row"><span class="transport-time">10:00</span><span class="transport-desc">Arrivo Shirakawa-go. ~2h30 di visita.</span></div>
-      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Bus Shirakawa-go → Kanazawa</strong> (~1h15, ¥2.500). Prenotare online su Nohi Bus.</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Bus Shirakawa-go → Kanazawa</strong> <span class="bus-booked">✓ Prenotato</span> (~1h15, ¥2.500). Operatore: Nohi Bus.</span></div>
       <div class="transport-row"><span class="transport-time">13:45</span><span class="transport-desc">Arrivo <strong>Kanazawa Station</strong>. Taxi o bus verso SOKI Kanazawa (~15 min, ¥1.000). Check-in dalle 15:00.</span></div>
-      <div class="transport-tip">💡 Prenotare ENTRAMBI i bus Nohi in anticipo su: <a href="https://www.nouhibus.co.jp/en/" target="_blank">nouhibus.co.jp/en</a>. In agosto esauriti settimane prima.</div>
+      <div class="transport-tip">✅ Entrambi i bus Nohi prenotati. Operatore: <a href="https://www.nouhibus.co.jp/en/" target="_blank">nouhibus.co.jp/en</a>.</div>
     </div>
   </div>
 
@@ -2023,7 +2042,7 @@
         <a href="https://maps.google.com/?q=MY+LODGE+Naoshima" class="btn btn-map" target="_blank">📍 Maps</a>
       </div>
     </div>
-    <div class="warning">💡 <strong>Alternativa scelta</strong> a Benesse House (frequentemente sold out, ~€900/notte). MY LODGE offre posizione centralissima vicino all'Ando Museum, ristorante in loco e atmosfera tranquilla — a prezzo molto più contenuto. Prenotare su Booking.com.</div>
+    <div class="warning">✅ <strong>Prenotato</strong> · MY LODGE — posizione centralissima vicino all'Ando Museum, ristorante in loco, atmosfera tranquilla.</div>
   </div>
 
   <div class="section">
@@ -2274,7 +2293,7 @@
       <!-- RISTORANTI -->
       <div class="totals-block">
         <div class="totals-block-title">🍽️ Ristoranti · per persona</div>
-        <div class="totals-row"><span class="t-name">Ginza Kagari (ramen)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€15</span></div>
+        <div class="totals-row"><span class="t-name">Ginza KAN (izakaya)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€40–50</span></div>
         <div class="totals-row"><span class="t-name">Kyourakutei (tempura+soba Bib Gourmand)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€16</span></div>
         <div class="totals-row"><span class="t-name">Sushidan (omakase chef Hakkoku)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€23–43</span></div>
         <div class="totals-row"><span class="t-name">Ushigoro Ginza (wagyu)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€100–220</span></div>
@@ -2286,7 +2305,7 @@
         <div class="totals-row"><span class="t-name">Florilège ⭐⭐ + Green Star</span><span class="t-nights">1 sera</span><span class="t-price approx">~€80–120</span></div>
         <div class="totals-sum">
           <span class="sum-label">Totale Ristoranti · per persona · stima</span>
-          <span class="sum-amount">~€640–1.150</span>
+          <span class="sum-amount">~€670–1.180</span>
         </div>
       </div>
 
@@ -2298,7 +2317,7 @@
         <div class="totals-grand-label">Stima totale per persona</div>
         <div class="totals-grand-title">Hotel + Ristoranti (esclusi voli e trasporti locali)</div>
       </div>
-      <div class="totals-grand-amount">€2.378–2.888</div>
+      <div class="totals-grand-amount">€2.408–2.918</div>
     </div>
     <div class="totals-note">
       💡 Tutti i prezzi sono <strong>per persona</strong>, calcolati su 8 persone in 4 camere doppie · Agosto 2025 · Valori indicativi.<br>
@@ -2342,11 +2361,11 @@
           </div>
         </a>
 
-        <a href="https://www.nouhibus.co.jp/en/" target="_blank" class="res-card res-card-urgent">
+        <a href="https://www.nouhibus.co.jp/en/" target="_blank" class="res-card">
           <div class="res-card-icon">🚌</div>
           <div class="res-card-body">
-            <div class="res-card-name">Nohi Bus ⚠️ Urgente</div>
-            <div class="res-card-desc">Bus Takayama → Shirakawa-go → Kanazawa (8 agosto). In agosto sold out settimane prima. Prenotare subito online.</div>
+            <div class="res-card-name">Nohi Bus ✓ Prenotato</div>
+            <div class="res-card-desc">Bus Takayama → Shirakawa-go → Kanazawa (8 agosto). ✓ Entrambe le tratte prenotate.</div>
             <div class="res-card-url">nouhibus.co.jp/en</div>
           </div>
         </a>
@@ -2664,7 +2683,7 @@
           <div class="res-tip-title">Calendario prenotazioni urgenti</div>
           <div class="res-tip-body">
             <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Benesse House, Chichu Museum, Tempura Kondo, Kikunoi, TeamLab</span></div>
-            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Bus Nohi (Takayama → Kanazawa)</span></div>
+            <div class="res-tip-row"><span style="color:#2d7a4a;font-weight:600">✓ Fatto</span><span>Bus Nohi (Takayama → Kanazawa)</span></div>
             <div class="res-tip-row"><span>1° luglio ore 10:00 JST</span><span>Narisawa</span></div>
             <div class="res-tip-row"><span>5 luglio ore 12:00 JST</span><span>Sushi Hashimoto</span></div>
             <div class="res-tip-row"><span>Prima della partenza</span><span>JR Pass, eSIM/WiFi, posti Shinkansen Obon</span></div>
