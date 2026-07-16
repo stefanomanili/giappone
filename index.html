@@ -776,9 +776,6 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    background: #e8f5e9;
-    border: 1px solid #2d7a4a44;
-    color: #2d7a4a;
     font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -788,6 +785,43 @@
     margin-left: 8px;
     vertical-align: middle;
     flex-shrink: 0;
+    background: #e8f5e9;
+    border: 1px solid #2d7a4a44;
+    color: #2d7a4a;
+  }
+  .badge-booked {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+    flex-shrink: 0;
+    background: #fff8e1;
+    border: 1px solid #f9a82566;
+    color: #e65100;
+  }
+  .badge-paid {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+    flex-shrink: 0;
+    background: #e8f5e9;
+    border: 1px solid #2d7a4a66;
+    color: #2d7a4a;
   }
 
 </style>
@@ -861,7 +895,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">Mitsui Garden Hotel Ginza Premier</div>
+        <div class="hotel-name">Mitsui Garden Hotel Ginza Premier <span class="badge-booked">✓ Prenotato</span></div>
         <span class="price-pill">€385 <span class="price-label">a persona · per notte (€1.540 tot. 4 notti)</span></span>
         <div class="hotel-note">8-13-1 Ginza, Chuo-ku · Check-in 15:00 · Check-out 12:00 · Lobby al 16° piano con vista panoramica</div>
       </div>
@@ -998,7 +1032,7 @@
     <div class="section-label">🍣 Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Sushi Omakase · Akasaka · <span class="bus-booked">✓ Prenotato</span></div>
+        <div class="dinner-type">Sushi Omakase · Akasaka · <span class="badge-booked">✓ Prenotato</span></div>
         <div class="dinner-name">Sushi Koshikawa</div>
         <span class="price-pill">~€130–180 <span class="price-label">a persona</span></span>
         <div class="dinner-note">Counter di 14 posti nel cuore di Akasaka. Chef seleziona il miglior pescato stagionale dal mercato Toyosu per un omakase di 20 portate di altissimo livello. Course da ¥19.800 / ¥22.000 / ¥27.000. Ambiente elegante e intimo, 1 min da Akasaka Station. Nessun profumo o fragranze forti. Supplemento servizio 10%.</div>
@@ -1038,6 +1072,7 @@
       <div class="transport-row"><span class="transport-time">07:00</span><span class="transport-desc">Colazione presto in hotel</span></div>
       <div class="transport-row"><span class="transport-time">07:30</span><span class="transport-desc">Partenza da <strong>Ueno Station</strong> → Nikko. Shinkansen Tohoku a Utsunomiya (50 min, coperto JR Pass) + JR Nikko Line (45 min). Totale ~1h45.</span></div>
       <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc">Arrivo a Nikko Station</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Pranzo da Shiori</strong> — cucina giapponese locale con ingredienti di Nikko (yuba, tofu, trota rossa). Aperto 11:30–14:00. Prenotare in anticipo consigliato. <a href="https://autoreserve.com/en/restaurants/4vi1mBpcvEAM4sNo8QqS" target="_blank" style="color:var(--gold)">📅 AutoReserve</a> · <a href="https://maps.google.com/?q=Shiori+restaurant+Nikko+957-2+Shimohatsuishimachi" target="_blank" style="color:var(--gold)">📍 Maps</a></span></div>
       <div class="transport-row"><span class="transport-time">16:30</span><span class="transport-desc">Partenza da Nikko per rientro a Tokyo</span></div>
       <div class="transport-row"><span class="transport-time">18:30</span><span class="transport-desc">Arrivo Tokyo</span></div>
       <div class="transport-tip">💡 Acquistare World Heritage Pass Nikko (¥1.000): copre l'ingresso a Toshogu e altri santuari del sito UNESCO.</div>
@@ -1078,7 +1113,7 @@
     <div class="section-label">🍖 Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Yakiniku · Wagyu con tartufo · Omotesando · <span class="bus-booked">✓ Prenotato</span></div>
+        <div class="dinner-type">Yakiniku · Wagyu con tartufo · Omotesando · <span class="badge-booked">✓ Prenotato</span></div>
         <div class="dinner-name">Yoroniku</div>
         <span class="price-pill">~€90–150 <span class="price-label">a persona</span></span>
         <div class="dinner-note">Il ristorante yakiniku più iconico di Tokyo — ha inventato la carne avvolta in onigiri e il Truffle Sukiyaki. Chef e DJ Vanne Kuwahara seleziona wagyu da Hiyama, fondata nel 1912. Intimate banquettes in un affascinante seminterrato sempre pieno di vip tokyoiti. Course da ¥14.900 (Truffle Sukiyaki Course) a ¥22.000. Tutto grigliato dal personale al tavolo — si mangia soltanto. Menu in inglese. 10 min a piedi da Omotesando Station.</div>
@@ -1115,7 +1150,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">Nananohi Machiya House</div>
+        <div class="hotel-name">Nananohi Machiya House <span class="badge-paid">✓ Pagato S</span></div>
         <span class="price-pill">€85 <span class="price-label">a persona · per notte</span></span>
         <div class="hotel-note">Casa tradizionale machiya · 4 camere per 8 ospiti · a 3 min dal centro storico · Hinoki cypress bath · Giardino interno con acero</div>
       </div>
@@ -1173,15 +1208,15 @@
     <div class="section-label">🍽️ Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Cucina Hida · Hida Wagyu · Locale tipico</div>
-        <div class="dinner-name">Kyoya</div>
-        <span class="price-pill">~€50 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Ristorante tradizionale nel cuore di Takayama, specializzato in Hida beef (wagyu locale delle Alpi) e cucina kaiseki di montagna. Atmosfera autentica in casa machiya. Prenota per tempo.</div>
+        <div class="dinner-type">Izakaya · Cucina Hida · Vicino alla Machiya · <span class="badge-booked">✓ Prenotato · 20:00</span></div>
+        <div class="dinner-name">Bien</div>
+        <span class="price-pill">~€20–35 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Casa colonica ristrutturata vicino al tempio Hida Kokubunji — 4 min a piedi dalla Nananohi Machiya House. Bancone lungo 8 metri con murales del Festival di Takayama. Concept che mescola l'izakaya con la kaiseki: Hida beef, sashimi freschissimo, tempura, steak di pickles e il piatto iconico "cetriolo fritto" — invenzione originale dello chef. Tavolo per gruppi da 10+ persone. Aperto fino alle 23:30.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://autoreserve.com/en/restaurants/yPXSRCiH9CD7rvG5NRft" class="btn btn-gold" target="_blank">🌐 Sito</a>
-        <a href="https://tabelog.com/en/gifu/A2104/A210401/21000305/" class="btn btn-ghost" target="_blank">📅 Prenota (Tabelog)</a>
-        <a href="https://maps.google.com/?q=Kyoya+restaurant+Takayama" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/gifu/A2104/A210401/21024161/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
+        <a href="https://autoreserve.com/en/restaurants/bien-takayama" class="btn btn-ghost" target="_blank">📅 AutoReserve</a>
+        <a href="https://maps.google.com/?q=Bien+restaurant+Takayama+Hida+Kokubunji" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
   </div>
@@ -1210,7 +1245,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">SOKI Kanazawa</div>
+        <div class="hotel-name">SOKI Kanazawa <span class="badge-booked">✓ Prenotato</span></div>
         <span class="price-pill">€193 <span class="price-label">a persona · per notte</span></span>
         <div class="hotel-note">Direttamente di fronte all'Omicho Market · Bagno pubblico Kakeyu tradizionale · Ristorante Sorasio con ingredienti locali · Design zen ispirato alla cultura Kaga · 15 min a piedi dalla stazione</div>
       </div>
@@ -1226,9 +1261,9 @@
     <div class="section-label">🚌 Trasporti</div>
     <div class="transport-box">
       <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Miyagawa Morning Market: il mercato mattutino di Takayama (7:00–12:00). Frutta, verdura, mochi, artigianato.</span></div>
-      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc"><strong>Bus Takayama → Shirakawa-go</strong> <span class="bus-booked">✓ Prenotato</span> (~50 min, ¥2.600). Operatore: Nohi Bus.</span></div>
+      <div class="transport-row"><span class="transport-time">09:00</span><span class="transport-desc"><strong>Bus Takayama → Shirakawa-go</strong> <span class="badge-booked">✓ Prenotato</span> (~50 min, ¥2.600). Operatore: Nohi Bus.</span></div>
       <div class="transport-row"><span class="transport-time">10:00</span><span class="transport-desc">Arrivo Shirakawa-go. ~2h30 di visita.</span></div>
-      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Bus Shirakawa-go → Kanazawa</strong> <span class="bus-booked">✓ Prenotato</span> (~1h15, ¥2.500). Operatore: Nohi Bus.</span></div>
+      <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Bus Shirakawa-go → Kanazawa</strong> <span class="badge-booked">✓ Prenotato</span> (~1h15, ¥2.500). Operatore: Nohi Bus.</span></div>
       <div class="transport-row"><span class="transport-time">13:45</span><span class="transport-desc">Arrivo <strong>Kanazawa Station</strong>. Taxi o bus verso SOKI Kanazawa (~15 min, ¥1.000). Check-in dalle 15:00.</span></div>
       <div class="transport-tip">✅ Entrambi i bus Nohi prenotati. Operatore: <a href="https://www.nouhibus.co.jp/en/" target="_blank">nouhibus.co.jp/en</a>.</div>
     </div>
@@ -1375,7 +1410,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">Nohga Hotel Kiyomizu Kyoto</div>
+        <div class="hotel-name">Nohga Hotel Kiyomizu Kyoto <span class="badge-booked">✓ Prenotato</span></div>
         <span class="price-pill">€349 <span class="price-label">a persona · per notte</span></span>
         <div class="hotel-note">Boutique hotel nel quartiere Gion/Higashiyama · Valutazione 9.8/10 — il più alto di Kyoto · A piedi da Kiyomizu-dera, Fushimi Inari, Hanamikoji · Ristorante con cucina creativa</div>
       </div>
@@ -1683,7 +1718,7 @@
     <div class="section-label">🏨 Ryokan</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">Hotel Kitanoya</div>
+        <div class="hotel-name">Hotel Kitanoya <span class="badge-booked">✓ Prenotato</span></div>
         <span class="price-pill">€155 <span class="price-label">a persona · kaiseki inclusa</span></span>
         <div class="hotel-note">Vista su Amanohashidate da tutte le camere · Tatami e futon o letto occidentale · Onsen con sorgente termale cloruro-sodica · Open-air bath privata prenotabile · Ristorante Gakatei con kaiseki di specialità locali · 6 min a piedi dalla stazione · 30 camere</div>
       </div>
@@ -1765,7 +1800,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">Zentis Osaka</div>
+        <div class="hotel-name">Zentis Osaka <span class="badge-booked">✓ Prenotato</span></div>
         <span class="price-pill">€130 <span class="price-label">a persona · per notte</span></span>
         <div class="hotel-note">Primo boutique hotel design di Osaka · Pavimenti in legno, scalinata in pietra, opere di artisti giapponesi locali · Ristorante ispirato alla cucina fusion · Terrazza panoramica · Zona Dojimahama · 242 camere</div>
       </div>
@@ -1852,7 +1887,7 @@
     <div class="section-label">🏨 Ryokan</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">Ryokan Iwaso — Miyajima</div>
+        <div class="hotel-name">Ryokan Iwaso — Miyajima <span class="badge-paid">✓ Pagato M</span></div>
         <span class="price-pill">€238 <span class="price-label">a persona · kaiseki inclusa</span></span>
         <div class="hotel-note">Dal 1854 · Unico ryokan Michelin di Hiroshima · A 3 min dal santuario Itsukushima · Onsen con vista foresta · Cervi selvatici nel giardino</div>
       </div>
@@ -1914,7 +1949,7 @@
     <div class="dinner-card">
       <div class="dinner-body">
         <div class="dinner-type">Kaiseki inclusa nel ryokan · Michelin</div>
-        <div class="dinner-name">Cena Kaiseki all'Iwaso</div>
+        <div class="dinner-name">Cena Kaiseki all'Iwaso <span class="badge-paid">✓ Pagato M</span></div>
         <span class="price-pill">inclusa <span class="price-label">nel ryokan</span></span>
         <div class="dinner-note">Il ryokan Iwaso è l'unico riconosciuto Michelin a Hiroshima. Kaiseki con specialità locali: ostrica di Hiroshima, momiji manju (dolci tipici di Miyajima), anago (anguilla di mare). Servita in camera con abiti yukata forniti.</div>
       </div>
@@ -1948,7 +1983,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">MY LODGE Naoshima</div>
+        <div class="hotel-name">MY LODGE Naoshima <span class="badge-booked">✓ Prenotato</span></div>
         <span class="price-pill">€119 <span class="price-label">a persona · per notte</span></span>
         <div class="hotel-note">A 4 min a piedi dall'Ando Museum e Naoshima Pavilion · Ristorante in loco · Giardino e terrazza · Camere spaziose con frigorifero e bollitore · Biciclette in noleggio · Ottima posizione centrale sull'isola</div>
       </div>
@@ -2047,7 +2082,7 @@
     <div class="section-label">🏨 Hotel</div>
     <div class="hotel-card">
       <div>
-        <div class="hotel-name">TSUKI Tokyo Hotel</div>
+        <div class="hotel-name">TSUKI Tokyo Hotel <span class="badge-paid">✓ Pagato S</span></div>
         <span class="price-pill">€84 <span class="price-label">a persona · per notte</span></span>
         <div class="hotel-note">Hotel design a Tsukiji · Camere con bagno in cipresso hinoki · Sake Bar TABLE TSUKI · 5 min da Tsukiji Market · Stile japonisant contemporaneo</div>
       </div>
@@ -2096,7 +2131,7 @@
     <div class="section-label">🍣 Cena finale</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Sushi Edomae · Sake Pairing · Hamamatsucho · <span class="bus-booked">✓ Prenotato</span></div>
+        <div class="dinner-type">Sushi Edomae · Sake Pairing · Hamamatsucho · <span class="badge-booked">✓ Prenotato</span></div>
         <div class="dinner-name">Sushi Hiroya</div>
         <span class="price-pill">~€60–100 <span class="price-label">a persona</span></span>
         <div class="dinner-note">Chef Motohashi — maestro di sushi Edomae e sake sommelier certificato con oltre 80 varietà selezionate. Ingredienti acquistati ogni mattina al mercato, serviti su ceramica Arita-yaki scelta con cura. Il sake pairing è il punto di forza unico: ogni nigiri abbinato al sake perfetto. Counter in un vicolo tranquillo di Hamamatsucho, vicino alla Tokyo Tower. Omakase course + small dishes + sake pairing. Due turni: 18:00–20:30. La cena di gala perfetta per chiudere il viaggio.</div>
@@ -2211,7 +2246,7 @@
         <div class="totals-row"><span class="t-name">Ginza KAN (izakaya)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€40–50</span></div>
         <div class="totals-row"><span class="t-name">Sushi Koshikawa (omakase Akasaka)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€130–180</span></div>
         <div class="totals-row"><span class="t-name">Yoroniku (wagyu + tartufo)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€90–150</span></div>
-        <div class="totals-row"><span class="t-name">Kyoya Takayama</span><span class="t-nights">1 sera</span><span class="t-price approx">~€50</span></div>
+        <div class="totals-row"><span class="t-name">Bien Takayama (izakaya)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€20–35</span></div>
         <div class="totals-row"><span class="t-name">Fuwari + Kokochiya + Gion Karyo</span><span class="t-nights">3 sere</span><span class="t-price approx">~€40–80 cad.</span></div>
         <div class="totals-row"><span class="t-name">Tempura Yoshikawa + Kikunoi ⭐⭐⭐</span><span class="t-nights">2 sere</span><span class="t-price approx">~€60 + ~€280–470</span></div>
         <div class="totals-row"><span class="t-name">Kaiseki Shourotei + Iwaso</span><span class="t-nights">2 sere</span><span class="t-price approx">inclusa</span></div>
