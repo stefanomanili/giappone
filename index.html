@@ -102,18 +102,35 @@
   .nav-strip::-webkit-scrollbar { display: none; }
   .nav-item {
     flex-shrink: 0;
-    padding: 14px 16px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
+    padding: 8px 14px 10px;
     cursor: pointer;
     border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
     transition: all 0.2s;
     white-space: nowrap;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
   }
-  .nav-item:hover { color: var(--ink); border-bottom-color: var(--gold); }
+  .nav-item:hover { border-bottom-color: var(--gold); }
+  .nav-item .nav-date {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+  .nav-item .nav-city {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
 
   /* MAIN */
   main { max-width: 900px; margin: 0 auto; padding: 0 40px 80px; }
@@ -824,6 +841,87 @@
     color: #2d7a4a;
   }
 
+  /* BUDGET TABLES */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .budget-table th {
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    white-space: nowrap;
+  }
+  .budget-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    vertical-align: middle;
+    line-height: 1.4;
+  }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:hover td { background: rgba(0,0,0,0.02); }
+  .td-city {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .td-date {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .td-name { font-weight: 500; color: var(--ink); }
+  .td-nights { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+  .td-price { font-weight: 700; color: var(--ink); white-space: nowrap; text-align: right; }
+  .td-price.approx { font-weight: 400; color: var(--muted); }
+  .td-check {
+    text-align: center;
+    white-space: nowrap;
+  }
+  .chk {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 12px;
+    border: 1.5px solid #d0c8b8;
+    background: white;
+    color: transparent;
+  }
+  .chk.yes-booked {
+    background: #fff8e1;
+    border-color: #f9a825;
+    color: #e65100;
+  }
+  .chk.yes-paid {
+    background: #e8f5e9;
+    border-color: #2d7a4a;
+    color: #2d7a4a;
+  }
+  .totals-table-sum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 2px solid var(--ink);
+  }
+  .totals-table-sum .sum-label { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .totals-table-sum .sum-amount { font-family: 'Shippori Mincho', serif; font-size: 24px; font-weight: 700; color: var(--ink); }
+
 </style>
 </head>
 <body>
@@ -852,22 +950,22 @@
 </div>
 
 <nav class="nav-strip">
-  <a href="#g4" class="nav-item">4 Ago</a>
-  <a href="#g5" class="nav-item">5 Ago</a>
-  <a href="#g6" class="nav-item">6 Ago</a>
-  <a href="#g7" class="nav-item">7 Ago</a>
-  <a href="#g8" class="nav-item">8 Ago</a>
-  <a href="#g9" class="nav-item">9 Ago</a>
-  <a href="#g10" class="nav-item">10 Ago</a>
-  <a href="#g11" class="nav-item">11 Ago</a>
-  <a href="#g12" class="nav-item">12 Ago</a>
-  <a href="#g13" class="nav-item">13 Ago</a>
-  <a href="#g14" class="nav-item">14 Ago</a>
-  <a href="#g15" class="nav-item">15 Ago</a>
-  <a href="#g16" class="nav-item">16 Ago</a>
-  <a href="#g17" class="nav-item">17 Ago</a>
-  <a href="#g18" class="nav-item">18 Ago</a>
-  <a href="#g19" class="nav-item">19 Ago</a>
+  <a href="#g4" class="nav-item"><span class="nav-date">4 Ago</span><span class="nav-city">Tokyo</span></a>
+  <a href="#g5" class="nav-item"><span class="nav-date">5 Ago</span><span class="nav-city">Tokyo</span></a>
+  <a href="#g6" class="nav-item"><span class="nav-date">6 Ago</span><span class="nav-city">Nikko<br>Tokyo</span></a>
+  <a href="#g7" class="nav-item"><span class="nav-date">7 Ago</span><span class="nav-city">Takayama</span></a>
+  <a href="#g8" class="nav-item"><span class="nav-date">8 Ago</span><span class="nav-city">Kanazawa</span></a>
+  <a href="#g9" class="nav-item"><span class="nav-date">9 Ago</span><span class="nav-city">Kanazawa</span></a>
+  <a href="#g10" class="nav-item"><span class="nav-date">10 Ago</span><span class="nav-city">Kyoto</span></a>
+  <a href="#g11" class="nav-item"><span class="nav-date">11 Ago</span><span class="nav-city">Kyoto</span></a>
+  <a href="#g12" class="nav-item"><span class="nav-date">12 Ago</span><span class="nav-city">Kyoto</span></a>
+  <a href="#g13" class="nav-item"><span class="nav-date">13 Ago</span><span class="nav-city">Nara<br>Kyoto</span></a>
+  <a href="#g14" class="nav-item"><span class="nav-date">14 Ago</span><span class="nav-city">Amanohashidate</span></a>
+  <a href="#g15" class="nav-item"><span class="nav-date">15 Ago</span><span class="nav-city">Osaka</span></a>
+  <a href="#g16" class="nav-item"><span class="nav-date">16 Ago</span><span class="nav-city">Miyajima</span></a>
+  <a href="#g17" class="nav-item"><span class="nav-date">17 Ago</span><span class="nav-city">Naoshima</span></a>
+  <a href="#g18" class="nav-item"><span class="nav-date">18 Ago</span><span class="nav-city">Tokyo</span></a>
+  <a href="#g19" class="nav-item"><span class="nav-date">19 Ago</span><span class="nav-city">Tokyo</span></a>
 </nav>
 
 <main>
@@ -1032,7 +1130,7 @@
     <div class="section-label">🍣 Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Sushi Omakase · Akasaka · <span class="badge-booked">✓ Prenotato</span></div>
+        <div class="dinner-type">Sushi Omakase · Akasaka · <span class="badge-booked">✓ Prenotato · 19:30</span></div>
         <div class="dinner-name">Sushi Koshikawa</div>
         <span class="price-pill">~€130–180 <span class="price-label">a persona</span></span>
         <div class="dinner-note">Counter di 14 posti nel cuore di Akasaka. Chef seleziona il miglior pescato stagionale dal mercato Toyosu per un omakase di 20 portate di altissimo livello. Course da ¥19.800 / ¥22.000 / ¥27.000. Ambiente elegante e intimo, 1 min da Akasaka Station. Nessun profumo o fragranze forti. Supplemento servizio 10%.</div>
@@ -1113,7 +1211,7 @@
     <div class="section-label">🍖 Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Yakiniku · Wagyu con tartufo · Omotesando · <span class="badge-booked">✓ Prenotato</span></div>
+        <div class="dinner-type">Yakiniku · Wagyu con tartufo · Omotesando · <span class="badge-booked">✓ Prenotato · 21:45</span></div>
         <div class="dinner-name">Yoroniku</div>
         <span class="price-pill">~€90–150 <span class="price-label">a persona</span></span>
         <div class="dinner-note">Il ristorante yakiniku più iconico di Tokyo — ha inventato la carne avvolta in onigiri e il Truffle Sukiyaki. Chef e DJ Vanne Kuwahara seleziona wagyu da Hiyama, fondata nel 1912. Intimate banquettes in un affascinante seminterrato sempre pieno di vip tokyoiti. Course da ¥14.900 (Truffle Sukiyaki Course) a ¥22.000. Tutto grigliato dal personale al tavolo — si mangia soltanto. Menu in inglese. 10 min a piedi da Omotesando Station.</div>
@@ -1295,15 +1393,15 @@
     <div class="section-label">🍽️ Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Cucina Kanazawa · Frutto di mare Hokuriku</div>
-        <div class="dinner-name">Fuwari</div>
-        <span class="price-pill">~€40 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Ristorante accogliente specializzato nel pescato fresco del Mar del Giappone (nodoguro, granchio Kano) e ingredienti Kaga. Atmosfera intima, ottimo per un primo assaggio di Kanazawa.</div>
+        <div class="dinner-type">Sushi &amp; Kaisen-don · Omicho Market · Kanazawa</div>
+        <div class="dinner-name">Iki-iki Tei</div>
+        <span class="price-pill">~€20–35 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Istituzione del mercato Omicho — direttamente di fronte al SOKI Hotel. Solo 10 posti al bancone. Sashimi e donburi con pesce freschissimo del Mar del Giappone: nodoguro, gamberi dolci, granchio. Il piatto signature "Ikiiki Tei World" è un donburi lussuoso con nodoguro e tonno. Menu con zuppa di pesce locale inclusa. Aperto anche a colazione (dalle 7:00). Prenotare in anticipo.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://autoreserve.com/en/restaurants/UQfA5ExLXUyc8enHyvC1" class="btn btn-gold" target="_blank">🌐 Sito</a>
-        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17008018/" class="btn btn-ghost" target="_blank">📅 Prenota (Tabelog)</a>
-        <a href="https://maps.google.com/?q=Fuwari+restaurant+Kanazawa" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17001392/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
+        <a href="https://autoreserve.com/en/restaurants/iki-iki-tei-kanazawa" class="btn btn-ghost" target="_blank">📅 AutoReserve</a>
+        <a href="https://maps.google.com/?q=Ikiiki+Tei+88+Aokusamachi+Kanazawa" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
     <div class="warning">💡 Dopo cena: bagno pubblico Kakeyu al SOKI — l'esperienza perfetta dopo una giornata intensa.</div>
@@ -1373,15 +1471,15 @@
     <div class="section-label">🍽️ Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Cucina Kaiseki Kanazawa</div>
-        <div class="dinner-name">Kokochiya</div>
-        <span class="price-pill">~€60 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Cucina kaiseki tradizionale di Kanazawa in ambiente caldo e intimo. Ingredienti stagionali Kaga: Kaga crab, nodoguro rockfish, Kaga vegetables. Prenotazione consigliata.</div>
+        <div class="dinner-type">Izakaya · Tabelog 100 Best West Japan 2025 · Seafood</div>
+        <div class="dinner-name">Itaru Honten</div>
+        <span class="price-pill">~€25–35 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">L'izakaya più amata di Kanazawa — Tabelog 100 Best Izakaya West Japan 2025. Frequentata soprattutto da locali. Il menu cambia ogni giorno con il pesce di stagione. Famosi per il secchio di sashimi in legno, il granchio ubriaco, il nodoguro semi-essiccato alla griglia e i gamberi bianchi di Kanazawa. Sake locale di Ishikawa in abbinamento. Counter con vista sui cuochi. ~¥4.000–¥5.000/persona. Chiuso la domenica. Prenotare 3 mesi prima nei weekend.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17002076/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
-        <a href="https://autoreserve.com/en/restaurants/kanazawa-kokochiya" class="btn btn-ghost" target="_blank">📅 Prenota (AutoReserve)</a>
-        <a href="https://maps.google.com/?q=Kokochiya+restaurant+Kanazawa" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17000009/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
+        <a href="https://autoreserve.com/en/restaurants/EpcCWSK9DnhGmnbVv2mu" class="btn btn-ghost" target="_blank">📅 AutoReserve</a>
+        <a href="https://maps.google.com/?q=Itaru+Honten+izakaya+Kanazawa+Nomachi" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
   </div>
@@ -1603,18 +1701,18 @@
     <div class="section-label">🍽️ Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Kaiseki · 3 Stelle Michelin · Esperienza suprema</div>
-        <div class="dinner-name">Kikunoi</div>
-        <span class="price-pill">~€280-450 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Una delle kaiseki più celebrate al mondo. Chef Murata Yoshihiro. La sede principale (honten) è a Higashiyama. Tre stelle Michelin. Prenotare con 1–2 mesi di anticipo. ~¥30.000–¥50.000/persona.</div>
+        <div class="dinner-type">Yakiniku Kyoto-style · Kuroge Wagyu · Gion dal 1965 · <span class="badge-booked">✓ Prenotato · 20:15</span></div>
+        <div class="dinner-name">Tendan Gion</div>
+        <span class="price-pill">~€40–70 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">L'istituzione della yakiniku a Kyoto dal 1965 — icona del quartiere Gion. Casa machiya ristrutturata con counter, sale private e tatami. Specialità: Kuroge Wagyu grigliato con "momi-dare" e "tsukedare" — lo stile yakiniku unico di Kyoto. Famosi anche per il yukke di manzo crudo, la jjigae con miso bianco di Kyoto e i noodles fatti a mano. 300 posti. 2 min da Gion-Shijo Station. Aperto lun–ven 17:00–23:00, sab–dom 11:30–23:00.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://kikunoi.jp/en/" class="btn btn-gold" target="_blank">🌐 Sito</a>
-        <a href="https://www.tableall.com/restaurant/127" class="btn btn-ghost" target="_blank">📅 Prenota (TableAll)</a>
-        <a href="https://maps.google.com/?q=Kikunoi+honten+Kyoto" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/kyoto/A2601/A260301/26001422/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
+        <a href="https://jpneazy.com/restaurants/10319" class="btn btn-ghost" target="_blank">📅 JPNEAZY</a>
+        <a href="https://maps.google.com/?q=Tendan+Gion+Honten+1-225+Miyagawasuji+Kyoto" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
-    <div class="warning">⚠️ Kikunoi è tra le prenotazioni più difficili di Kyoto. Prenotare via sito ufficiale o via <a href="https://www.tableall.com/restaurant/127" target="_blank">TableAll</a>.</div>
+    <div class="warning">✅ Già prenotato · 20:15. 2 min a piedi dal Nohga Hotel Kyoto — perfetto dopo la giornata ad Arashiyama.</div>
   </div>
 </div>
 
@@ -2131,7 +2229,7 @@
     <div class="section-label">🍣 Cena finale</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Sushi Edomae · Sake Pairing · Hamamatsucho · <span class="badge-booked">✓ Prenotato</span></div>
+        <div class="dinner-type">Sushi Edomae · Sake Pairing · Hamamatsucho · <span class="badge-booked">✓ Prenotato · 20:30</span></div>
         <div class="dinner-name">Sushi Hiroya</div>
         <span class="price-pill">~€60–100 <span class="price-label">a persona</span></span>
         <div class="dinner-note">Chef Motohashi — maestro di sushi Edomae e sake sommelier certificato con oltre 80 varietà selezionate. Ingredienti acquistati ogni mattina al mercato, serviti su ceramica Arita-yaki scelta con cura. Il sake pairing è il punto di forza unico: ogni nigiri abbinato al sake perfetto. Counter in un vicolo tranquillo di Hamamatsucho, vicino alla Tokyo Tower. Omakase course + small dishes + sake pairing. Due turni: 18:00–20:30. La cena di gala perfetta per chiudere il viaggio.</div>
@@ -2224,40 +2322,268 @@
 
       <!-- HOTEL -->
       <div class="totals-block">
-        <div class="totals-block-title">🏨 Hotel &amp; Ryokan · per persona (÷ 4 camere)</div>
-        <div class="totals-row"><span class="t-name">Mitsui Garden Ginza Premier</span><span class="t-nights">4 notti</span><span class="t-price">€385</span></div>
-        <div class="totals-row"><span class="t-name">Nananohi Machiya Takayama</span><span class="t-nights">1 notte</span><span class="t-price">€85</span></div>
-        <div class="totals-row"><span class="t-name">SOKI Kanazawa</span><span class="t-nights">2 notti</span><span class="t-price">€193</span></div>
-        <div class="totals-row"><span class="t-name">Nohga Hotel Kiyomizu Kyoto</span><span class="t-nights">4 notti</span><span class="t-price">€349</span></div>
-        <div class="totals-row"><span class="t-name">Hotel Kitanoya Amanohashidate</span><span class="t-nights">1 notte</span><span class="t-price">€155</span></div>
-        <div class="totals-row"><span class="t-name">Zentis Osaka</span><span class="t-nights">1 notte</span><span class="t-price">€130</span></div>
-        <div class="totals-row"><span class="t-name">Ryokan Iwaso Miyajima</span><span class="t-nights">1 notte</span><span class="t-price">€238</span></div>
-        <div class="totals-row"><span class="t-name">MY LODGE Naoshima</span><span class="t-nights">1 notte</span><span class="t-price">€119</span></div>
-        <div class="totals-row"><span class="t-name">TSUKI Tokyo Hotel</span><span class="t-nights">1 notte</span><span class="t-price">€84</span></div>
-        <div class="totals-sum">
+        <div class="totals-block-title">🏨 Hotel &amp; Ryokan · per persona</div>
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Città</th>
+              <th>Data</th>
+              <th>Hotel</th>
+              <th>Notti</th>
+              <th style="text-align:right">€/pers</th>
+              <th style="text-align:center">Prenotato</th>
+              <th style="text-align:center">Pagato</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="td-city">Tokyo</td>
+          <td class="td-date">4–7 Ago</td>
+          <td class="td-name">Mitsui Garden Hotel Ginza Premier</td>
+          <td class="td-nights">4 notti</td>
+          <td class="td-price">€385</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Takayama</td>
+          <td class="td-date">7–8 Ago</td>
+          <td class="td-name">Nananohi Machiya House</td>
+          <td class="td-nights">1 notte</td>
+          <td class="td-price">€85</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk yes-paid">S</span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kanazawa</td>
+          <td class="td-date">8–10 Ago</td>
+          <td class="td-name">SOKI Kanazawa</td>
+          <td class="td-nights">2 notti</td>
+          <td class="td-price">€193</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kyoto</td>
+          <td class="td-date">10–14 Ago</td>
+          <td class="td-name">Nohga Hotel Kiyomizu Kyoto</td>
+          <td class="td-nights">4 notti</td>
+          <td class="td-price">€349</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Amanohashidate</td>
+          <td class="td-date">14–15 Ago</td>
+          <td class="td-name">Hotel Kitanoya</td>
+          <td class="td-nights">1 notte</td>
+          <td class="td-price">€155</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Osaka</td>
+          <td class="td-date">15–16 Ago</td>
+          <td class="td-name">Zentis Osaka</td>
+          <td class="td-nights">1 notte</td>
+          <td class="td-price">€130</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Miyajima</td>
+          <td class="td-date">16–17 Ago</td>
+          <td class="td-name">Ryokan Iwaso</td>
+          <td class="td-nights">1 notte</td>
+          <td class="td-price">€238</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk yes-paid">M</span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Naoshima</td>
+          <td class="td-date">17–18 Ago</td>
+          <td class="td-name">MY LODGE Naoshima</td>
+          <td class="td-nights">1 notte</td>
+          <td class="td-price">€119</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Tokyo</td>
+          <td class="td-date">18–19 Ago</td>
+          <td class="td-name">TSUKI Tokyo Hotel</td>
+          <td class="td-nights">1 notte</td>
+          <td class="td-price">€84</td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+          <td class="td-check"><span class="chk yes-paid">S</span></td>
+        </tr>
+          </tbody>
+        </table>
+        <div class="totals-table-sum">
           <span class="sum-label">Totale Hotel · 16 notti · per persona</span>
           <span class="sum-amount">€1.738</span>
         </div>
       </div>
 
       <!-- RISTORANTI -->
+      <!-- RISTORANTI -->
       <div class="totals-block">
         <div class="totals-block-title">🍽️ Ristoranti · per persona</div>
-        <div class="totals-row"><span class="t-name">Ginza KAN (izakaya)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€40–50</span></div>
-        <div class="totals-row"><span class="t-name">Sushi Koshikawa (omakase Akasaka)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€130–180</span></div>
-        <div class="totals-row"><span class="t-name">Yoroniku (wagyu + tartufo)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€90–150</span></div>
-        <div class="totals-row"><span class="t-name">Bien Takayama (izakaya)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€20–35</span></div>
-        <div class="totals-row"><span class="t-name">Fuwari + Kokochiya + Gion Karyo</span><span class="t-nights">3 sere</span><span class="t-price approx">~€40–80 cad.</span></div>
-        <div class="totals-row"><span class="t-name">Tempura Yoshikawa + Kikunoi ⭐⭐⭐</span><span class="t-nights">2 sere</span><span class="t-price approx">~€60 + ~€280–470</span></div>
-        <div class="totals-row"><span class="t-name">Kaiseki Shourotei + Iwaso</span><span class="t-nights">2 sere</span><span class="t-price approx">inclusa</span></div>
-        <div class="totals-row"><span class="t-name">Mizuno (okonomiyaki)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€14</span></div>
-        <div class="totals-row"><span class="t-name">Sushi Hiroya (Edomae + sake pairing)</span><span class="t-nights">1 sera</span><span class="t-price approx">~€60–100</span></div>
-        <div class="totals-sum">
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Città</th>
+              <th>Data</th>
+              <th>Ristorante</th>
+              <th>Sera</th>
+              <th style="text-align:right">€/pers</th>
+              <th style="text-align:center">Prenotato</th>
+              <th style="text-align:center">Pagato</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="td-city">Tokyo</td>
+          <td class="td-date">4 Ago</td>
+          <td class="td-name">Ginza KAN</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€40–50</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Tokyo</td>
+          <td class="td-date">5 Ago</td>
+          <td class="td-name">Sushi Koshikawa</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€130–180</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 19:30</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Tokyo</td>
+          <td class="td-date">6 Ago</td>
+          <td class="td-name">Yoroniku</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€90–150</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 21:45</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Takayama</td>
+          <td class="td-date">7 Ago</td>
+          <td class="td-name">Bien</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€20–35</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 20:00</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kanazawa</td>
+          <td class="td-date">8 Ago</td>
+          <td class="td-name">Iki-iki Tei</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€20–35</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kanazawa</td>
+          <td class="td-date">9 Ago</td>
+          <td class="td-name">Itaru Honten</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€25–35</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kyoto</td>
+          <td class="td-date">10 Ago</td>
+          <td class="td-name">Gion Karyo</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€80</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kyoto</td>
+          <td class="td-date">11 Ago</td>
+          <td class="td-name">Tempura Yoshikawa</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€60</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kyoto</td>
+          <td class="td-date">12 Ago</td>
+          <td class="td-name">Tendan Gion</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€40–70</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 20:15</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Kyoto</td>
+          <td class="td-date">13 Ago</td>
+          <td class="td-name">Serata libera</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€30–50</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Amanohashidate</td>
+          <td class="td-date">14 Ago</td>
+          <td class="td-name">Kaiseki Kitanoya</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price">inclusa</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓</span></td>
+          <td class="td-check"><span class="chk yes-paid">✓</span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Osaka</td>
+          <td class="td-date">15 Ago</td>
+          <td class="td-name">Mizuno</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€14</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Miyajima</td>
+          <td class="td-date">16 Ago</td>
+          <td class="td-name">Kaiseki Iwaso</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price">inclusa</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓</span></td>
+          <td class="td-check"><span class="chk yes-paid">✓</span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Naoshima</td>
+          <td class="td-date">17 Ago</td>
+          <td class="td-name">Setouchi Sushi Nagi</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€40</td>
+          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-city">Tokyo</td>
+          <td class="td-date">18 Ago</td>
+          <td class="td-name">Sushi Hiroya</td>
+          <td class="td-nights">1 sera</td>
+          <td class="td-price approx">~€60–100</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 20:30</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+          </tbody>
+        </table>
+        <div class="totals-table-sum">
           <span class="sum-label">Totale Ristoranti · per persona · stima</span>
           <span class="sum-amount">~€742–1.075</span>
         </div>
       </div>
-
     </div>
 
     <!-- GRAND TOTAL -->
