@@ -387,72 +387,6 @@
     .dinner-actions { flex-direction: row; }
   }
 
-  /* BOOKING TOGGLE */
-  .book-toggle {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-    font-family: inherit;
-    flex-shrink: 0;
-    user-select: none;
-  }
-  .book-toggle .check-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #c8c0b0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    background: white;
-    flex-shrink: 0;
-  }
-  .book-toggle .check-circle svg {
-    opacity: 0;
-    transform: scale(0.5);
-    transition: all 0.2s ease;
-  }
-  .book-toggle.booked .check-circle {
-    background: #2d7a4a;
-    border-color: #2d7a4a;
-  }
-  .book-toggle.booked .check-circle svg {
-    opacity: 1;
-    transform: scale(1);
-  }
-  .book-toggle .book-label {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #a09080;
-    transition: color 0.2s;
-    white-space: nowrap;
-  }
-  .book-toggle.booked .book-label {
-    color: #2d7a4a;
-    font-weight: 600;
-  }
-  /* Dark version for dinner cards */
-  .dinner-actions .book-toggle .check-circle {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.3);
-  }
-  .dinner-actions .book-toggle.booked .check-circle {
-    background: #2d7a4a;
-    border-color: #4aaa6a;
-  }
-  .dinner-actions .book-toggle .book-label {
-    color: rgba(255,255,255,0.45);
-  }
-  .dinner-actions .book-toggle.booked .book-label {
-    color: #6adf8a;
-  }
-
   /* ===== RESOURCES SECTION ===== */
   .resources-section {
     background: var(--ink);
@@ -922,6 +856,38 @@
   .totals-table-sum .sum-label { font-size: 13px; font-weight: 600; color: var(--ink); }
   .totals-table-sum .sum-amount { font-family: 'Shippori Mincho', serif; font-size: 24px; font-weight: 700; color: var(--ink); }
 
+  /* ACCORDION DAY CARDS */
+  .day-card { cursor: default; }
+  .day-header {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+  }
+  .day-header::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: translateY(-60%) rotate(45deg);
+    transition: transform 0.25s ease;
+  }
+  .day-card.open .day-header::after {
+    transform: translateY(-30%) rotate(225deg);
+  }
+  .day-body {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+  }
+  .day-card.open .day-body {
+    max-height: 9999px;
+  }
+
 </style>
 </head>
 <body>
@@ -946,7 +912,7 @@
 </div>
 
 <div class="alert">
-  <strong>⚠️ Prenotazioni urgenti:</strong> <strong>Kyourakutei</strong> prenota via byFood o telefono.
+  <strong>⚠️ Prenotazioni urgenti:</strong> <strong>Kyourakutei</strong> prenota via byFood o telefono. · <strong>Chichu Art Museum</strong> (Naoshima, 17 ago) biglietti SOLO online — <a href="https://benesse-artsite.jp/en/art/chichu.html" target="_blank" style="color:var(--gold)">benesse-artsite.jp</a> · <strong>TeamLab Planets</strong> (19 ago) biglietti online obbligatori — <a href="https://planets.teamlab.art/tokyo/" target="_blank" style="color:var(--gold)">planets.teamlab.art</a> · <strong>Tokyo Skytree</strong> (5 ago) prenotare online per evitare code.
 </div>
 
 <nav class="nav-strip">
@@ -972,13 +938,14 @@
 
 <!-- ===== 3 AGOSTO ===== -->
 <div class="day-card" id="g4">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">4</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Arrivo a Tokyo</h2>
       <div class="location">Tokyo · Narita · Ginza</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g4">
     <div class="photo-bar">
@@ -1041,30 +1008,32 @@
     <div class="section-label">🍽️ Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Izakaya alta cucina · Prenotazione online · Ginza</div>
-        <div class="dinner-name">Ginza KAN</div>
-        <span class="price-pill">~€40–50 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Izakaya di alto livello nel cuore di Ginza. Chef usa ingredienti stagionali con piatti creativi e servizio attento. Menu omakase di portate raffinate — leggero e perfetto dopo un lungo volo. Ambiente elegante ma non formale. Menu in inglese disponibile. Chiuso domenica.</div>
+        <div class="dinner-type">Izakaya · Yakitori · Sotto i binari · Nessuna prenotazione</div>
+        <div class="dinner-name">Yurakucho — vicoli sotto i binari</div>
+        <span class="price-pill">~€10–15 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">La prima sera a Tokyo si celebra così: sotto i binari della Yamanote Line a Yurakucho, 8 min a piedi dall'hotel, decine di piccole izakaya fumose con banconi di legno, fumo di yakitori e salaryman giapponesi dopo il lavoro. Nessuna prenotazione, nessun menu in inglese — si indica col dito. Prendere due tavoli affiancati, ordinare yakitori, edamame, karaage e birra Sapporo. L'atmosfera più autentica di Tokyo per cominciare il viaggio. Costo totale per 8: ~€80–120.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://jpneazy.com/restaurants/35423" class="btn btn-gold" target="_blank">📅 Prenota (JPNEAZY)</a>
-        <a href="https://tabelog.com/en/tokyo/A1301/A130101/13017664/" class="btn btn-ghost" target="_blank">🌐 Tabelog</a>
-        <a href="https://maps.google.com/?q=Ginza+KAN+Tokyo+izakaya" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://maps.google.com/?q=Yurakucho+izakaya+under+tracks+Tokyo" class="btn btn-gold" target="_blank">📍 Yurakucho Maps</a>
+        <a href="https://maps.google.com/?q=Ginza+Kagari+ramen+6-4-12+Ginza+Tokyo" class="btn btn-ghost" target="_blank">📍 Kagari Ramen</a>
       </div>
     </div>
-    <div class="warning">💡 Prenotare con qualche settimana di anticipo. Perfetto per il primo sera: cucina leggera, menu in inglese, ambiente accogliente.</div>
+    <div class="warning">💡 Strategia consigliata: iniziare con yakitori e birra a Yurakucho (~18:30), poi chi vuole ancora mangiare fa la fila per il ramen Kagari a Ginza (arrivare alle 20:00, coda ~30 min). Totale serata: ~€15/persona.<br><br>
+    <strong>Piano B — se si preferisce sedersi con prenotazione:</strong> <a href="https://jpneazy.com/restaurants/35423" target="_blank" style="color:var(--gold)">Ginza KAN</a> — izakaya di alto livello, menu in inglese, ~€40–50/persona. Prenotare via JPNEAZY con qualche settimana di anticipo.</div>
+  </div>
   </div>
 </div>
 
 <!-- ===== 5 AGOSTO ===== -->
 <div class="day-card" id="g5">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">5</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Tokyo — Templi, Skytree & Shibuya</h2>
       <div class="location">Tokyo · Asakusa · Shibuya · Shinjuku</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g5">
     <div class="photo-bar">
@@ -1143,17 +1112,19 @@
     </div>
     <div class="warning">✅ Già prenotato. Akasaka si raggiunge facilmente da Ginza in metro (Ginza Line → Akasaka-mitsuke, 5 min).</div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 6 AGOSTO ===== -->
 <div class="day-card" id="g6">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">6</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Gita a Nikko</h2>
       <div class="location">Tokyo base · Nikko day trip</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g6">
     <div class="photo-bar">
@@ -1224,16 +1195,18 @@
     </div>
     <div class="warning">✅ Già prenotato. Attenzione: cancellazione entro 15 min dal ritardo comporta annullamento automatico della prenotazione.</div>
   </div>
+  </div>
 </div>
 
 <div class="day-card" id="g7">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">7</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Tokyo → Takayama</h2>
       <div class="location">Takayama · Gifu · Alpi Giapponesi</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g7">
     <div class="photo-bar">
@@ -1318,17 +1291,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 8 AGOSTO ===== -->
 <div class="day-card" id="g8">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">8</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Shirakawa-go → Kanazawa</h2>
       <div class="location">Shirakawa-go · Kanazawa · Ishikawa</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g8">
     <div class="photo-bar">
@@ -1406,17 +1381,19 @@
     </div>
     <div class="warning">💡 Dopo cena: bagno pubblico Kakeyu al SOKI — l'esperienza perfetta dopo una giornata intensa.</div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 9 AGOSTO ===== -->
 <div class="day-card" id="g9">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">9</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Kanazawa — giornata intera</h2>
       <div class="location">Kanazawa · Ishikawa</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g9">
     <div class="photo-bar">
@@ -1483,17 +1460,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 10 AGOSTO ===== -->
 <div class="day-card" id="g10">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">10</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Kanazawa → Kyoto</h2>
       <div class="location">Kyoto · Gion · Pontocho</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g10">
     <div class="photo-bar">
@@ -1567,17 +1546,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 11 AGOSTO ===== -->
 <div class="day-card" id="g11">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">11</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Fushimi Inari</h2>
       <div class="location">Kyoto · Fushimi</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g11">
     <div class="photo-bar">
@@ -1639,17 +1620,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 12 AGOSTO ===== -->
 <div class="day-card" id="g12">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">12</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Arashiyama</h2>
       <div class="location">Kyoto · Arashiyama</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g12">
     <div class="photo-bar">
@@ -1714,17 +1697,19 @@
     </div>
     <div class="warning">✅ Già prenotato · 20:15. 2 min a piedi dal Nohga Hotel Kyoto — perfetto dopo la giornata ad Arashiyama.</div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 13 AGOSTO ===== -->
 <div class="day-card" id="g13">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">13</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Gita a Nara</h2>
       <div class="location">Nara · Deer Park · Todai-ji</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g13">
     <div class="photo-bar">
@@ -1791,17 +1776,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 14 AGOSTO ===== -->
 <div class="day-card" id="g14">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">14</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Kyoto → Amanohashidate</h2>
       <div class="location">Amanohashidate · Kyoto del Mare</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g14">
     <div class="photo-bar">
@@ -1873,17 +1860,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 15 AGOSTO ===== -->
 <div class="day-card" id="g15">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">15</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Amanohashidate → Osaka</h2>
       <div class="location">Osaka · Dotonbori · Namba</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g15">
     <div class="photo-bar">
@@ -1960,17 +1949,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 16 AGOSTO ===== -->
 <div class="day-card" id="g16">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">16</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Osaka → Miyajima</h2>
       <div class="location">Miyajima · Itsukushima Shrine · Hiroshima</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g16">
     <div class="photo-bar">
@@ -2056,17 +2047,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 17 AGOSTO ===== -->
 <div class="day-card" id="g17">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">17</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Miyajima → Naoshima</h2>
       <div class="location">Naoshima · Isola d'Arte · Mar Interno di Seto</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g17">
     <div class="photo-bar">
@@ -2102,7 +2095,7 @@
       <div class="transport-row"><span class="transport-time">11:15</span><span class="transport-desc"><strong>Okayama → Uno</strong> JR Uno Line (1h, coperto JR Pass).</span></div>
       <div class="transport-row"><span class="transport-time">12:30</span><span class="transport-desc"><strong>Traghetto Uno → Naoshima (Miyanoura Port)</strong> ~20 min, ¥300. Frequenza: ogni ~1h.</span></div>
       <div class="transport-row"><span class="transport-time">13:00</span><span class="transport-desc">Arrivo Naoshima. MY LODGE a 15 min a piedi dal porto di Miyanoura o taxi (~¥800). Check-in dalle 15:00.</span></div>
-      <div class="transport-tip">💡 Naoshima si gira in bicicletta (noleggio ¥500 vicino al porto). Chichu Art Museum: biglietti SOLO online in anticipo — sold out frequentissimi! Il pomeriggio è perfetto per l'Art House Project nel villaggio.</div>
+      <div class="transport-tip">💡 Naoshima si gira in bicicletta (noleggio ¥500 vicino al porto). <strong>Chichu Art Museum: biglietti SOLO online — prenotare subito su <a href="https://benesse-artsite.jp/en/art/chichu.html" target="_blank" style="color:var(--gold)">benesse-artsite.jp</a></strong>. Il traghetto Uno→Naoshima non si prenota (acquisto al porto, ¥300).</div>
     </div>
   </div>
 
@@ -2155,17 +2148,19 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 18 AGOSTO ===== -->
 <div class="day-card" id="g18">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">18</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Naoshima → Tokyo — Ultima notte</h2>
       <div class="location">Tokyo · Ginza · Tsukiji</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g18">
     <div class="photo-bar">
@@ -2242,17 +2237,19 @@
     </div>
     <div class="warning">✅ Già prenotato. Hamamatsucho si raggiunge facilmente da Tsukiji (TSUKI Hotel) con la Toei Oedo Line in 5 min. Vicino alla Tokyo Tower — ottimo per una passeggiata notturna dopo cena.</div>
   </div>
+  </div>
 </div>
 
 <!-- ===== 19 AGOSTO ===== -->
 <div class="day-card" id="g19">
-  <div class="day-header">
+<div class="day-header">
     <div class="day-num"><span class="n">19</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Ultimo giorno + Partenza</h2>
       <div class="location">Tokyo · TeamLab · Daikanyama · Narita</div>
     </div>
   </div>
+  <div class="day-body">
 
   <div class="photo-section" id="photos-g19">
     <div class="photo-bar">
@@ -2307,6 +2304,7 @@
       <div class="transport-row"><span class="transport-time">18:00</span><span class="transport-desc">Arrivo Narita — check-in e sicurezza (2h prima consigliato)</span></div>
       <div class="transport-tip">💡 Opzione taxi privato da TSUKI verso Narita: ~¥25.000 (split 2 taxi per 8 persone = ~€80/taxi). Comoda con bagagli. Prenotare su <a href="https://www.nearme.jp/en/" target="_blank">NearMe</a> o tramite hotel.</div>
     </div>
+  </div>
   </div>
 </div>
 
@@ -2445,9 +2443,9 @@
         <tr>
           <td class="td-city">Tokyo</td>
           <td class="td-date">4 Ago</td>
-          <td class="td-name">Ginza KAN</td>
+          <td class="td-name">Yurakucho vicoli</td>
           <td class="td-nights">1 sera</td>
-          <td class="td-price approx">~€40–50</td>
+          <td class="td-price approx">~€10–15</td>
           <td class="td-check"><span class="chk"></span></td>
           <td class="td-check"><span class="chk"></span></td>
         </tr>
@@ -2600,6 +2598,165 @@
       Le kaiseki incluse (Hotel Kitanoya e Iwaso) comprendono cena e colazione — il costo è già assorbito nel prezzo camera.<br>
       <strong>Totale per 8 persone: ~€20.900–24.800</strong> (hotel ~€6.590 × non diviso + ristoranti ~€7.000–11.000 tot.).
     </div>
+  </div>
+</div>
+
+
+<!-- ===== TRENI ===== -->
+<div class="totals-section" id="treni" style="background:white; border-top: 3px solid var(--gold); margin-top:0; padding: 48px 40px 56px;">
+  <div class="totals-inner">
+    <div class="totals-header-label">Prenotazione posti</div>
+    <h2 class="totals-title" style="color:var(--ink)">Treni & Shinkansen</h2>
+
+    <div style="background:#fff8e1; border-left:3px solid var(--gold); padding:14px 18px; border-radius:0 6px 6px 0; font-size:13.5px; color:var(--ink); margin-bottom:28px;">
+      <strong>Come prenotare i posti con JR Pass:</strong><br>
+      La prenotazione del posto è <strong>gratuita</strong> con il JR Pass. Si fa online su <a href="https://www.jrwest.co.jp/en/" target="_blank" style="color:var(--gold)">JR-West Online</a> o <a href="https://www.jreast.co.jp/e/trainreservation/" target="_blank" style="color:var(--gold)">JR-East Online</a> (fino a 1 mese prima), oppure agli sportelli <strong>みどりの窓口</strong> in qualsiasi stazione JR. Prenotare appena si attiva il pass — in agosto i treni si riempiono rapidamente.
+    </div>
+
+    <table class="budget-table" style="background:white;">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Tratta</th>
+          <th>Treno</th>
+          <th>Orario ind.</th>
+          <th>Durata</th>
+          <th>JR Pass</th>
+          <th style="text-align:center">Urgenza</th>
+          <th style="text-align:center">Prenotato</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-date">5 Ago</td>
+          <td class="td-name">Narita → Tokyo (N'EX)</td>
+          <td class="td-nights">Narita Express</td>
+          <td class="td-nights">~14:00</td>
+          <td class="td-nights">53 min</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🟡 Alta</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr style="background:#fff8f0;">
+          <td class="td-date">7 Ago</td>
+          <td class="td-name">Tokyo → Nagoya → Takayama</td>
+          <td class="td-nights">Nozomi + Hida</td>
+          <td class="td-nights">08:00 / 10:10</td>
+          <td class="td-nights">~4h30</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🔴 Urgente</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-date">8 Ago</td>
+          <td class="td-name">Bus Takayama → Shirakawa-go</td>
+          <td class="td-nights">Nohi Bus</td>
+          <td class="td-nights">09:00</td>
+          <td class="td-nights">50 min</td>
+          <td class="td-nights">✗ Non coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px;background:#e8f5e9;color:#2d7a4a;border-color:#2d7a4a44">✓ OK</span></td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+        </tr>
+        <tr>
+          <td class="td-date">8 Ago</td>
+          <td class="td-name">Bus Shirakawa-go → Kanazawa</td>
+          <td class="td-nights">Nohi Bus</td>
+          <td class="td-nights">12:30</td>
+          <td class="td-nights">1h15</td>
+          <td class="td-nights">✗ Non coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px;background:#e8f5e9;color:#2d7a4a;border-color:#2d7a4a44">✓ OK</span></td>
+          <td class="td-check"><span class="chk yes-booked">✓</span></td>
+        </tr>
+        <tr style="background:#fff8f0;">
+          <td class="td-date">10 Ago</td>
+          <td class="td-name">Kanazawa → Kyoto</td>
+          <td class="td-nights">Thunderbird + Shinkansen</td>
+          <td class="td-nights">Mattina</td>
+          <td class="td-nights">~2h30</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🔴 Urgente</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-date">14 Ago</td>
+          <td class="td-name">Kyoto → Amanohashidate</td>
+          <td class="td-nights">L.Exp. Hashidate</td>
+          <td class="td-nights">Mattina</td>
+          <td class="td-nights">~2h</td>
+          <td class="td-nights">⚠️ Parziale</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🟡 Alta</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr style="background:#fff8f0;">
+          <td class="td-date">15 Ago</td>
+          <td class="td-name">Amanohashidate → Osaka</td>
+          <td class="td-nights">Hashidate + Shinkansen</td>
+          <td class="td-nights">Mattina</td>
+          <td class="td-nights">~3h30</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🟡 Alta</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-date">16 Ago</td>
+          <td class="td-name">Osaka → Hiroshima → Miyajima</td>
+          <td class="td-nights">Nozomi + JR Sanyo</td>
+          <td class="td-nights">09:15</td>
+          <td class="td-nights">~1h30</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🟡 Alta</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr style="background:#fff8f0;">
+          <td class="td-date">17 Ago</td>
+          <td class="td-name">Miyajima → Okayama → Naoshima</td>
+          <td class="td-nights">JR Sanyo + Nozomi + JR Uno</td>
+          <td class="td-nights">09:00</td>
+          <td class="td-nights">~3h</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🟡 Alta</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-date">17 Ago</td>
+          <td class="td-name">Traghetto Uno → Naoshima</td>
+          <td class="td-nights">Shikoku Ferry</td>
+          <td class="td-nights">~12:30</td>
+          <td class="td-nights">20 min</td>
+          <td class="td-nights">✗ Non coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px;background:#e8f5e9;color:#2d7a4a;border-color:#2d7a4a44">No prenot.</span></td>
+          <td class="td-check"><span class="chk yes-paid" style="font-size:9px">¥300</span></td>
+        </tr>
+        <tr style="background:#fff3f3;">
+          <td class="td-date">18 Ago</td>
+          <td class="td-name">Naoshima → Okayama → Tokyo</td>
+          <td class="td-nights">JR Uno + Nozomi</td>
+          <td class="td-nights">09:30 / 12:00</td>
+          <td class="td-nights">~4h30</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span style="font-size:9px;font-weight:700;color:#b8321a">🔴 OBON!</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+        <tr>
+          <td class="td-date">19 Ago</td>
+          <td class="td-name">Tokyo → Narita (N'EX)</td>
+          <td class="td-nights">Narita Express</td>
+          <td class="td-nights">~17:00</td>
+          <td class="td-nights">53 min</td>
+          <td class="td-nights">✓ Coperto</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9px;padding:2px 6px">🟡 Alta</span></td>
+          <td class="td-check"><span class="chk"></span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:20px; background:var(--ink); color:var(--paper); border-radius:10px; padding:18px 24px; font-size:13px; line-height:1.7;">
+      <strong style="color:var(--gold)">Strategia consigliata:</strong><br>
+      1. Compra il JR Pass online adesso → attivalo il 5 agosto a Narita<br>
+      2. Prenota subito online il treno del <strong>18 agosto</strong> (Obon — il più critico) e del <strong>7 agosto</strong> (Hida per Takayama)<br>
+      3. Il 5 agosto all'aeroporto, vai allo sportello JR e prenota tutti gli altri treni in un colpo
+    </div>
+
   </div>
 </div>
 
@@ -2790,8 +2947,8 @@
         <a href="https://benesse-artsite.jp/en/art/chichu.html" target="_blank" class="res-card res-card-urgent">
           <div class="res-card-icon">🏛️</div>
           <div class="res-card-body">
-            <div class="res-card-name">Chichu Art Museum ⚠️</div>
-            <div class="res-card-desc">Biglietti SOLO online, spesso sold out settimane prima. ¥2.100. Prenotare contestualmente all'hotel Benesse.</div>
+            <div class="res-card-name">Chichu Art Museum ⚠️ Urgente</div>
+            <div class="res-card-desc">Biglietti SOLO online (¥2.100), sold out settimane prima in agosto. Prenotare subito per il 17 agosto.</div>
             <div class="res-card-url">benesse-artsite.jp</div>
           </div>
         </a>
@@ -2957,7 +3114,10 @@
           <div class="res-tip-icon">📅</div>
           <div class="res-tip-title">Calendario prenotazioni urgenti</div>
           <div class="res-tip-body">
-            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Benesse House, Chichu Museum, Tempura Kondo, Kikunoi, TeamLab</span></div>
+            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Chichu Art Museum Naoshima (17 ago) — biglietti esauriti settimane prima</span></div>
+            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>TeamLab Planets Tokyo (19 ago) — biglietti obbligatori online</span></div>
+            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>Tokyo Skytree (5 ago) — prenotare online per evitare code enormi</span></div>
+            <div class="res-tip-row res-tip-urgent"><span>Ora</span><span>JR Pass 14 giorni — ordinare online, spedizione 2–3 settimane</span></div>
             <div class="res-tip-row"><span style="color:#2d7a4a;font-weight:600">✓ Fatto</span><span>Bus Nohi (Takayama → Kanazawa)</span></div>
             <div class="res-tip-row"><span>1° luglio ore 10:00 JST</span><span>Narisawa</span></div>
             <div class="res-tip-row"><span>5 luglio ore 12:00 JST</span><span>Sushi Hashimoto</span></div>
@@ -3000,55 +3160,6 @@
   <p style="margin-top:8px">Tutti i prezzi in JPY sono indicativi (2025). Verificare orari e tariffe prima della partenza. <br><a href="https://www.jrailpass.com/" target="_blank">JR Pass ufficiale</a> · <a href="https://www.japan.travel/en/" target="_blank">Japan Tourism</a></p>
 </footer>
 
-
-<script>
-(function() {
-  // Load saved state
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem('jp_bookings') || '{}'); } catch(e) {}
-
-  function makeToggle(id, darkMode) {
-    var btn = document.createElement('button');
-    btn.className = 'book-toggle' + (saved[id] ? ' booked' : '');
-    btn.setAttribute('aria-label', 'Segna come prenotato');
-    btn.setAttribute('title', 'Clicca per segnare come prenotato');
-    btn.innerHTML = '<span class="check-circle"><svg width="14" height="11" viewBox="0 0 14 11" fill="none"><path d="M1.5 5.5L5.5 9.5L12.5 1.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="book-label">' + (saved[id] ? 'Prenotato' : 'Prenota') + '</span>';
-    btn.addEventListener('click', function() {
-      var isBooked = btn.classList.toggle('booked');
-      btn.querySelector('.book-label').textContent = isBooked ? 'Prenotato' : 'Prenota';
-      saved[id] = isBooked;
-      try { localStorage.setItem('jp_bookings', JSON.stringify(saved)); } catch(e) {}
-    });
-    return btn;
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    // Hotel cards
-    document.querySelectorAll('.hotel-card').forEach(function(card, i) {
-      var nameEl = card.querySelector('.hotel-name');
-      var name = nameEl ? nameEl.textContent.trim() : 'hotel_' + i;
-      var id = 'hotel_' + name.replace(/\s+/g, '_').toLowerCase().slice(0, 30);
-      var wrapper = card.querySelector('div[style]');
-      if (wrapper) {
-        var toggle = makeToggle(id, false);
-        wrapper.insertBefore(toggle, wrapper.firstChild);
-      }
-    });
-
-    // Dinner cards
-    document.querySelectorAll('.dinner-card').forEach(function(card, i) {
-      var nameEl = card.querySelector('.dinner-name');
-      var name = nameEl ? nameEl.textContent.trim() : 'dinner_' + i;
-      var id = 'rest_' + name.replace(/\s+/g, '_').toLowerCase().slice(0, 30);
-      var actions = card.querySelector('.dinner-actions');
-      if (actions) {
-        var toggle = makeToggle(id, true);
-        actions.insertBefore(toggle, actions.firstChild);
-      }
-    });
-  });
-})();
-</script>
 
 
 <script>
@@ -3214,6 +3325,22 @@
     days.forEach(function(day) { initDay(day); });
   });
 
+})();
+</script>
+
+
+<script>
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    var cards = document.querySelectorAll('.day-card');
+    cards.forEach(function(card) {
+      var header = card.querySelector('.day-header');
+      if (!header) return;
+      header.addEventListener('click', function() {
+        card.classList.toggle('open');
+      });
+    });
+  });
 })();
 </script>
 
