@@ -51,18 +51,21 @@
     line-height: 1;
   }
   .hero-label {
-    font-size: 11px;
-    letter-spacing: 0.25em;
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
   }
   .hero h1 {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(52px, 10vw, 100px);
     font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 20px;
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
   }
   .hero-meta {
     display: flex;
@@ -70,9 +73,10 @@
     flex-wrap: wrap;
   }
   .hero-meta span {
-    font-size: 13px;
-    color: rgba(245,240,232,0.6);
-    letter-spacing: 0.05em;
+    font-size: 15px;
+    color: rgba(245,240,232,0.75);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .hero-meta strong {
     color: var(--paper);
@@ -907,18 +911,14 @@
 </div>
 
 <div class="hero">
-  <div class="hero-label">Itinerario Definitivo</div>
-  <h1>Giappone<br>4 → 19 Agosto 2025</h1>
+  <div class="hero-label">The Cino's Tour</div>
+  <h1>Japan</h1>
   <div class="hero-meta">
-    <span><strong>8 persone</strong> · 4 camere doppie</span>
-    <span><strong>16 giorni</strong> · 10 città</span>
-    <span><strong>Tokyo · Nikko · Takayama · Kanazawa · Kyoto · Osaka · Naoshima · Miyajima</strong></span>
+    <span><strong>4 → 19 Agosto 2026</strong></span>
   </div>
 </div>
 
-<div class="alert">
-  <strong>⚠️ Prenotazioni urgenti:</strong> <strong>Chichu Art Museum</strong> (Naoshima, 17 ago) biglietti SOLO online — <a href="https://benesse-artsite.jp/en/art/chichu.html" target="_blank" style="color:var(--gold)">benesse-artsite.jp</a> · <strong>TeamLab Planets</strong> (19 ago) biglietti online obbligatori — <a href="https://planets.teamlab.art/tokyo/" target="_blank" style="color:var(--gold)">planets.teamlab.art</a> · <strong>Tokyo Skytree</strong> (5 ago) prenotare online per evitare code.
-</div>
+
 
 <nav class="nav-strip">
   <a href="#g4" class="nav-item"><span class="nav-date">4 Ago</span><span class="nav-city">Tokyo</span></a>
@@ -938,6 +938,20 @@
   <a href="#g18" class="nav-item"><span class="nav-date">18 Ago</span><span class="nav-city">Tokyo</span></a>
   <a href="#g19" class="nav-item"><span class="nav-date">19 Ago</span><span class="nav-city">Tokyo</span></a>
 </nav>
+
+<div style="background:white; border-bottom:1px solid var(--light); padding:10px 40px; display:flex; gap:10px;">
+  <button onclick="toggleAll(true)" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:var(--ink);color:var(--paper);border:none;border-radius:6px;font-size:12px;font-weight:500;font-family:inherit;cursor:pointer;letter-spacing:0.05em;">▼ Apri tutti</button>
+  <button onclick="toggleAll(false)" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:var(--light);color:var(--ink);border:none;border-radius:6px;font-size:12px;font-weight:500;font-family:inherit;cursor:pointer;letter-spacing:0.05em;">▲ Chiudi tutti</button>
+</div>
+
+<script>
+function toggleAll(open) {
+  document.querySelectorAll('.day-card').forEach(function(card) {
+    if (open) card.classList.add('open');
+    else card.classList.remove('open');
+  });
+}
+</script>
 
 <main>
 
@@ -1453,17 +1467,18 @@
     <div class="section-label">🍽️ Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Izakaya · Tabelog 100 Best West Japan 2025 · Seafood</div>
-        <div class="dinner-name">Itaru Honten</div>
-        <span class="price-pill">~€25–35 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">L'izakaya più amata di Kanazawa — Tabelog 100 Best Izakaya West Japan 2025. Frequentata soprattutto da locali. Il menu cambia ogni giorno con il pesce di stagione. Famosi per il secchio di sashimi in legno, il granchio ubriaco, il nodoguro semi-essiccato alla griglia e i gamberi bianchi di Kanazawa. Sake locale di Ishikawa in abbinamento. Counter con vista sui cuochi. ~¥4.000–¥5.000/persona. Chiuso la domenica. Prenotare 3 mesi prima nei weekend.</div>
+        <div class="dinner-type">Kappou · Seafood Hokuriku · Kanazawa · <span class="badge-booked">✓ Prenotato · 21:00</span></div>
+        <div class="dinner-name">Taishu Kappou Uogin</div>
+        <span class="price-pill">~€30–45 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Il concetto unico di Uogin: qualità kaiseki a prezzi da izakaya — metà o un terzo del costo di un tipico kappou. Chef che si rifiuta di compromettere la qualità pur mantenendo prezzi popolari. Specialità: sashimi oke-mori in secchio di legno con pesce freschissimo del Mar del Giappone, nodoguro alla griglia, granchio kobako, Kanazawa oden con dashi di pesce Noto. Sake locale di Ishikawa. Prenotazione online immediata. Vicino a Nomachi Station.</div>
       </div>
       <div class="dinner-actions">
-        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17000009/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
-        <a href="https://autoreserve.com/en/restaurants/EpcCWSK9DnhGmnbVv2mu" class="btn btn-ghost" target="_blank">📅 AutoReserve</a>
-        <a href="https://maps.google.com/?q=Itaru+Honten+izakaya+Kanazawa+Nomachi" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17011310/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
+        <a href="https://tabelog.com/en/ishikawa/A1701/A170101/17011310/reserve/" class="btn btn-ghost" target="_blank">📅 Prenota</a>
+        <a href="https://maps.google.com/?q=Taishu+Kappou+Uogin+Kanazawa+Nomachi" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
+    <div class="warning">✅ Già prenotato · 21:00</div>
   </div>
   </div>
 </div>
@@ -1539,17 +1554,17 @@
     <div class="section-label">🍜 Cena</div>
     <div class="dinner-card">
       <div class="dinner-body">
-        <div class="dinner-type">Kaiseki · Cucina Kyoto · Prenotazione obbligatoria</div>
-        <div class="dinner-name">Gion Karyo</div>
-        <span class="price-pill">~€80 <span class="price-label">a persona</span></span>
-        <div class="dinner-note">Cucina kaiseki nel cuore di Gion. Ingredienti stagionali in preparazioni che riflettono la cultura culinaria di Kyoto. Ambiente elegante e tradizionale. Prenotazione obbligatoria.</div>
+        <div class="dinner-type">Kaiseki · Cucina Kyoto · Gion · <span class="badge-booked">✓ Prenotato · 20:00</span></div>
+        <div class="dinner-name">Gion Nanba</div>
+        <span class="price-pill">€100 <span class="price-label">a persona</span></span>
+        <div class="dinner-note">Ristorante kaiseki nel cuore del quartiere Gion, a pochi passi da Hanamikoji. Cucina stagionale della tradizione Kyoto — tofu Nishiki, yuba, verdure Kaga, pesce del Mar del Giappone. Ambiente in casa machiya tradizionale con giardino interno. Perfetto per la prima sera a Kyoto.</div>
       </div>
       <div class="dinner-actions">
-        <a href="http://www.karyo-kyoto.jp/gion/en/" class="btn btn-gold" target="_blank">🌐 Sito</a>
-        <a href="https://jpneazy.com/restaurants/22" class="btn btn-ghost" target="_blank">📅 Prenota (TableAll)</a>
-        <a href="https://maps.google.com/?q=Gion+Karyo+Kyoto" class="btn btn-ghost" target="_blank">📍 Maps</a>
+        <a href="https://tabelog.com/en/kyoto/A2601/A260301/26028948/" class="btn btn-gold" target="_blank">🌐 Tabelog</a>
+        <a href="https://maps.google.com/?q=Gion+Nanba+Kyoto+Hanamikoji" class="btn btn-ghost" target="_blank">📍 Maps</a>
       </div>
     </div>
+    <div class="warning">✅ Già prenotato · 20:00</div>
   </div>
   </div>
 </div>
@@ -2139,11 +2154,11 @@
       <div class="activity-item">
         <span class="activity-icon">🏛️</span>
         <div class="activity-body">
-          <div class="activity-name">Chichu Art Museum — Tadao Ando</div>
-          <div class="activity-desc">Museum scavato nella montagna da Tadao Ando (2004). Ospita Monet, James Turrell, Walter De Maria. Luce naturale come elemento chiave. Biglietti online obbligatori: ¥2.100. Aperto 10:00–17:00 (chiuso lunedì).</div>
+          <div class="activity-name">Lee Ufan Museum — Tadao Ando</div>
+          <div class="activity-desc">Museum progettato da Tadao Ando in una caverna naturale dedicato all'artista coreano Lee Ufan — pietre, acciaio e luce in dialogo con lo spazio. Atmosfera meditativa e unica. ¥1.050. Aperto 10:00–17:00 (chiuso lunedì). Nessuna prenotazione necessaria.</div>
           <div class="activity-links">
-            <a href="https://maps.google.com/?q=Chichu+Art+Museum+Naoshima" class="btn btn-map" target="_blank">📍 Maps</a>
-            <a href="https://benesse-artsite.jp/en/art/chichu.html" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+            <a href="https://maps.google.com/?q=Lee+Ufan+Museum+Naoshima" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://benesse-artsite.jp/en/art/lee-ufan.html" class="btn btn-primary" target="_blank">🌐 Sito</a>
           </div>
         </div>
       </div>
@@ -2280,7 +2295,7 @@
     <div class="day-num"><span class="n">19</span><span class="m">Ago</span></div>
     <div class="day-title-block">
       <h2>Ultimo giorno + Partenza</h2>
-      <div class="location">Tokyo · TeamLab · Daikanyama · Narita</div>
+      <div class="location">Tokyo · Tsukiji · Shibuya · Narita</div>
     </div>
   </div>
   <div class="day-body">
@@ -2298,8 +2313,8 @@
     <div class="section-label">🗓️ Programma</div>
     <div class="transport-box">
       <div class="transport-row"><span class="transport-time">08:00</span><span class="transport-desc">Colazione a Tsukiji: sushi di primo mattino o oyster bar nel mercato esterno.</span></div>
-      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc"><strong>TeamLab Planets</strong> (Toyota, Toyosu): prenotare ONLINE obbligatoriamente. ¥3.200. 1h30 sufficiente.</span></div>
-      <div class="transport-row"><span class="transport-time">11:30</span><span class="transport-desc"><strong>Daikanyama</strong>: il quartiere più cool di Tokyo. Daikanyama T-Site (libreria di design), Nakameguro (canal district), caffè indipendenti. Ultima passeggiata nella Tokyo vera.</span></div>
+      <div class="transport-row"><span class="transport-time">09:30</span><span class="transport-desc"><strong>Tsukiji Outer Market</strong>: sushi e oyster freschissimi da mangiare in piedi. Negozi di coltelli giapponesi, tè, wasabi. Il mercato che non ha rivali.</span></div>
+      <div class="transport-row"><span class="transport-time">11:30</span><span class="transport-desc"><strong>Shibuya Sky</strong>: la terrazza panoramica al 46° piano dello Scramble Square. Vista a 360° su tutta Tokyo. ¥2.000. Prenotare online (più semplice di Skytree). Ultima vista sulla città.</span></div>
       <div class="transport-row"><span class="transport-time">14:00</span><span class="transport-desc">Rientro hotel. Luggage pickup. Check-out. Consegnare i bagagli in deposito se necessario.</span></div>
       <div class="transport-row"><span class="transport-time">17:00</span><span class="transport-desc">Partenza verso Narita. N'EX dalla stazione Shimbashi (~50 min) o Limousine Bus da Ginza (~75 min). <strong>Volo alle 20:00 → partire ENTRO LE 17:00 al massimo.</strong></span></div>
     </div>
@@ -2309,13 +2324,13 @@
     <div class="section-label">🎨 Visite</div>
     <div class="activities-grid">
       <div class="activity-item">
-        <span class="activity-icon">💫</span>
+        <span class="activity-icon">🌇</span>
         <div class="activity-body">
-          <div class="activity-name">TeamLab Planets — arte digitale immersiva</div>
-          <div class="activity-desc">Camminare nell'acqua, specchi infiniti, fiori digitali. Biglietti SOLO ONLINE — esauriti settimane prima. TeamLab Planets è più compatto e intimo di Borderless (chiuso). 10 min da Shin-Kiba Station.</div>
+          <div class="activity-name">Shibuya Sky — terrazza panoramica</div>
+          <div class="activity-desc">Vista a 360° su Tokyo dal 46° piano dello Scramble Square — la terrazza più spettacolare della città. Si vede il Monte Fuji nelle giornate limpide. ¥2.000. Prenotare online su <a href="https://shibuya-scramble-square.com/sky/" target="_blank" style="color:var(--gold)">shibuya-scramble-square.com</a>. Aperto 10:00–22:30.</div>
           <div class="activity-links">
-            <a href="https://maps.google.com/?q=TeamLab+Planets+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a>
-            <a href="https://planets.teamlab.art/tokyo/" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
+            <a href="https://maps.google.com/?q=Shibuya+Sky+Scramble+Square+Tokyo" class="btn btn-map" target="_blank">📍 Maps</a>
+            <a href="https://shibuya-scramble-square.com/sky/" class="btn btn-primary" target="_blank">🌐 Biglietti</a>
           </div>
         </div>
       </div>
@@ -2516,18 +2531,18 @@
         <tr>
           <td class="td-city">Kanazawa</td>
           <td class="td-date">9 Ago</td>
-          <td class="td-name">Itaru Honten</td>
+          <td class="td-name">Taishu Kappou Uogin</td>
           <td class="td-nights">1 sera</td>
-          <td class="td-price approx">~€25–35</td>
-          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-price approx">~€30–45</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 21:00</span></td>
         </tr>
         <tr>
           <td class="td-city">Kyoto</td>
           <td class="td-date">10 Ago</td>
-          <td class="td-name">Gion Karyo</td>
+          <td class="td-name">Gion Nanba</td>
           <td class="td-nights">1 sera</td>
-          <td class="td-price approx">~€80</td>
-          <td class="td-check"><span class="chk"></span></td>
+          <td class="td-price">€100</td>
+          <td class="td-check"><span class="badge-booked" style="font-size:9.5px;padding:2px 7px">✓ 20:00</span></td>
         </tr>
         <tr>
           <td class="td-city">Kyoto</td>
